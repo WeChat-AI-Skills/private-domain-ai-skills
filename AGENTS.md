@@ -3,6 +3,7 @@
 目标：让客户自己的 Agent 安装后能理解业务、按授权执行、核对结果，并按客户反馈持续改进。
 
 - 唯一正式发布仓库为 `WeChat-AI-Skills/private-domain-ai-skills`，由 Codex 统一集成、维护和发布。`WeChat-AI-Skills/wechat-private-domain-skills` 是已迁移的历史仓库，不再独立发布或作为安装入口。
+- 正式仓库公开提供客户安装；发布时用不带凭据的下载/克隆验证访问，并保留技能版本与安装验证证据。客户运行资料不随包发布。
 
 - 技能唯一维护位置：`.agents/skills/<name>/SKILL.md`。新增或删除同步 `manifest.json`、README、CHANGELOG 与能力状态。
 - 技能需要的规则、脚本和模板随技能包安装；相对引用必须在安装后的完整包中可达。

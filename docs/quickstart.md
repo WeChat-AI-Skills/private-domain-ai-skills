@@ -2,16 +2,16 @@
 
 ## 1. 准备
 
-客户需要本私有仓库的读取权限、Git，以及 Python 3.10 或更新版本。Codex 是首个核验宿主。其他 Agent 可按其技能目录配置安装目标，识别能力需在该宿主单独验证。
+客户需要 Git，以及 Python 3.10 或更新版本。本仓库公开可读，下载和克隆无需 GitHub 登录。Codex 是首个核验宿主。其他 Agent 可按其技能目录配置安装目标，识别能力需在该宿主单独验证。
 
-使用客户自己的 GitHub 登录和 SCRM 会话，凭据通过对应受控配置完成。
+技能安装完成后，使用客户自己的 SCRM 会话及业务工具配置；业务凭据通过对应受控入口提供，不需要交给 GitHub。
 
 ## 2. 取得固定版本
 
 在客户选定的本地目录执行：
 
 ```bash
-git clone --branch v1.1.0 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
+git clone --branch v1.1.1 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
 cd private-domain-ai-skills
 python3 scripts/validate_skills.py
 ./install.sh --dry-run
@@ -60,3 +60,5 @@ v1.0.0 → v1.1.0 会新增 task-reconcile。反向回退时旧版清单缺少�
 更新后重新核对宿主识别、相关合成案例与客户环境变化。客户业务配置和执行回执独立保存，升级不改动这些资料。
 
 更新期间暂停修改目标技能。若安装进程被强制终止且留下安装锁或 staging 目录，先保留目录并检查回执及 previous 备份，完成恢复后再重试；不要直接删除锁后重复覆盖。
+
+v1.1.1 与 v1.1.0 的 15 项技能内容一致，主要更新公开安装与分发说明；仍按上述 --update 流程更新版本回执。

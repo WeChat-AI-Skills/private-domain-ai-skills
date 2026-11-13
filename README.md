@@ -8,17 +8,17 @@
 
 ![悦榕私域智能系统](assets/cover-v2.jpg)
 
-**当前版本：v1.1.0 · 2026-11-13**。包含 15 项技能、安装程序、客户上岗模板和合成示例。首个适配宿主为 Codex；安装与识别、客户系统接入、业务执行分别验收，详见[能力状态](docs/capability-status.md)。
+**当前版本：v1.1.1 · 2026-11-13**。包含 15 项技能、安装程序、客户上岗模板和合成示例。首个适配宿主为 Codex；安装与识别、客户系统接入、业务执行分别验收，详见[能力状态](docs/capability-status.md)。
 
 ## 给客户的开始方式
 
-把本仓库交给客户自己的 Codex，并附上这段话：
+把本仓库链接交给客户自己的 Agent，并附上这段话（Codex 已验证，其他宿主需核对技能目录和识别结果）：
 
-> 请阅读 README 和 docs/quickstart.md，安装 v1.1.0 的完整技能包。保留我已有的技能和配置，核对 15 项技能能否被识别。然后用 wechat-scrm-onboarding 检查我提供的 SCRM 入口、账号、业务资料和权限。本次先做只读上岗检查，告诉我能做什么、还缺什么，以及如何完成第一个任务。
+> 请从 https://github.com/WeChat-AI-Skills/private-domain-ai-skills 阅读 README 和 docs/quickstart.md，安装 v1.1.1 的完整技能包。保留我已有的技能和配置，核对 15 项技能能否被识别。然后用 wechat-scrm-onboarding 检查我提供的 SCRM 入口、账号、业务资料和权限。本次先做只读上岗检查，告诉我能做什么、还缺什么，以及如何完成第一个任务。
 
 [安装与首次上岗](docs/quickstart.md) · [客户环境卡](.agents/skills/wechat-scrm-onboarding/references/customer-setup.md) · [版本记录](CHANGELOG.md)
 
-本仓库当前为私有，客户需先获得仓库访问权限。客户账号、SCRM 服务、工具连接和模型服务在各自环境中配置。
+本仓库公开提供技能包，浏览、下载和克隆无需 GitHub 登录或单独申请访问权限。客户的 SCRM 账号、业务资料、工具连接和模型服务在各自环境中配置。
 
 ## 三条典型工作链路
 
