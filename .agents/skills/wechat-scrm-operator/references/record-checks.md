@@ -31,7 +31,7 @@ python3 scripts/scrm.py check-result references/examples/synthetic-result.json -
 python3 scripts/scrm.py check-result references/examples/synthetic-query-result.json --call references/examples/synthetic-query-call.json --binding references/examples/synthetic-binding.json --origin-call references/examples/synthetic-call.json --origin-result references/examples/synthetic-result.json
 ```
 
-检查客户记录时，将示例路径替换为客户受控工作区内相应文件的实际路径。输出包含 `offline_only: true` 与 `live_status: not_verified`；`can_execute: false` 表示这个检查器不放行业务操作、不调用平台。客户 Agent 的实际页面操作仍须使用可用工具和有效授权。退出成功仅代表检查范围内的记录一致性；缺真实工具、过期权限、被撤销的授权或错误的网页证据不会因为 JSON 合法而变成可执行。
+检查客户记录时，将示例路径替换为客户受控工作区内相应文件的实际路径。输出包含 `offline_only: true` 与 `live_status: not_verified`；`execution_performed: false` 表示本次只做离线检查，没有调用平台或执行业务操作。客户 Agent 的实际页面操作仍须使用可用工具和有效授权。退出成功仅代表检查范围内的记录一致性；缺真实工具、过期权限、被撤销的授权或错误的网页证据不会因为 JSON 合法而变成可执行。
 
 不要把密码、Cookie、验证码、访问令牌或完整认证配置写进绑定；使用宿主已有的受控登录。HTTP 入口只有客户明确允许的部署才使用，不能为让模板通过而自动降低传输要求。
 
@@ -52,3 +52,7 @@ python3 scripts/scrm.py check-result references/examples/synthetic-query-result.
 新记录通过现有任务的证据/动作引用关联，不改变 `task-card/1.2` 的 `capability_ids`：该字段仍指业务节点。原 1.0/1.1 任务卡继续按旧语义读取；新执行的 A卷、风险、独立审查和签核要求见[现有任务结果约定](../../private-domain-ops/references/contracts/task-and-result.md)。本检查器不替代它。
 
 现有[逐对象回执 1.0](../../task-reconcile/references/receipt-contract.md)仍用于相符的消息、朋友圈、邀请记录。只有真实字段与阶段满足时才映射；“排期已保存”“规则已开启”“页面按钮可点”都不能改写成业务成功。
+
+## 当前查询边界
+
+本版检查器只核验同一冻结绑定快照内的原任务查询。重新登录后若绑定修订、工具会话或适配器改变，不能改写旧绑定和旧回执使其通过检查。Agent 应先按当前现场重新确认租户、工作号和有效读取范围，使用原平台任务标识查询并将新观察与原记录分别保存，标明跨修订关联尚未由本检查器验证。没有稳定原任务标识时按操作指引核对唯一复合特征；无法唯一匹配则保留未知。跨修订恢复和无平台标识的自动关联是后续适配范围，不以本地检查失败为理由重新提交业务。

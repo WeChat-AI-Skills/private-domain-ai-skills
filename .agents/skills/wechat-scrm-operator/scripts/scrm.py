@@ -250,12 +250,7 @@ def check_result(result, call, binding, registry=None, base=BASE, origin_call=No
         require(result["error"] is not None, "unknown or failure requires a reason")
     else:
         require(result["error"] is None, "non-error status cannot retain an error claim")
-    if result["status"] == "unknown":
-        require(result["next_action"] == "query_original", "unknown result must query original before any new submission")
-    elif result["status"] == "failed":
-        require(result["next_action"] in {"query_original", "do_not_retry"}, "failure does not authorize resubmission")
-    else:
-        require(result["next_action"] in {"query_original", "none"}, "unexpected next action")
+    next_action_status = result["status"]
     if operation == "task_query":
         if result["status"] == "succeeded":
             observation = result["observation"]
@@ -264,10 +259,18 @@ def check_result(result, call, binding, registry=None, base=BASE, origin_call=No
                 require(observation[field] == call["input"][field], "query observation must match original submission")
             require(result["platform_ref"] == call["input"]["platform_ref"], "query platform reference mismatch")
             check_stage(observation["status"], observation["stage"], registry["operations"][observation["origin_operation"]])
+            # A successful query does not resolve an unknown/failed business action.
+            next_action_status = observation["status"]
         else:
             require(result["observation"] is None, "incomplete query cannot claim an original-operation observation")
     else:
         require(result["observation"] is None, "only task_query may include a query observation")
+    if next_action_status == "unknown":
+        require(result["next_action"] == "query_original", "unknown result must query original before any new submission")
+    elif next_action_status == "failed":
+        require(result["next_action"] in {"query_original", "do_not_retry"}, "failure does not authorize resubmission")
+    else:
+        require(result["next_action"] in {"query_original", "none"}, "unexpected next action")
     if result["status"] == "succeeded" and spec["effect"] == "external_compute":
         require(bool(result["artifact_refs"]), "completed generation requires artifact references")
     return {**NOTICE, "check": "result_structure_and_correlation", "status": "valid", "operation": operation,

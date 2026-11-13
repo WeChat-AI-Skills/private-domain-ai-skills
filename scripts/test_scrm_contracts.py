@@ -260,6 +260,36 @@ class SCRMContractTests(unittest.TestCase):
         self.assertEqual((report["record_status"], report["record_stage"]), ("succeeded", "queried"))
         self.assertEqual(self.result["observation"]["stage"], "scheduled")
 
+    def test_completed_query_with_unknown_business_requires_original_query(self):
+        self.task_query()
+        self.result["observation"].update(status="unknown", stage="unknown")
+        for action in ("none", "do_not_retry"):
+            self.result["next_action"] = action
+            with self.subTest(action=action), self.assertRaisesRegex(ValueError, "unknown result must query original"):
+                self.check()
+        self.result["next_action"] = "query_original"
+        self.assertFalse(self.check()["retry_allowed"])
+
+    def test_completed_query_with_failed_business_retains_failure_actions(self):
+        self.task_query()
+        self.result["observation"].update(status="failed", stage="failed")
+        self.result["next_action"] = "none"
+        with self.assertRaisesRegex(ValueError, "failure does not authorize resubmission"):
+            self.check()
+        for action in ("query_original", "do_not_retry"):
+            self.result["next_action"] = action
+            with self.subTest(action=action):
+                self.assertFalse(self.check()["retry_allowed"])
+
+    def test_do_not_retry_is_not_generally_allowed_for_successful_queries(self):
+        self.task_query()
+        self.result["next_action"] = "do_not_retry"
+        for status, stage in (("accepted", "scheduled"), ("running", "scheduled"),
+                              ("succeeded", "published"), ("cancelled", "cancelled")):
+            self.result["observation"].update(status=status, stage=stage)
+            with self.subTest(status=status), self.assertRaisesRegex(ValueError, "unexpected next action"):
+                self.check()
+
     def test_query_preserves_original_call_attempt_and_platform_reference(self):
         self.task_query()
         self.check()
