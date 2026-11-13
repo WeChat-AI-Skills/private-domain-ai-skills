@@ -12,13 +12,13 @@
 
 > 依据已核对资料准备一条朋友圈草稿，先不发布。
 
-| 节点 | 能力 | 当前方法覆盖 | 可复用技能 | 结果要求与缺口 |
-| --- | --- | --- | --- | --- |
-| MOM-01 | 选题与排期 | 已有方法/脚本 | [moments-calendar](../../.agents/skills/moments-calendar/SKILL.md) | 主题、账号、时间、正文及素材版本明确；使用客户事实与业务时区 |
-| MOM-02 | 生成图文素材 | 部分覆盖 | [moments-calendar](../../.agents/skills/moments-calendar/SKILL.md) | 成品、素材需求和占位内容分别标明；图片生成与素材获取按环境接入 |
-| MOM-03 | 发布朋友圈 | 已有方法/脚本 | [wechat-scrm-moments](../../.agents/skills/wechat-scrm-moments/SKILL.md) | 逐账号查实际发布，排期不计发布成功；客户现场提交与发布尚未验收 |
-| MOM-04 | 跟进评论与私信 | 部分覆盖 | [wechat-scrm-friend-message](../../.agents/skills/wechat-scrm-friend-message/SKILL.md)、[customer-intake](../../.agents/skills/customer-intake/SKILL.md) | 核对对象、授权与回复结果；评论读取与身份衔接待适配 |
+| 节点 | 能力 | 主责角色 | 当前方法覆盖 | 可复用技能 | 结果要求与缺口 |
+| --- | --- | --- | --- | --- | --- |
+| MOM-01 | 选题与排期 | 内容 Agent | 已有方法/脚本 | [moments-calendar](../../.agents/skills/moments-calendar/SKILL.md) | 主题、账号、时间、正文及素材版本明确；使用客户事实与业务时区 |
+| MOM-02 | 生成图文素材 | 内容 Agent | 部分覆盖 | [moments-calendar](../../.agents/skills/moments-calendar/SKILL.md) | 成品、素材需求和占位内容分别标明；图片生成与素材获取按环境接入 |
+| MOM-03 | 发布朋友圈 | 内容 Agent | 已有方法/脚本 | [wechat-scrm-moments](../../.agents/skills/wechat-scrm-moments/SKILL.md) | 逐账号查实际发布，排期不计发布成功；客户现场提交与发布尚未验收 |
+| MOM-04 | 跟进评论与私信 | 内容 Agent | 部分覆盖 | [wechat-scrm-friend-message](../../.agents/skills/wechat-scrm-friend-message/SKILL.md)、[customer-intake](../../.agents/skills/customer-intake/SKILL.md) | 核对对象、授权与回复结果；评论读取与身份衔接待适配 |
 
-上表的“已有方法/脚本”不等于客户现场已接入。外部工具能力按企业、工作号与动作单独验证，当前目录所有节点现场状态均为未验证。
+上表的方法覆盖状态不等于客户现场已接入。外部工具能力按企业、工作号与动作单独验证，当前目录所有节点现场状态均为未验证。
 
 [返回技能树](../skill-tree-overview.md) · [开始使用](../quickstart.md) · [能力状态](../capability-status.md)

@@ -8,10 +8,10 @@
 
 ## 2. 取得固定版本
 
-可从 [v1.2.1 发布页](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/tag/v1.2.1)下载完整 ZIP 与 SHA256SUMS.txt。ZIP 解压后同样运行下列检查和安装命令；使用 Git 时，在客户选定的本地目录执行：
+可从 [v1.2.2 发布页](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/tag/v1.2.2)下载完整 ZIP 与 SHA256SUMS.txt。ZIP 解压后同样运行下列检查和安装命令；使用 Git 时，在客户选定的本地目录执行：
 
 ```bash
-git clone --branch v1.2.1 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
+git clone --branch v1.2.2 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
 cd private-domain-ai-skills
 python3 scripts/check_all.py
 ./install.sh --dry-run
@@ -83,3 +83,13 @@ python3 scripts/catalog.py --check-task references/examples/first-task.json --re
 v1.1.1 → v1.2.0 保留 15 项名称及路径，增加总控资料。用完整安装包执行 --update，不能只复制 SKILL.md。未修改副本可回退到 v1.1.1；任务产物始终保存在安装目录之外。迁移细节见[架构说明](architecture.md)。
 
 v1.2.0 → v1.2.1 仍是相同 15 项技能；A卷、方法许可及任务卡 1.1 随包安装。新任务采用 1.1，旧 1.0 卡片保持可读，但不代表补做了三关。执行前仍须按当前 A卷补齐必要判断；检查器不代替真实授权审核。未修改的技能副本可用旧包 --update 回退到 v1.2.0；新增任务卡留在工作区，用新检查器读取，旧检查器不支持 1.1。
+
+## v1.2.2 升级与兼容
+
+使用 v1.2.2 完整包，对已有目标先执行 `--dry-run --update`，再执行 `--update`。15 项技能名称和路径、安装回执版本及逐对象结果契约 1.0 保持不变。安装器检测到客户修改会整批停止，先备份并比较修改，不自动合并或覆盖。
+
+新任务/结果卡采用 1.2；旧 1.0/1.1 卡仍按原规则读取，不能据此推断已补做新版证据检查。升级任务须显式转换并重新核对，不能只把新字段混入旧版本。首次合成草稿仍只用一张 L1 短卡；独立审查或 L3 完成声明才需要对应证据记录，见[约定](../.agents/skills/private-domain-ops/references/recovery-and-review.md)。
+
+未修改副本可以用 v1.2.1 或 v1.1.1 的完整包对同一目标执行 `--update` 回退，再用 v1.2.2 包重新升级。任务、客户配置和运行证据应一直保存在安装目录以外；回退只换技能文件，不转换或删除工作区卡片。v1.2.1 检查器会拒绝 1.2 卡片，v1.1.1 不提供该任务卡检查器；需要读取新卡时使用 v1.2.2 检查器。
+
+[本版本验证](verification-v1.2.2.md)分别记录新装、直升、客户修改保护、回退、再升级和宿主识别。真实工具适配与业务现场验收安排在后续 v1.3。

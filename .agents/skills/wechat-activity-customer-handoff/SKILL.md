@@ -7,6 +7,8 @@ description: 核实微信私域存量客户主动提出的活动或礼赠问题�
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：活动规则、资格或授权不明时只整理缺口与交接卡，省略对客草稿。不编造权益、库存、负责人或固定响应时限；没有真实交接回执就不称已接手。参照[过期规则与服务承诺](../private-domain-ops/references/failure-cases.md#case-04)、[自报与真实回执](../private-domain-ops/references/failure-cases.md#case-10)。
+
 根据已确认的活动规则，给员工一份可以核对、修改和接手的工作卡。采用现有人工服务渠道。
 
 ## 执行步骤

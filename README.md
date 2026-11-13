@@ -4,13 +4,13 @@
 
 围绕客户的需求、意图与体验，把业务判断、内容准备、系统操作和结果核对整理成客户自己的 Agent 可以安装使用的技能。
 
-**当前版本：v1.2.1 · 2026-11-13。** 在 v1.2.0 的 15 项技能、七类目录、28 个节点和六个角色基础上，合并 A卷上岗原则：事实洁癖、第一性原理、对抗式审查。节点包含部分覆盖及待建设能力，详见[技能树总览](docs/skill-tree-overview.md)和[能力状态](docs/capability-status.md)。
+**当前版本：v1.2.2 · 2026-11-13。** 保留 15 项技能、七类目录、28 个节点和六个角色，补充随包失败案例、业务停止条件，以及可关联的独立审查、恢复与签核记录。节点包含部分覆盖及待建设能力，详见[技能树总览](docs/skill-tree-overview.md)和[能力状态](docs/capability-status.md)。
 
 [开始安装](docs/quickstart.md) · [正式版本](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/latest) · [第一次演练](.agents/skills/private-domain-ops/references/examples/first-task.md) · [文档目录](docs/README.md)
 
 ## 给客户 Agent 的安装指令
 
-> 请阅读 https://github.com/WeChat-AI-Skills/private-domain-ai-skills 的 README 和 docs/quickstart.md，安装固定版本 v1.2.1 的完整 15 项技能。保留我已有技能和修改，核对宿主是否识别。然后使用 private-domain-ops 完成随包 first-task 合成演练，返回草稿、使用的角色与技能、素材状态和缺口。没有实际业务授权时，不发送、不发布、不邀请。
+> 请阅读 https://github.com/WeChat-AI-Skills/private-domain-ai-skills 的 README 和 docs/quickstart.md，安装或升级到固定版本 v1.2.2 的完整 15 项技能。保留我已有技能和修改，核对宿主是否识别。然后使用 private-domain-ops 完成随包 first-task 合成演练，返回草稿、使用的角色与技能、素材状态和缺口。没有实际业务授权时，不发送、不发布、不邀请。
 
 公开浏览和下载无需 GitHub 登录。首个适配宿主是 Codex；其他 Agent/Cortex 等宿主需单独核对技能目录、识别和使用结果。安装包不包含业务账号或私有运行服务依赖；实际执行使用客户自己的工具、资料与授权。
 
@@ -38,7 +38,7 @@ Super Agent 负责目标、选择路径、必要分工和总结果。运营、�
 
 ## 上岗原则
 
-所有技能入口与六份角色职责接入同一份[A卷](.agents/skills/private-domain-ops/references/a-volume-onboarding.md)。轻任务用简短判断，高风险动作保留独立审查与人工签核证据；有效授权继续复用。新任务/结果卡 1.1 记录风险、三关依据和未核实项，继续读取 1.0 卡片。检查器只校验结构，不替代实际审查或业务授权。
+所有技能入口与六份角色职责接入同一份[A卷](.agents/skills/private-domain-ops/references/a-volume-onboarding.md)。轻任务用简短判断，高风险动作保留独立审查与人工签核证据；有效授权继续复用。新任务/结果卡 1.2 保留风险、三关依据和未核实项，并在需要时关联审查、恢复与签核记录；继续读取 1.0/1.1 卡片。检查器验证结构与记录关联，当前就绪检查另核有效期；它不会认证审查人身份、启动执行或替代真实授权。参见[恢复与审查约定](.agents/skills/private-domain-ops/references/recovery-and-review.md)和[10 个失败案例](.agents/skills/private-domain-ops/references/failure-cases.md)。
 
 ## 15 项可安装技能
 

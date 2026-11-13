@@ -1,0 +1,60 @@
+{
+  "contract_version": "task-card/1.2",
+  "request_id": "synthetic-evidence-request",
+  "task_id": "synthetic-evidence-task",
+  "assigned_by": "super-agent",
+  "assigned_to": "customer-agent",
+  "scope": {
+    "tenant_id": "synthetic-shop",
+    "account_id": "synthetic-account",
+    "customer_ids": [
+      "synthetic-customer"
+    ],
+    "group_ids": [],
+    "product_ids": []
+  },
+  "capability_ids": [
+    "INT-01"
+  ],
+  "goal": "离线演练高敏只读任务证据绑定；无真实读取、导出或授权",
+  "execution_mode": "readonly",
+  "runtime_mode": "single_agent",
+  "context_refs": [
+    "synthetic-snapshot-v1"
+  ],
+  "acceptance": [
+    "只验证合成记录结构与关联",
+    "不执行客户业务"
+  ],
+  "principles_ref": "a-volume/1.0",
+  "risk_level": "L3",
+  "fact_ledger_ref": "synthetic-facts",
+  "constraint_ledger_ref": "synthetic-constraints",
+  "adversarial_review_ref": "synthetic-review",
+  "recovery_plan_ref": "synthetic-recovery",
+  "human_approval_ref": "synthetic-approval",
+  "review_mode": "independent",
+  "unknowns": [],
+  "requires_human": false,
+  "executor": {
+    "actor_id": "synthetic-executor",
+    "context_id": "synthetic-execution-context"
+  },
+  "evidence_subject": {
+    "request_id": "synthetic-evidence-request",
+    "task_id": "synthetic-evidence-task",
+    "scope": {
+      "tenant_id": "synthetic-shop",
+      "account_id": "synthetic-account",
+      "customer_ids": [
+        "synthetic-customer"
+      ],
+      "group_ids": [],
+      "product_ids": []
+    },
+    "execution_mode": "readonly",
+    "operation": "read-synthetic-summary",
+    "object_version": "synthetic-snapshot-v1",
+    "policy_version": "synthetic-policy-v1"
+  }
+}

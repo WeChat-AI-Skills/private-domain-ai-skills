@@ -12,13 +12,13 @@
 
 > 只读检查我提供的环境，列出可做任务、缺口和接管方式。
 
-| 节点 | 能力 | 当前方法覆盖 | 可复用技能 | 结果要求与缺口 |
-| --- | --- | --- | --- | --- |
-| ONB-01 | 确认账号与权限 | 已有方法/脚本 | [wechat-scrm-onboarding](../../.agents/skills/wechat-scrm-onboarding/SKILL.md) | 记录企业、工作号、权限与查询入口；客户现场能力需核对 |
-| ONB-02 | 读取业务资料 | 已有方法/脚本 | [wechat-scrm-onboarding](../../.agents/skills/wechat-scrm-onboarding/SKILL.md)、[private-domain-ops](../../.agents/skills/private-domain-ops/SKILL.md) | 来源、版本、时间和范围可追溯；资料访问与时效按客户环境核对 |
-| ONB-03 | 拆解任务与排期 | 已有方法/脚本 | [private-domain-ops](../../.agents/skills/private-domain-ops/SKILL.md) | 任务含目标、负责角色、依赖和验收条件；真实委派依赖宿主支持 |
-| ONB-04 | 异常处理与转人工 | 已有方法/脚本 | [private-domain-ops](../../.agents/skills/private-domain-ops/SKILL.md)、[task-reconcile](../../.agents/skills/task-reconcile/SKILL.md) | 保留原任务、未知结果及等待接管状态；接管渠道与回执需客户配置 |
+| 节点 | 能力 | 主责角色 | 当前方法覆盖 | 可复用技能 | 结果要求与缺口 |
+| --- | --- | --- | --- | --- | --- |
+| ONB-01 | 确认账号与权限 | 运营 Agent | 已有方法/脚本 | [wechat-scrm-onboarding](../../.agents/skills/wechat-scrm-onboarding/SKILL.md) | 记录企业、工作号、权限与查询入口；客户现场能力需核对 |
+| ONB-02 | 读取业务资料 | 超级 Agent | 已有方法/脚本 | [wechat-scrm-onboarding](../../.agents/skills/wechat-scrm-onboarding/SKILL.md)、[private-domain-ops](../../.agents/skills/private-domain-ops/SKILL.md) | 来源、版本、时间和范围可追溯；资料访问与时效按客户环境核对 |
+| ONB-03 | 拆解任务与排期 | 超级 Agent | 已有方法/脚本 | [private-domain-ops](../../.agents/skills/private-domain-ops/SKILL.md) | 任务含目标、负责角色、依赖和验收条件；真实委派依赖宿主支持 |
+| ONB-04 | 异常处理与转人工 | 超级 Agent | 已有方法/脚本 | [private-domain-ops](../../.agents/skills/private-domain-ops/SKILL.md)、[task-reconcile](../../.agents/skills/task-reconcile/SKILL.md) | 保留原任务、未知结果及等待接管状态；接管渠道与回执需客户配置 |
 
-上表的“已有方法/脚本”不等于客户现场已接入。外部工具能力按企业、工作号与动作单独验证，当前目录所有节点现场状态均为未验证。
+上表的方法覆盖状态不等于客户现场已接入。外部工具能力按企业、工作号与动作单独验证，当前目录所有节点现场状态均为未验证。
 
 [返回技能树](../skill-tree-overview.md) · [开始使用](../quickstart.md) · [能力状态](../capability-status.md)

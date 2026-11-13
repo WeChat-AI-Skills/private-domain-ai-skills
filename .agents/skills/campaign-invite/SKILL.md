@@ -8,6 +8,8 @@ license: MIT
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：身份、资格、拒联范围或原邀约结果不明时暂停受影响对象，不把未回复当同意，也不通过新任务试探原任务结果。活动拒绝与全局营销拒联分开，邀请出站不记已入群。参照[名单核对](../private-domain-ops/references/failure-cases.md#case-03)、[拒联范围](../private-domain-ops/references/failure-cases.md#case-08)。
+
 输入：活动目的、绝对时间及时区、形式与容量、已批准权益、客户池、筛选规则、目标群及负责人。
 
 1. 按[筛选与分层](references/segmentation.md)明确资格与排除规则，使用稳定客户 ID 去重。只有汇总人数或模糊交集时，给可核实的范围与缺口，不编精确名单。

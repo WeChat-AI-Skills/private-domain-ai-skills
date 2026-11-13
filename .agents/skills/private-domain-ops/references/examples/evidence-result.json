@@ -1,0 +1,38 @@
+{
+  "contract_version": "agent-result/1.2",
+  "request_id": "synthetic-evidence-request",
+  "task_id": "synthetic-evidence-task",
+  "agent_id": "customer-agent",
+  "scope": {
+    "tenant_id": "synthetic-shop",
+    "account_id": "synthetic-account",
+    "customer_ids": [
+      "synthetic-customer"
+    ],
+    "group_ids": [],
+    "product_ids": []
+  },
+  "task_state": "completed",
+  "artifacts": [
+    "synthetic-offline-summary"
+  ],
+  "evidence_refs": [
+    "synthetic-snapshot-v1"
+  ],
+  "action_refs": [],
+  "missing_items": [],
+  "dependency_requests": [],
+  "recommended_next_step": "仅用于契约演练；真实任务另行核对身份、资料及授权",
+  "requires_human": false,
+  "principles_applied": [
+    "facts",
+    "first_principles",
+    "adversarial_review"
+  ],
+  "unverified": [
+    "记录全部合成，不证明身份或真实授权"
+  ],
+  "falsifiers": [
+    "对象、范围、版本或用途变化时原记录不再匹配"
+  ]
+}

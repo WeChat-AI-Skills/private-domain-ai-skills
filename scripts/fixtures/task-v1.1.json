@@ -1,0 +1,41 @@
+{
+  "contract_version": "task-card/1.1",
+  "request_id": "synthetic-request-001",
+  "task_id": "synthetic-task-001",
+  "assigned_by": "super-agent",
+  "assigned_to": "content-agent",
+  "scope": {
+    "tenant_id": "synthetic-shop",
+    "account_id": "synthetic-account",
+    "customer_ids": [],
+    "group_ids": [],
+    "product_ids": [
+      "synthetic-product"
+    ]
+  },
+  "capability_ids": [
+    "MOM-01",
+    "MOM-02"
+  ],
+  "goal": "用合成商品资料生成一条朋友圈草稿及素材需求，不发布",
+  "execution_mode": "draft",
+  "runtime_mode": "single_agent",
+  "context_refs": [
+    "synthetic-product-v1"
+  ],
+  "acceptance": [
+    "只用已给商品事实",
+    "图片未准备时列素材需求",
+    "无实际发布动作"
+  ],
+  "principles_ref": "a-volume/1.0",
+  "risk_level": "L1",
+  "fact_ledger_ref": "synthetic-onboarding-record#facts",
+  "constraint_ledger_ref": "synthetic-onboarding-record#constraints",
+  "adversarial_review_ref": "synthetic-onboarding-record#review",
+  "review_mode": "self_review",
+  "unknowns": [
+    "图片尚未准备"
+  ],
+  "requires_human": false
+}

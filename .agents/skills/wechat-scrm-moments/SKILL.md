@@ -7,6 +7,8 @@ description: 在微信私域 SCRM 中准备、排期、原地修改或核验朋�
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：无据数字、承诺、过期价格或未知库存不得作为对外发布内容；提交前先核对事实与最终版本授权。提交后回读原配置，到期再核对实际发布；缺回执不重建任务，不把排期当发布。参照[无据比例](../private-domain-ops/references/failure-cases.md#case-01)、[过期信息](../private-domain-ops/references/failure-cases.md#case-04)、[排期与发布](../private-domain-ops/references/failure-cases.md#case-06)。
+
 执行前阅读[提交与回执](../wechat-scrm-onboarding/references/operation-receipts.md)。
 
 1. 核对最终正文、配图原件和顺序、授权工作号、绝对发布时间、业务时区及可见范围。附评论时核对评论正文和延迟。其他开关按本条要求或企业已批准的默认值。

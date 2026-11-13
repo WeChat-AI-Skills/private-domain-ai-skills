@@ -1,5 +1,5 @@
 {
-  "contract_version": "task-card/1.1",
+  "contract_version": "task-card/1.2",
   "request_id": "synthetic-request-001",
   "task_id": "synthetic-task-001",
   "assigned_by": "super-agent",

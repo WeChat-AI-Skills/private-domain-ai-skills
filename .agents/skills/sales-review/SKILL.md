@@ -8,6 +8,8 @@ license: MIT
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：逐个经营指标核对自己的分子、分母、窗口和去重口径，不能统一套用发送名单。缺数据不填零，相关不当因果；可以交付待验证的规则候选，但未经授权不得写成已生效规则。参照[无据比例](../private-domain-ops/references/failure-cases.md#case-01)、[增长归因与统计口径](../private-domain-ops/references/failure-cases.md#case-07)。
+
 输入：统计窗口与时区、任务与逐对象回执、获授权的正反案例、实际可用的订单数据、现有规则及版本。
 
 1. 先逐对象核对，再汇总成功、失败、待执行和结果待核。名单重复、统计窗口或分母不同先处理差异；缺数据保留 null 及原因。

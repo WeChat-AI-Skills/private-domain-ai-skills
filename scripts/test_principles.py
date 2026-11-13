@@ -1,6 +1,7 @@
 """Contract regressions, not a substitute for realistic Agent behavior or live review."""
 from copy import deepcopy
 import json
+from pathlib import Path
 import unittest
 import validate_architecture as architecture
 
@@ -9,9 +10,10 @@ class PrinciplesTests(unittest.TestCase):
     def setUp(self):
         self.m = architecture.runtime()
         self.data = self.m.load()
-        folder = architecture.OPS / 'references/examples'
-        self.task = json.loads((folder / 'first-task.json').read_text())
-        self.result = json.loads((folder / 'first-result.json').read_text())
+        # Freeze the released 1.1 pair; new examples must not rewrite compatibility history.
+        folder = Path(__file__).parent / 'fixtures'
+        self.task = json.loads((folder / 'task-v1.1.json').read_text())
+        self.result = json.loads((folder / 'result-v1.1.json').read_text())
 
     def check(self):
         self.m.check_result(self.result, self.task, self.data)

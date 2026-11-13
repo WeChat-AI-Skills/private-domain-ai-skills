@@ -8,6 +8,8 @@ license: MIT
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：无据比例、证言或强承诺不进入发布稿，过期价格与未知库存先核实。提交前核对终稿事实和授权；提交后及排期到期分别回读原任务，不能将排期保存称为发布。参照[无据复购率](../private-domain-ops/references/failure-cases.md#case-01)、[营销承诺](../private-domain-ops/references/failure-cases.md#case-05)、[排期与发布](../private-domain-ops/references/failure-cases.md#case-06)。
+
 输入：营销目标、客群、商品或活动资料、店铺语气、授权账号、素材和现有排期。
 
 1. 明确主题、可见范围、价格展示规则、频次与业务时区。“别刷屏”可以拟成待确认频次方案，优先沿用已有业务规则。

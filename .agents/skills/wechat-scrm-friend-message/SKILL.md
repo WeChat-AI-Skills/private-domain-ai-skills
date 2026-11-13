@@ -7,6 +7,8 @@ description: 在微信私域 SCRM 中准备、排期或核验向已确认好友�
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：对象或拒联范围不明、当前频控未核对时暂停受影响发送；只采用已批准的规则，不默认隔 24 小时可重发。提交前核对最终内容事实和授权，超时或结果未知先查原任务。参照[重复触达](../private-domain-ops/references/failure-cases.md#case-03)、[拒联范围](../private-domain-ops/references/failure-cases.md#case-08)。
+
 执行前阅读[提交与回执](../wechat-scrm-onboarding/references/operation-receipts.md)。核对原工作号、当前好友关系、拒联、已有触达、待发任务及人工接手状态。
 
 1. 从「微信管理 → 群发配置 → 好友消息」进入「通讯录」。单人任务回读选中数为 1。名单或标签任务核对实际列表、勾选数和去重数，处理差异后推进。

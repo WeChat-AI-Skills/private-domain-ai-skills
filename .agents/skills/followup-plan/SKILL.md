@@ -8,6 +8,8 @@ license: MIT
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：被拒绝范围的营销立即停；身份、跨账号触达历史或当前频控不明时暂停受影响触达。不能把 24 小时或任何示例间隔当作默认重发许可；提交结果未知先查原任务。参照[重复触达](../private-domain-ops/references/failure-cases.md#case-03)、[拒联与必要售后](../private-domain-ops/references/failure-cases.md#case-08)。
+
 输入：获授权的客户档案、对话与待办、业务目标、当前有效商品或活动信息、触达规则。
 
 1. 先看客户是否拒联、已被人工接管、投诉未解决、已有待发任务或刚收到其他账号触达。身份不清和历史缺失单列。

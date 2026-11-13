@@ -7,6 +7,8 @@ description: 通过有赞客户列表、客户分群或有赞云只读数据，�
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：统计窗口、稳定身份或人数核对有冲突时，不导出声称已核验的名单；真实数据导出必须有对应范围授权。核验出未购名单不授予联系权限，名单与原始数据留在客户受控环境。参照[名单重复与未知](../private-domain-ops/references/failure-cases.md#case-03)、[客户资料范围](../private-domain-ops/references/failure-cases.md#case-09)。
+
 把“加购人群”和“同期已购人群”当作两份独立事实表，先核验窗口与导出条件，再在本机私域内精确匹配。不要把商品维度 `add_cart_uv` 求和当成店铺去重加购人数。
 
 ## 先读

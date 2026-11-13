@@ -7,6 +7,8 @@ description: 在微信私域 SCRM 中核实好友关系、准备待审清理名�
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：沉默、营销拒联、普通失败或超时不证明应删好友；对象、关系证据或删除范围不明时停在待审名单。删除前按 L3 核对独立审查、有效人工签核与[恢复或补救方案](../private-domain-ops/references/recovery-and-review.md)，已发生的删除记录不得清空。参照[拒联与删友](../private-domain-ops/references/failure-cases.md#case-08)、[历史动作留证](../private-domain-ops/references/failure-cases.md#case-10)。
+
 执行前阅读[提交与回执](../wechat-scrm-onboarding/references/operation-receipts.md)。
 
 1. 用原工作号加稳定好友标识核对当前关系。「开启了朋友验证」「不是你的好友」是删友线索，「对方拒收」是拉黑线索。历史标签、沉默、普通失败及超时留待核查。新旧证据冲突或后来又有正常往来时列待核。排除我方已删以及已有待执行或执行中任务的对象。

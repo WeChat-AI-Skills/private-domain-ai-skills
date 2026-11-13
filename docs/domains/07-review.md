@@ -12,13 +12,13 @@
 
 > 核对任务结果，未知保留未知，再提出有证据的改进候选。
 
-| 节点 | 能力 | 当前方法覆盖 | 可复用技能 | 结果要求与缺口 |
-| --- | --- | --- | --- | --- |
-| REV-01 | 核对任务结果 | 已有方法/脚本 | [task-reconcile](../../.agents/skills/task-reconcile/SKILL.md) | 逐对象状态之和等于原名单数量，缺失为未知；脚本只核验结构，原系统证据仍需查询 |
-| REV-02 | 分析客户反馈 | 部分覆盖 | [sales-review](../../.agents/skills/sales-review/SKILL.md) | 事实、原因假设和证据缺口分开；反馈归类案例待扩展 |
-| REV-03 | 复盘成交与流失 | 部分覆盖 | [sales-review](../../.agents/skills/sales-review/SKILL.md) | 缺成交数据不填零，不把沉默当流失；真实订单与关联链路按环境接入 |
-| REV-04 | 更新话术与策略 | 已有方法/脚本 | [sales-review](../../.agents/skills/sales-review/SKILL.md) | 候选、验证、生效范围、负责人和回退分别记录；自动生效与持续调度未交付 |
+| 节点 | 能力 | 主责角色 | 当前方法覆盖 | 可复用技能 | 结果要求与缺口 |
+| --- | --- | --- | --- | --- | --- |
+| REV-01 | 核对任务结果 | 复盘 Agent | 已有方法/脚本 | [task-reconcile](../../.agents/skills/task-reconcile/SKILL.md) | 逐对象状态之和等于原名单数量，缺失为未知；脚本只核验结构，原系统证据仍需查询 |
+| REV-02 | 分析客户反馈 | 复盘 Agent | 部分覆盖 | [sales-review](../../.agents/skills/sales-review/SKILL.md) | 事实、原因假设和证据缺口分开；反馈归类案例待扩展 |
+| REV-03 | 复盘成交与流失 | 复盘 Agent | 部分覆盖 | [sales-review](../../.agents/skills/sales-review/SKILL.md) | 缺成交数据不填零，不把沉默当流失；真实订单与关联链路按环境接入 |
+| REV-04 | 更新话术与策略 | 复盘 Agent | 已有方法/脚本 | [sales-review](../../.agents/skills/sales-review/SKILL.md) | 候选、验证、生效范围、负责人和回退分别记录；自动生效与持续调度未交付 |
 
-上表的“已有方法/脚本”不等于客户现场已接入。外部工具能力按企业、工作号与动作单独验证，当前目录所有节点现场状态均为未验证。
+上表的方法覆盖状态不等于客户现场已接入。外部工具能力按企业、工作号与动作单独验证，当前目录所有节点现场状态均为未验证。
 
 [返回技能树](../skill-tree-overview.md) · [开始使用](../quickstart.md) · [能力状态](../capability-status.md)

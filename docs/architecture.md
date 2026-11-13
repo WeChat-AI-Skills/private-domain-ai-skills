@@ -50,7 +50,7 @@ delegated：宿主确有委派、上下文隔离和结果回传能力，且任�
 
 ## 数据、执行与结果
 
-v1.2.1 将[A卷三关](../.agents/skills/private-domain-ops/references/a-volume-onboarding.md)接到全部技能入口和六个角色。新任务/结果卡采用 1.1，带风险、三关记录与未核实项；1.0 卡片仍可读取，不能据此推断已补做上岗判断。高敏只读也可能为 L3，完成校验不只看是否声明写动作。
+v1.2.2 延续[A卷三关](../.agents/skills/private-domain-ops/references/a-volume-onboarding.md)接到全部技能入口和六个角色。新任务/结果卡采用 1.2，带风险、三关记录与未核实项，按需绑定独立审查、恢复计划与签核记录；1.0/1.1 卡片仍按原规则读取，不能据此推断已补做新版判断。高敏只读也可能为 L3，完成校验不只看是否声明写动作。
 
 使用[任务与结果约定](../.agents/skills/private-domain-ops/references/contracts/task-and-result.md)和[业务对象与上下文规则](../.agents/skills/private-domain-ops/references/brain/data-and-context.md)。工具能力名是抽象需求，必须映射到客户实际接口或页面。
 

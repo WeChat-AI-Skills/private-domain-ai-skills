@@ -1,0 +1,95 @@
+{
+  "schema_version": "evidence-bundle/1.0",
+  "records": [
+    {
+      "id": "synthetic-review",
+      "kind": "review",
+      "subject": {
+        "request_id": "synthetic-evidence-request",
+        "task_id": "synthetic-evidence-task",
+        "scope": {
+          "tenant_id": "synthetic-shop",
+          "account_id": "synthetic-account",
+          "customer_ids": [
+            "synthetic-customer"
+          ],
+          "group_ids": [],
+          "product_ids": []
+        },
+        "execution_mode": "readonly",
+        "operation": "read-synthetic-summary",
+        "object_version": "synthetic-snapshot-v1",
+        "policy_version": "synthetic-policy-v1"
+      },
+      "reviewer": {
+        "actor_id": "synthetic-reviewer",
+        "context_id": "synthetic-review-context"
+      },
+      "artifact_ref": "synthetic-review-artifact",
+      "independence_basis": "合成身份与上下文分离，用于校验；并未发生真实独立审查",
+      "verdict": "approved",
+      "unresolved_blockers": [],
+      "reviewed_at": "2026-11-13T08:00:00Z",
+      "valid_until": "2026-11-14T08:00:00Z"
+    },
+    {
+      "id": "synthetic-recovery",
+      "kind": "recovery",
+      "subject": {
+        "request_id": "synthetic-evidence-request",
+        "task_id": "synthetic-evidence-task",
+        "scope": {
+          "tenant_id": "synthetic-shop",
+          "account_id": "synthetic-account",
+          "customer_ids": [
+            "synthetic-customer"
+          ],
+          "group_ids": [],
+          "product_ids": []
+        },
+        "execution_mode": "readonly",
+        "operation": "read-synthetic-summary",
+        "object_version": "synthetic-snapshot-v1",
+        "policy_version": "synthetic-policy-v1"
+      },
+      "reversibility": "not_applicable",
+      "rationale": "离线合成演练无实际读取与导出；真实敏感读取不可收回已获知内容",
+      "owner": "synthetic-executor",
+      "authority_boundary": "仅可停止本次演练；外部业务无授权",
+      "verification": "核对本次没有网络调用、客户数据和外部写入",
+      "stop_steps": [
+        "停止后续处理并标明缺失证据"
+      ],
+      "remediation_steps": [
+        "保留原任务和失败记录，交总控核对"
+      ]
+    },
+    {
+      "id": "synthetic-approval",
+      "kind": "approval",
+      "subject": {
+        "request_id": "synthetic-evidence-request",
+        "task_id": "synthetic-evidence-task",
+        "scope": {
+          "tenant_id": "synthetic-shop",
+          "account_id": "synthetic-account",
+          "customer_ids": [
+            "synthetic-customer"
+          ],
+          "group_ids": [],
+          "product_ids": []
+        },
+        "execution_mode": "readonly",
+        "operation": "read-synthetic-summary",
+        "object_version": "synthetic-snapshot-v1",
+        "policy_version": "synthetic-policy-v1"
+      },
+      "approved_by": "synthetic-owner",
+      "status": "approved",
+      "grant_type": "ongoing",
+      "artifact_ref": "synthetic-approval-artifact",
+      "approved_at": "2026-11-13T08:00:00Z",
+      "valid_until": "2026-11-14T08:00:00Z"
+    }
+  ]
+}

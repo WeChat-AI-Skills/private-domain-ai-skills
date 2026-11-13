@@ -8,6 +8,8 @@ license: MIT
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：客户陈述只按陈述记录；不因嫌贵自动降价，不以旧价格、未知库存或虚构权益作答。停止无据承诺，可继续交付有据答复、必要追问或转人工。参照[嫌贵与降价](../private-domain-ops/references/failure-cases.md#case-02)、[过期商品与活动信息](../private-domain-ops/references/failure-cases.md#case-04)。
+
 输入：获授权的客户原话、稳定客户引用、可用的商品与服务规则、相关历史记录。缺库存、价格或物流资料时列出待核项。
 
 1. 识别场合、预算、偏好、品类，保留限定词。“500 左右”按近似预算记录，不改成“500 以内”；提问顺序不能证明客户是否价格敏感。

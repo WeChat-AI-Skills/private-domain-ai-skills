@@ -1,6 +1,6 @@
 {
   "schema_version": "skill-tree/1.0",
-  "package_version": "1.2.1",
+  "package_version": "1.2.2",
   "classification_note": "产品七域为本文件的 domain_id；manifest.json registry 1.0 的 domain 为旧登记分类，仅用于兼容。",
   "domains": [
     {
@@ -55,7 +55,7 @@
       "owner_agent": "product-agent",
       "purpose": "规划商品资料、价格库存、图文及上架核验。",
       "inputs": "商品主数据、渠道、价格库存来源与更新时间",
-      "example_prompt": "整理商品资料缺口和上架草稿；没有发布工具时说明缺口。"
+      "example_prompt": "整理已有商品事实、资料缺口和上架前草稿建议；真实上架能力未接入。"
     },
     {
       "id": "review",

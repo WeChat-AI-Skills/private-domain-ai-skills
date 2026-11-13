@@ -8,6 +8,8 @@ license: MIT
 
 接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
 
+本场景停止条件：身份冲突不合并正式档案，未知不写成事实或同意。只拒绝某活动不扩大成全局拒联，营销拒联不取消客户主动请求且已获授权的必要售后；跨角色只传任务所需字段。参照[拒联范围](../private-domain-ops/references/failure-cases.md#case-08)、[客户资料范围](../private-domain-ops/references/failure-cases.md#case-09)。
+
 输入：企业与账号范围、稳定客户 ID 或待匹配引用、获授权的记录、已有档案与标签规则。
 
 1. 先核实身份。只有昵称时可以建立待匹配草稿，不合并、不写入正式客户记录。跨渠道合并需可信的身份对应证据。

@@ -26,13 +26,13 @@ def outputs(root=ROOT):
         rows = [header + f"# {domain['order']:02} {domain['label']}", "", domain["purpose"], "",
                 f"主责角色：[{role_labels[domain['owner_agent']]}](../../.agents/skills/private-domain-ops/references/agents/{domain['owner_agent']}.md)。", "",
                 f"需要资料：{domain['inputs']}。", "", "可以对自己的 Agent 说：", "", "> " + domain["example_prompt"], "",
-                "| 节点 | 能力 | 当前方法覆盖 | 可复用技能 | 结果要求与缺口 |", "| --- | --- | --- | --- | --- |"]
+                "| 节点 | 能力 | 主责角色 | 当前方法覆盖 | 可复用技能 | 结果要求与缺口 |", "| --- | --- | --- | --- | --- | --- |"]
         for node in catalog["nodes"]:
             if node["domain_id"] != domain["id"]:
                 continue
             links = "、".join(f"[{s}](../../.agents/skills/{s}/SKILL.md)" for s in node["skill_refs"]) or "尚无对应技能包"
-            rows.append(f"| {node['id']} | {node['label']} | {COVERAGE[node['method_coverage']]} | {links} | {node['acceptance']}；{node['gap']} |")
-        rows += ["", "上表的“已有方法/脚本”不等于客户现场已接入。外部工具能力按企业、工作号与动作单独验证，当前目录所有节点现场状态均为未验证。", "",
+            rows.append(f"| {node['id']} | {node['label']} | {role_labels[node['owner_agent']]} | {COVERAGE[node['method_coverage']]} | {links} | {node['acceptance']}；{node['gap']} |")
+        rows += ["", "上表的方法覆盖状态不等于客户现场已接入。外部工具能力按企业、工作号与动作单独验证，当前目录所有节点现场状态均为未验证。", "",
                  "[返回技能树](../skill-tree-overview.md) · [开始使用](../quickstart.md) · [能力状态](../capability-status.md)"]
         result[f"docs/domains/{filename}"] = "\n".join(rows) + "\n"
     overview += ["", "## 安装包映射", "", "每项技能保留原名称与平铺安装路径。公共技能可以跨域复用；主责角色不限制其他角色按任务使用。", "",

@@ -1,6 +1,6 @@
 {
   "name": "wechat-ai-skills",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "registry_version": "1.0",
   "receipt_contract_version": "1.0",
   "skills": [
@@ -24,7 +24,8 @@
         "scripts/audit_youzan_cart_nonbuyers.py"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -50,7 +51,8 @@
         "references/segmentation.md"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -76,7 +78,8 @@
         "references/reply-patterns.md"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -100,7 +103,8 @@
         "references/tag-system.md"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -125,7 +129,8 @@
         "references/stage-playbook.md"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -150,7 +155,8 @@
         "references/publish-checklist.md"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -196,11 +202,16 @@
         "references/catalog/skill-tree.json",
         "references/catalog/workflow-registry.json",
         "references/contracts/task-and-result.md",
+        "references/examples/evidence-bundle.json",
+        "references/examples/evidence-result.json",
+        "references/examples/evidence-task.json",
         "references/examples/first-result.json",
         "references/examples/first-task.json",
         "references/examples/first-task.md",
+        "references/failure-cases.md",
         "references/handoff.md",
         "references/principles-sources.txt",
+        "references/recovery-and-review.md",
         "references/routing.md",
         "scripts/catalog.py"
       ],
@@ -209,7 +220,8 @@
         "docs/verification-v1.2.0.md",
         "examples/a-volume-facts/expected.md",
         "examples/a-volume-problem/expected.md",
-        "examples/a-volume-adversarial/expected.md"
+        "examples/a-volume-adversarial/expected.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -233,7 +245,8 @@
         "references/rule-card.md"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -258,7 +271,8 @@
         "scripts/reconcile.py"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -281,7 +295,8 @@
         "references/work-card.md"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -302,7 +317,8 @@
       ],
       "resources": [],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -323,7 +339,8 @@
       ],
       "resources": [],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -344,7 +361,8 @@
       ],
       "resources": [],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -365,7 +383,8 @@
       ],
       "resources": [],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     },
@@ -388,7 +407,8 @@
         "references/operation-receipts.md"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.2.md"
       ],
       "live_status": "not_verified"
     }
