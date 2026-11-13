@@ -1,0 +1,603 @@
+{
+  "schema_version": "skill-tree/1.0",
+  "package_version": "1.2.0",
+  "classification_note": "产品七域为本文件的 domain_id；manifest.json registry 1.0 的 domain 为旧登记分类，仅用于兼容。",
+  "domains": [
+    {
+      "id": "onboarding",
+      "label": "上岗与编排",
+      "order": 1,
+      "owner_agent": "operations-agent",
+      "purpose": "确认环境与授权，把目标变成可核对的任务。",
+      "inputs": "企业入口、账号、业务资料、任务目标",
+      "example_prompt": "只读检查我提供的环境，列出可做任务、缺口和接管方式。"
+    },
+    {
+      "id": "intent",
+      "label": "客户意图判断",
+      "order": 2,
+      "owner_agent": "customer-agent",
+      "purpose": "依据客户证据判断需求、意愿和下一步。",
+      "inputs": "获授权的客户原话、稳定身份、相关历史",
+      "example_prompt": "判断这位客户的需求与顾虑，区分事实、推断和待确认项。"
+    },
+    {
+      "id": "moments",
+      "label": "发朋友圈",
+      "order": 3,
+      "owner_agent": "content-agent",
+      "purpose": "准备图文与排期，并核对实际发布结果。",
+      "inputs": "商品事实、素材、账号、时间与规则",
+      "example_prompt": "依据已核对资料准备一条朋友圈草稿，先不发布。"
+    },
+    {
+      "id": "chat",
+      "label": "一对一聊天",
+      "order": 4,
+      "owner_agent": "customer-agent",
+      "purpose": "接待、追问、推荐、跟进与售后交接。",
+      "inputs": "客户问题、商品与服务规则、联系范围",
+      "example_prompt": "拟一条回复，保留客户预算原意，缺少商品资料时列出待核项。"
+    },
+    {
+      "id": "groups",
+      "label": "拉群",
+      "order": 5,
+      "owner_agent": "operations-agent",
+      "purpose": "筛选名单、邀请现有群并分别核对邀请与入群。",
+      "inputs": "活动规则、名单、目标群、工作号和授权",
+      "example_prompt": "为已有群准备邀请名单与理由，分别列已在群、可邀请和待核对象。"
+    },
+    {
+      "id": "listing",
+      "label": "上架",
+      "order": 6,
+      "owner_agent": "product-agent",
+      "purpose": "规划商品资料、价格库存、图文及上架核验。",
+      "inputs": "商品主数据、渠道、价格库存来源与更新时间",
+      "example_prompt": "整理商品资料缺口和上架草稿；没有发布工具时说明缺口。"
+    },
+    {
+      "id": "review",
+      "label": "复盘",
+      "order": 7,
+      "owner_agent": "review-agent",
+      "purpose": "从任务与客户反馈形成可验证的改进候选。",
+      "inputs": "原任务、原名单、回执、统计窗口与规则",
+      "example_prompt": "核对任务结果，未知保留未知，再提出有证据的改进候选。"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "ONB-01",
+      "domain_id": "onboarding",
+      "label": "确认账号与权限",
+      "owner_agent": "operations-agent",
+      "skill_refs": [
+        "wechat-scrm-onboarding"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [
+        "environment.inspect"
+      ],
+      "live_status": "not_verified",
+      "gap": "客户现场能力需核对",
+      "acceptance": "记录企业、工作号、权限与查询入口"
+    },
+    {
+      "id": "ONB-02",
+      "domain_id": "onboarding",
+      "label": "读取业务资料",
+      "owner_agent": "super-agent",
+      "skill_refs": [
+        "wechat-scrm-onboarding",
+        "private-domain-ops"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [
+        "context.read"
+      ],
+      "live_status": "not_verified",
+      "gap": "资料访问与时效按客户环境核对",
+      "acceptance": "来源、版本、时间和范围可追溯"
+    },
+    {
+      "id": "ONB-03",
+      "domain_id": "onboarding",
+      "label": "拆解任务与排期",
+      "owner_agent": "super-agent",
+      "skill_refs": [
+        "private-domain-ops"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "真实委派依赖宿主支持",
+      "acceptance": "任务含目标、负责角色、依赖和验收条件"
+    },
+    {
+      "id": "ONB-04",
+      "domain_id": "onboarding",
+      "label": "异常处理与转人工",
+      "owner_agent": "super-agent",
+      "skill_refs": [
+        "private-domain-ops",
+        "task-reconcile"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [
+        "task.query"
+      ],
+      "live_status": "not_verified",
+      "gap": "接管渠道与回执需客户配置",
+      "acceptance": "保留原任务、未知结果及等待接管状态"
+    },
+    {
+      "id": "INT-01",
+      "domain_id": "intent",
+      "label": "判断客户需求",
+      "owner_agent": "customer-agent",
+      "skill_refs": [
+        "customer-intake",
+        "customer-profile"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "统一独立意图产物尚未实现",
+      "acceptance": "区分原话、事实、推断、未知"
+    },
+    {
+      "id": "INT-02",
+      "domain_id": "intent",
+      "label": "判断购买意愿",
+      "owner_agent": "customer-agent",
+      "skill_refs": [
+        "customer-intake",
+        "customer-profile"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "判断有效期与跨入口一致性需继续验证",
+      "acceptance": "询价不直接等于高意向或营销许可"
+    },
+    {
+      "id": "INT-03",
+      "domain_id": "intent",
+      "label": "判断顾虑与阻力",
+      "owner_agent": "customer-agent",
+      "skill_refs": [
+        "customer-intake"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "顾虑分类与覆盖案例待扩展",
+      "acceptance": "给出依据和待核信息，不编造顾虑"
+    },
+    {
+      "id": "INT-04",
+      "domain_id": "intent",
+      "label": "确定下一步动作",
+      "owner_agent": "customer-agent",
+      "skill_refs": [
+        "followup-plan",
+        "private-domain-ops"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "实际动作依工具与授权决定",
+      "acceptance": "提供服务动作、停止条件和接管理由"
+    },
+    {
+      "id": "MOM-01",
+      "domain_id": "moments",
+      "label": "选题与排期",
+      "owner_agent": "content-agent",
+      "skill_refs": [
+        "moments-calendar"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "使用客户事实与业务时区",
+      "acceptance": "主题、账号、时间、正文及素材版本明确"
+    },
+    {
+      "id": "MOM-02",
+      "domain_id": "moments",
+      "label": "生成图文素材",
+      "owner_agent": "content-agent",
+      "skill_refs": [
+        "moments-calendar"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [
+        "media.generate"
+      ],
+      "live_status": "not_verified",
+      "gap": "图片生成与素材获取按环境接入",
+      "acceptance": "成品、素材需求和占位内容分别标明"
+    },
+    {
+      "id": "MOM-03",
+      "domain_id": "moments",
+      "label": "发布朋友圈",
+      "owner_agent": "content-agent",
+      "skill_refs": [
+        "wechat-scrm-moments"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [
+        "moments.submit",
+        "moments.query"
+      ],
+      "live_status": "not_verified",
+      "gap": "客户现场提交与发布尚未验收",
+      "acceptance": "逐账号查实际发布，排期不计发布成功"
+    },
+    {
+      "id": "MOM-04",
+      "domain_id": "moments",
+      "label": "跟进评论与私信",
+      "owner_agent": "content-agent",
+      "skill_refs": [
+        "wechat-scrm-friend-message",
+        "customer-intake"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [
+        "moments.interactions",
+        "messages.send",
+        "messages.query"
+      ],
+      "live_status": "not_verified",
+      "gap": "评论读取与身份衔接待适配",
+      "acceptance": "核对对象、授权与回复结果"
+    },
+    {
+      "id": "CHAT-01",
+      "domain_id": "chat",
+      "label": "接待与追问",
+      "owner_agent": "customer-agent",
+      "skill_refs": [
+        "customer-intake"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "真实对话入口按客户环境接入",
+      "acceptance": "先答已有信息，仅追问影响服务的缺口"
+    },
+    {
+      "id": "CHAT-02",
+      "domain_id": "chat",
+      "label": "推荐合适商品",
+      "owner_agent": "customer-agent",
+      "skill_refs": [
+        "customer-intake"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [
+        "catalog.read"
+      ],
+      "live_status": "not_verified",
+      "gap": "真实商品查询与匹配需适配",
+      "acceptance": "仅推荐有当前事实依据的商品"
+    },
+    {
+      "id": "CHAT-03",
+      "domain_id": "chat",
+      "label": "解答疑问与顾虑",
+      "owner_agent": "customer-agent",
+      "skill_refs": [
+        "customer-intake",
+        "wechat-activity-customer-handoff"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "更多行业与服务规则案例待补",
+      "acceptance": "不编造政策或承诺，超范围转人工"
+    },
+    {
+      "id": "CHAT-04",
+      "domain_id": "chat",
+      "label": "跟进购买与售后",
+      "owner_agent": "customer-agent",
+      "skill_refs": [
+        "followup-plan",
+        "wechat-scrm-friend-message",
+        "wechat-activity-customer-handoff"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [
+        "messages.send",
+        "messages.query",
+        "orders.read"
+      ],
+      "live_status": "not_verified",
+      "gap": "订单和售后工单连接待适配",
+      "acceptance": "营销拒绝与必要售后服务分别处理"
+    },
+    {
+      "id": "GRP-01",
+      "domain_id": "groups",
+      "label": "筛选合适客户",
+      "owner_agent": "operations-agent",
+      "skill_refs": [
+        "campaign-invite",
+        "audit-youzan-cart-nonbuyers"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [
+        "customers.read"
+      ],
+      "live_status": "not_verified",
+      "gap": "有赞核验仅为可选名单来源",
+      "acceptance": "名单去重，保留资格与排除依据"
+    },
+    {
+      "id": "GRP-02",
+      "domain_id": "groups",
+      "label": "发出入群邀请",
+      "owner_agent": "operations-agent",
+      "skill_refs": [
+        "wechat-scrm-group-invite"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [
+        "groups.invite",
+        "messages.query"
+      ],
+      "live_status": "not_verified",
+      "gap": "仅现有客户群邀请，现场待验收",
+      "acceptance": "正确工作号、客户与群卡片有出站证据"
+    },
+    {
+      "id": "GRP-03",
+      "domain_id": "groups",
+      "label": "确认入群结果",
+      "owner_agent": "operations-agent",
+      "skill_refs": [
+        "wechat-scrm-group-invite",
+        "task-reconcile"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [
+        "groups.members"
+      ],
+      "live_status": "not_verified",
+      "gap": "成员查询能力需客户环境验证",
+      "acceptance": "邀请发送与实际入群分开计数"
+    },
+    {
+      "id": "GRP-04",
+      "domain_id": "groups",
+      "label": "群内欢迎与答疑",
+      "owner_agent": "operations-agent",
+      "skill_refs": [
+        "campaign-invite",
+        "wechat-activity-customer-handoff"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [
+        "groups.message",
+        "groups.message_query"
+      ],
+      "live_status": "not_verified",
+      "gap": "群内发送及回读尚未形成已验收链路",
+      "acceptance": "缺工具时交付方案与交接，不报已发送"
+    },
+    {
+      "id": "SKU-01",
+      "domain_id": "listing",
+      "label": "整理商品资料",
+      "owner_agent": "product-agent",
+      "skill_refs": [],
+      "method_coverage": "planned",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "product-listing 是后续候选，未安装",
+      "acceptance": "列出商品字段和缺口"
+    },
+    {
+      "id": "SKU-02",
+      "domain_id": "listing",
+      "label": "核对价格与库存",
+      "owner_agent": "product-agent",
+      "skill_refs": [],
+      "method_coverage": "planned",
+      "required_capabilities": [
+        "catalog.read"
+      ],
+      "live_status": "not_verified",
+      "gap": "商品系统适配未交付",
+      "acceptance": "价格库存标来源、时间、规格和渠道"
+    },
+    {
+      "id": "SKU-03",
+      "domain_id": "listing",
+      "label": "完善商品图文",
+      "owner_agent": "product-agent",
+      "skill_refs": [],
+      "method_coverage": "planned",
+      "required_capabilities": [
+        "media.generate"
+      ],
+      "live_status": "not_verified",
+      "gap": "商品专用图文流程未交付",
+      "acceptance": "形成可审阅标题、详情、图片及版本"
+    },
+    {
+      "id": "SKU-04",
+      "domain_id": "listing",
+      "label": "上架并检查页面",
+      "owner_agent": "product-agent",
+      "skill_refs": [],
+      "method_coverage": "planned",
+      "required_capabilities": [
+        "products.publish",
+        "products.query",
+        "products.page"
+      ],
+      "live_status": "not_verified",
+      "gap": "真实上架适配及结果契约未交付",
+      "acceptance": "后台保存、渠道上架、前台可见分别核验"
+    },
+    {
+      "id": "REV-01",
+      "domain_id": "review",
+      "label": "核对任务结果",
+      "owner_agent": "review-agent",
+      "skill_refs": [
+        "task-reconcile"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [
+        "task.query"
+      ],
+      "live_status": "not_verified",
+      "gap": "脚本只核验结构，原系统证据仍需查询",
+      "acceptance": "逐对象状态之和等于原名单数量，缺失为未知"
+    },
+    {
+      "id": "REV-02",
+      "domain_id": "review",
+      "label": "分析客户反馈",
+      "owner_agent": "review-agent",
+      "skill_refs": [
+        "sales-review"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "反馈归类案例待扩展",
+      "acceptance": "事实、原因假设和证据缺口分开"
+    },
+    {
+      "id": "REV-03",
+      "domain_id": "review",
+      "label": "复盘成交与流失",
+      "owner_agent": "review-agent",
+      "skill_refs": [
+        "sales-review"
+      ],
+      "method_coverage": "partial",
+      "required_capabilities": [
+        "orders.read"
+      ],
+      "live_status": "not_verified",
+      "gap": "真实订单与关联链路按环境接入",
+      "acceptance": "缺成交数据不填零，不把沉默当流失"
+    },
+    {
+      "id": "REV-04",
+      "domain_id": "review",
+      "label": "更新话术与策略",
+      "owner_agent": "review-agent",
+      "skill_refs": [
+        "sales-review"
+      ],
+      "method_coverage": "covered",
+      "required_capabilities": [],
+      "live_status": "not_verified",
+      "gap": "自动生效与持续调度未交付",
+      "acceptance": "候选、验证、生效范围、负责人和回退分别记录"
+    }
+  ],
+  "skills": [
+    {
+      "id": "private-domain-ops",
+      "primary_domain": "onboarding",
+      "owner_agent": "super-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "wechat-scrm-onboarding",
+      "primary_domain": "onboarding",
+      "owner_agent": "operations-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "campaign-invite",
+      "primary_domain": "groups",
+      "owner_agent": "operations-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "wechat-scrm-group-invite",
+      "primary_domain": "groups",
+      "owner_agent": "operations-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "audit-youzan-cart-nonbuyers",
+      "primary_domain": "groups",
+      "owner_agent": "operations-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "wechat-scrm-friend-cleanup",
+      "primary_domain": "onboarding",
+      "owner_agent": "operations-agent",
+      "visibility": "extension"
+    },
+    {
+      "id": "moments-calendar",
+      "primary_domain": "moments",
+      "owner_agent": "content-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "wechat-scrm-moments",
+      "primary_domain": "moments",
+      "owner_agent": "content-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "customer-intake",
+      "primary_domain": "chat",
+      "owner_agent": "customer-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "customer-profile",
+      "primary_domain": "intent",
+      "owner_agent": "customer-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "followup-plan",
+      "primary_domain": "chat",
+      "owner_agent": "customer-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "wechat-scrm-friend-message",
+      "primary_domain": "chat",
+      "owner_agent": "customer-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "wechat-activity-customer-handoff",
+      "primary_domain": "groups",
+      "owner_agent": "customer-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "task-reconcile",
+      "primary_domain": "review",
+      "owner_agent": "review-agent",
+      "visibility": "core"
+    },
+    {
+      "id": "sales-review",
+      "primary_domain": "review",
+      "owner_agent": "review-agent",
+      "visibility": "core"
+    }
+  ]
+}

@@ -28,3 +28,9 @@
 ## 说明
 
 所有姓名、对话、订单、价格、活动均为虚构，不对应任何真实客户。
+
+## v1.2 角色与目录案例
+
+- [单会话朋友圈草稿](super-agent-dispatch/input.md)：核对 [输出边界](super-agent-dispatch/expected.md)。
+- [商品依赖交接](role-dependency/input.md)：核对 [输出边界](role-dependency/expected.md)。
+- 安装后的首次使用直接读 [随包演练](../.agents/skills/private-domain-ops/references/examples/first-task.md)，无需克隆示例目录。

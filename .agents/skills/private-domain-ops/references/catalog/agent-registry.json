@@ -1,0 +1,69 @@
+{
+  "schema_version": "agent-registry/1.0",
+  "root_agent": "super-agent",
+  "runtime_status": "role_contract_only",
+  "agents": [
+    {
+      "id": "super-agent",
+      "label": "超级 Agent",
+      "reports_to": null,
+      "profile": "../agents/super-agent.md",
+      "skill_refs": [
+        "private-domain-ops"
+      ]
+    },
+    {
+      "id": "operations-agent",
+      "label": "运营 Agent",
+      "reports_to": "super-agent",
+      "profile": "../agents/operations-agent.md",
+      "skill_refs": [
+        "wechat-scrm-onboarding",
+        "campaign-invite",
+        "wechat-scrm-group-invite",
+        "audit-youzan-cart-nonbuyers",
+        "wechat-scrm-friend-cleanup"
+      ]
+    },
+    {
+      "id": "content-agent",
+      "label": "内容 Agent",
+      "reports_to": "super-agent",
+      "profile": "../agents/content-agent.md",
+      "skill_refs": [
+        "moments-calendar",
+        "wechat-scrm-moments"
+      ]
+    },
+    {
+      "id": "customer-agent",
+      "label": "客户 Agent",
+      "reports_to": "super-agent",
+      "profile": "../agents/customer-agent.md",
+      "skill_refs": [
+        "customer-intake",
+        "customer-profile",
+        "followup-plan",
+        "wechat-scrm-friend-message",
+        "wechat-activity-customer-handoff"
+      ]
+    },
+    {
+      "id": "product-agent",
+      "label": "商品 Agent",
+      "reports_to": "super-agent",
+      "profile": "../agents/product-agent.md",
+      "skill_refs": []
+    },
+    {
+      "id": "review-agent",
+      "label": "复盘 Agent",
+      "reports_to": "super-agent",
+      "profile": "../agents/review-agent.md",
+      "skill_refs": [
+        "task-reconcile",
+        "sales-review"
+      ]
+    }
+  ]
+}

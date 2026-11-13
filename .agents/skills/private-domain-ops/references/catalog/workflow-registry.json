@@ -1,0 +1,251 @@
+{
+  "schema_version": "workflow-registry/1.0",
+  "note": "可裁剪的工作流模板，不是自动执行引擎。已有环境事实可复用；只要草稿时到 draft_stop_after 即停止。external 步骤逐项核对实际工具、范围和已有授权。",
+  "workflows": [
+    {
+      "id": "moments-delivery",
+      "label": "朋友圈准备、发布与核对",
+      "draft_stop_after": "prepare",
+      "steps": [
+        {
+          "id": "environment",
+          "assigned_to": "operations-agent",
+          "capability_ids": [
+            "ONB-01"
+          ],
+          "skill_refs": [
+            "wechat-scrm-onboarding"
+          ],
+          "depends_on": [],
+          "kind": "readonly",
+          "deliverable": "环境能力与缺口"
+        },
+        {
+          "id": "prepare",
+          "assigned_to": "content-agent",
+          "capability_ids": [
+            "MOM-01",
+            "MOM-02"
+          ],
+          "skill_refs": [
+            "moments-calendar"
+          ],
+          "depends_on": [
+            "environment"
+          ],
+          "kind": "draft",
+          "deliverable": "图文版本、素材状态与排期草稿"
+        },
+        {
+          "id": "submit",
+          "assigned_to": "content-agent",
+          "capability_ids": [
+            "MOM-03"
+          ],
+          "skill_refs": [
+            "wechat-scrm-moments"
+          ],
+          "depends_on": [
+            "prepare"
+          ],
+          "kind": "external",
+          "deliverable": "经授权提交后的原任务标识"
+        },
+        {
+          "id": "reconcile",
+          "assigned_to": "review-agent",
+          "capability_ids": [
+            "REV-01"
+          ],
+          "skill_refs": [
+            "task-reconcile"
+          ],
+          "depends_on": [
+            "submit"
+          ],
+          "kind": "readonly",
+          "deliverable": "区分已排期、已发布、失败与未知"
+        },
+        {
+          "id": "review",
+          "assigned_to": "review-agent",
+          "capability_ids": [
+            "REV-02",
+            "REV-04"
+          ],
+          "skill_refs": [
+            "sales-review"
+          ],
+          "depends_on": [
+            "reconcile"
+          ],
+          "kind": "draft",
+          "deliverable": "有证据的改进候选"
+        }
+      ]
+    },
+    {
+      "id": "customer-followup",
+      "label": "咨询、档案与跟进",
+      "draft_stop_after": "plan",
+      "steps": [
+        {
+          "id": "intake",
+          "assigned_to": "customer-agent",
+          "capability_ids": [
+            "CHAT-01",
+            "INT-01"
+          ],
+          "skill_refs": [
+            "customer-intake"
+          ],
+          "depends_on": [],
+          "kind": "draft",
+          "deliverable": "需求、原话依据、回复草稿和未知项"
+        },
+        {
+          "id": "profile",
+          "assigned_to": "customer-agent",
+          "capability_ids": [
+            "INT-02"
+          ],
+          "skill_refs": [
+            "customer-profile"
+          ],
+          "depends_on": [
+            "intake"
+          ],
+          "kind": "draft",
+          "deliverable": "五维状态与档案变更建议"
+        },
+        {
+          "id": "plan",
+          "assigned_to": "customer-agent",
+          "capability_ids": [
+            "CHAT-04"
+          ],
+          "skill_refs": [
+            "followup-plan"
+          ],
+          "depends_on": [
+            "profile"
+          ],
+          "kind": "draft",
+          "deliverable": "跟进理由、时机、停止条件"
+        },
+        {
+          "id": "send",
+          "assigned_to": "customer-agent",
+          "capability_ids": [
+            "CHAT-04"
+          ],
+          "skill_refs": [
+            "wechat-scrm-friend-message"
+          ],
+          "depends_on": [
+            "plan"
+          ],
+          "kind": "external",
+          "deliverable": "原工作号的发送任务与出站证据"
+        },
+        {
+          "id": "reconcile",
+          "assigned_to": "review-agent",
+          "capability_ids": [
+            "REV-01"
+          ],
+          "skill_refs": [
+            "task-reconcile"
+          ],
+          "depends_on": [
+            "send"
+          ],
+          "kind": "readonly",
+          "deliverable": "逐对象发送结果"
+        }
+      ]
+    },
+    {
+      "id": "group-invite",
+      "label": "现有群邀请与入群核对",
+      "draft_stop_after": "prepare",
+      "steps": [
+        {
+          "id": "environment",
+          "assigned_to": "operations-agent",
+          "capability_ids": [
+            "ONB-01"
+          ],
+          "skill_refs": [
+            "wechat-scrm-onboarding"
+          ],
+          "depends_on": [],
+          "kind": "readonly",
+          "deliverable": "工作号、群标识、权限与查询能力"
+        },
+        {
+          "id": "prepare",
+          "assigned_to": "operations-agent",
+          "capability_ids": [
+            "GRP-01"
+          ],
+          "skill_refs": [
+            "campaign-invite"
+          ],
+          "depends_on": [
+            "environment"
+          ],
+          "kind": "draft",
+          "deliverable": "去重名单、排除依据及邀请草稿"
+        },
+        {
+          "id": "invite",
+          "assigned_to": "operations-agent",
+          "capability_ids": [
+            "GRP-02"
+          ],
+          "skill_refs": [
+            "wechat-scrm-group-invite"
+          ],
+          "depends_on": [
+            "prepare"
+          ],
+          "kind": "external",
+          "deliverable": "正确群卡片的逐人出站记录"
+        },
+        {
+          "id": "membership",
+          "assigned_to": "operations-agent",
+          "capability_ids": [
+            "GRP-03"
+          ],
+          "skill_refs": [
+            "wechat-scrm-group-invite"
+          ],
+          "depends_on": [
+            "invite"
+          ],
+          "kind": "readonly",
+          "deliverable": "成员查询证据，邀请与入群分开"
+        },
+        {
+          "id": "review",
+          "assigned_to": "review-agent",
+          "capability_ids": [
+            "REV-01",
+            "REV-03"
+          ],
+          "skill_refs": [
+            "task-reconcile",
+            "sales-review"
+          ],
+          "depends_on": [
+            "membership"
+          ],
+          "kind": "readonly",
+          "deliverable": "邀请结果及可取得的后续客户结果"
+        }
+      ]
+    }
+  ]
+}

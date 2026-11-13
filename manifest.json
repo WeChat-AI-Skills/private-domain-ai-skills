@@ -1,6 +1,6 @@
 {
   "name": "wechat-ai-skills",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "registry_version": "1.0",
   "receipt_contract_version": "1.0",
   "skills": [
@@ -181,12 +181,28 @@
       ],
       "resources": [
         "LICENSE.txt",
+        "references/agents/content-agent.md",
+        "references/agents/customer-agent.md",
+        "references/agents/operations-agent.md",
+        "references/agents/product-agent.md",
+        "references/agents/review-agent.md",
+        "references/agents/super-agent.md",
         "references/authorization.md",
+        "references/brain/data-and-context.md",
+        "references/catalog/agent-registry.json",
+        "references/catalog/skill-tree.json",
+        "references/catalog/workflow-registry.json",
+        "references/contracts/task-and-result.md",
+        "references/examples/first-result.json",
+        "references/examples/first-task.json",
+        "references/examples/first-task.md",
         "references/handoff.md",
-        "references/routing.md"
+        "references/routing.md",
+        "scripts/catalog.py"
       ],
       "validation_evidence": [
-        "docs/verification-v1.1.0.md"
+        "docs/verification-v1.1.0.md",
+        "docs/verification-v1.2.0.md"
       ],
       "live_status": "not_verified"
     },
@@ -363,5 +379,6 @@
       ],
       "live_status": "not_verified"
     }
-  ]
+  ],
+  "product_catalog": ".agents/skills/private-domain-ops/references/catalog/skill-tree.json"
 }

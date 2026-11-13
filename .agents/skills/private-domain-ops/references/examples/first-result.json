@@ -1,0 +1,29 @@
+{
+  "contract_version": "agent-result/1.0",
+  "request_id": "synthetic-request-001",
+  "task_id": "synthetic-task-001",
+  "agent_id": "content-agent",
+  "scope": {
+    "tenant_id": "synthetic-shop",
+    "account_id": "synthetic-account",
+    "customer_ids": [],
+    "group_ids": [],
+    "product_ids": [
+      "synthetic-product"
+    ]
+  },
+  "task_state": "completed",
+  "artifacts": [
+    "synthetic-draft-example"
+  ],
+  "evidence_refs": [
+    "synthetic-product-v1"
+  ],
+  "action_refs": [],
+  "missing_items": [
+    "图片未准备；本次草稿不需要发布连接"
+  ],
+  "dependency_requests": [],
+  "recommended_next_step": "客户审阅草稿，准备图片；另有执行要求再核对连接与授权",
+  "requires_human": false
+}

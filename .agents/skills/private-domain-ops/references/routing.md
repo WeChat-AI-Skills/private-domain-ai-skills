@@ -2,6 +2,10 @@
 
 明确任务可直接调用相应技能；多步骤任务按依赖关系推进，复用已有事实与授权。
 
+产品目录按上岗与编排、客户意图判断、发朋友圈、一对一聊天、拉群、上架、复盘排序，见[技能树登记](catalog/skill-tree.json)。排序是导航，不是每个任务必须执行的步骤。manifest.json 的旧六域仅为登记协议 1.0 兼容分类。
+
+总控先识别目标、执行模式和可用工具，再按[角色登记](catalog/agent-registry.json)读取所需角色。复杂任务使用[工作流模板](catalog/workflow-registry.json)与[任务卡](contracts/task-and-result.md)；草稿目标不进入 external 步骤。缺商品事实时给商品角色资料核对任务；商品上架本版本未交付，列出缺口，不调用不存在的 product-listing。
+
 | 目标 | 业务判断 | 执行与结果 |
 | --- | --- | --- |
 | 首次接入、环境变化 | [wechat-scrm-onboarding](../../wechat-scrm-onboarding/SKILL.md) | 只读核对能力与缺口 |

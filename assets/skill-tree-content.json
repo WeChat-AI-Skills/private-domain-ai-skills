@@ -1,0 +1,192 @@
+{
+  "package_version": "1.2.0",
+  "title": "私域 AI 技能树",
+  "domains": [
+    {
+      "id": "onboarding",
+      "label": "上岗与编排",
+      "nodes": [
+        {
+          "id": "ONB-01",
+          "label": "确认账号与权限"
+        },
+        {
+          "id": "ONB-02",
+          "label": "读取业务资料"
+        },
+        {
+          "id": "ONB-03",
+          "label": "拆解任务与排期"
+        },
+        {
+          "id": "ONB-04",
+          "label": "异常处理与转人工"
+        }
+      ]
+    },
+    {
+      "id": "intent",
+      "label": "客户意图判断",
+      "nodes": [
+        {
+          "id": "INT-01",
+          "label": "判断客户需求"
+        },
+        {
+          "id": "INT-02",
+          "label": "判断购买意愿"
+        },
+        {
+          "id": "INT-03",
+          "label": "判断顾虑与阻力"
+        },
+        {
+          "id": "INT-04",
+          "label": "确定下一步动作"
+        }
+      ]
+    },
+    {
+      "id": "moments",
+      "label": "发朋友圈",
+      "nodes": [
+        {
+          "id": "MOM-01",
+          "label": "选题与排期"
+        },
+        {
+          "id": "MOM-02",
+          "label": "生成图文素材"
+        },
+        {
+          "id": "MOM-03",
+          "label": "发布朋友圈"
+        },
+        {
+          "id": "MOM-04",
+          "label": "跟进评论与私信"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "label": "一对一聊天",
+      "nodes": [
+        {
+          "id": "CHAT-01",
+          "label": "接待与追问"
+        },
+        {
+          "id": "CHAT-02",
+          "label": "推荐合适商品"
+        },
+        {
+          "id": "CHAT-03",
+          "label": "解答疑问与顾虑"
+        },
+        {
+          "id": "CHAT-04",
+          "label": "跟进购买与售后"
+        }
+      ]
+    },
+    {
+      "id": "groups",
+      "label": "拉群",
+      "nodes": [
+        {
+          "id": "GRP-01",
+          "label": "筛选合适客户"
+        },
+        {
+          "id": "GRP-02",
+          "label": "发出入群邀请"
+        },
+        {
+          "id": "GRP-03",
+          "label": "确认入群结果"
+        },
+        {
+          "id": "GRP-04",
+          "label": "群内欢迎与答疑"
+        }
+      ]
+    },
+    {
+      "id": "listing",
+      "label": "上架",
+      "nodes": [
+        {
+          "id": "SKU-01",
+          "label": "整理商品资料"
+        },
+        {
+          "id": "SKU-02",
+          "label": "核对价格与库存"
+        },
+        {
+          "id": "SKU-03",
+          "label": "完善商品图文"
+        },
+        {
+          "id": "SKU-04",
+          "label": "上架并检查页面"
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "label": "复盘",
+      "nodes": [
+        {
+          "id": "REV-01",
+          "label": "核对任务结果"
+        },
+        {
+          "id": "REV-02",
+          "label": "分析客户反馈"
+        },
+        {
+          "id": "REV-03",
+          "label": "复盘成交与流失"
+        },
+        {
+          "id": "REV-04",
+          "label": "更新话术与策略"
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "id": "super-agent",
+      "label": "超级 Agent",
+      "reports_to": null
+    },
+    {
+      "id": "operations-agent",
+      "label": "运营 Agent",
+      "reports_to": "super-agent"
+    },
+    {
+      "id": "content-agent",
+      "label": "内容 Agent",
+      "reports_to": "super-agent"
+    },
+    {
+      "id": "customer-agent",
+      "label": "客户 Agent",
+      "reports_to": "super-agent"
+    },
+    {
+      "id": "product-agent",
+      "label": "商品 Agent",
+      "reports_to": "super-agent"
+    },
+    {
+      "id": "review-agent",
+      "label": "复盘 Agent",
+      "reports_to": "super-agent"
+    }
+  ]
+}

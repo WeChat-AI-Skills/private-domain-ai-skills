@@ -11,9 +11,9 @@
 在客户选定的本地目录执行：
 
 ```bash
-git clone --branch v1.1.1 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
+git clone --branch v1.2.0 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
 cd private-domain-ai-skills
-python3 scripts/validate_skills.py
+python3 scripts/check_all.py
 ./install.sh --dry-run
 ./install.sh
 ```
@@ -61,4 +61,23 @@ v1.0.0 → v1.1.0 会新增 task-reconcile。反向回退时旧版清单缺少�
 
 更新期间暂停修改目标技能。若安装进程被强制终止且留下安装锁或 staging 目录，先保留目录并检查回执及 previous 备份，完成恢复后再重试；不要直接删除锁后重复覆盖。
 
-v1.1.1 与 v1.1.0 的 15 项技能内容一致，主要更新公开安装与分发说明；仍按上述 --update 流程更新版本回执。
+
+## 6. 安装后先完成一个无业务连接的任务
+
+请 Agent 读取安装目录中的 `private-domain-ops/SKILL.md`，按其中链接完成 `references/examples/first-task.md`。这是合成朋友圈草稿任务，不要求真实账号，也不会发布内容。
+
+预期得到：所用角色和技能、仅基于给定事实的草稿、素材需求、完成状态和缺口。宿主没有子 Agent 时，记录 single_agent，不把职责说明说成已启动进程。
+
+从已安装的 `private-domain-ops` 目录可运行：
+
+```bash
+python3 scripts/catalog.py
+python3 scripts/catalog.py --domain moments
+python3 scripts/catalog.py --role content-agent
+python3 scripts/catalog.py --workflow moments-delivery
+python3 scripts/catalog.py --check-task references/examples/first-task.json --result references/examples/first-result.json
+```
+
+这些命令只读取目录或检查示例结构，不联网、不委派、不发布。没有本地命令工具的 Agent 可直接读取对应 JSON 和 Markdown。查询结果不是宿主识别证据，仍需按第 3 节检查宿主加载。
+
+v1.1.1 → v1.2.0 保留 15 项名称及路径，增加总控资料。用完整安装包执行 --update，不能只复制 SKILL.md。未修改副本可回退到 v1.1.1；任务产物始终保存在安装目录之外。迁移细节见[架构说明](architecture.md)。
