@@ -1,28 +1,65 @@
-# 私域 AI 运营系统技能库
+# WeChat-AI-Skills
 
-本仓库是微信 AI 私域运营系统技能的版本管理入口，归属 GitHub 账号 `WeChat-AI-Skills`。
+**悦榕私域智能系统 · 客户 Agent 的上岗与运营技能库**
 
-## SCRM 上岗与操作技能
+让客户自己的 Agent 理解业务、学会运营方法，并在客户授权的系统中执行任务、核对结果。负责人定目标和规则，Agent 完成准备、执行与交接，复盘再改进下一轮工作。
 
-覆盖首次上岗、朋友圈排期、好友消息、客户群邀请和好友关系清理。各企业的实际入口以当前界面、工作号及权限为准。
+![悦榕私域智能系统](assets/cover-v2.jpg)
 
-| 技能 | 适用场景 |
-| --- | --- |
-| [SCRM 上岗检查](.agents/skills/wechat-scrm-onboarding/SKILL.md) | 首次核对企业、账号、权限和四项入口 |
-| [朋友圈图文排期](.agents/skills/wechat-scrm-moments/SKILL.md) | 准备、排期、原地修改和逐账号结果回读 |
-| [好友消息](.agents/skills/wechat-scrm-friend-message/SKILL.md) | 单人或指定名单的文字、图片与小程序，核对发送结果 |
-| [现有客户群邀请](.agents/skills/wechat-scrm-group-invite/SKILL.md) | 核实资格和在群状态，核对群邀请卡出站及入群 |
-| [好友关系复核与清理](.agents/skills/wechat-scrm-friend-cleanup/SKILL.md) | 核实关系、准备名单、删除排期和逐人核验 |
+**第一版：v1.0.0 · 2026-11-13**。包含 14 项技能、安装程序、客户上岗模板和合成示例。首个适配宿主为 Codex；安装与识别、客户系统接入、业务执行分别验收，详见[能力状态](docs/capability-status.md)。
 
-## 配套运营技能
+## 给客户的开始方式
 
-| 技能 | 适用场景 | 使用条件 |
+把本仓库交给客户自己的 Codex，并附上这段话：
+
+> 请阅读 README 和 docs/quickstart.md，安装 v1.0.0 的完整技能包。保留我已有的技能和配置，核对 14 项技能能否被识别。然后用 wechat-scrm-onboarding 检查我提供的 SCRM 入口、账号、业务资料和权限。本次先做只读上岗检查，告诉我能做什么、还缺什么，以及如何完成第一个任务。
+
+[安装与首次上岗](docs/quickstart.md) · [客户环境卡](.agents/skills/wechat-scrm-onboarding/references/customer-setup.md) · [版本记录](CHANGELOG.md)
+
+本仓库当前为私有，客户需先获得仓库访问权限。客户账号、SCRM 服务、工具连接和模型服务在各自环境中配置。
+
+## 三条典型工作链路
+
+| 客户任务 | 技能如何衔接 | 结果如何核对 |
 | --- | --- | --- |
-| [微信活动与礼赠答疑交接](.agents/skills/wechat-activity-customer-handoff/SKILL.md) | 顾客主动询问活动或礼赠时，核实依据、起草、交接并核对人工处理回执 | 合成演练可直接使用。业务任务依赖获授权的活动规则和人工服务渠道 |
-| [有赞加购未购核验](.agents/skills/audit-youzan-cart-nonbuyers/SKILL.md) | 核对同一窗口的加购与已购客户，去重并排除已购 | 聚合脚本使用 Python 3.10+ 标准库，实际核验依赖已授权且可对账的两份输入 |
+| 客户咨询后继续跟进 | 识别需求 → 档案草稿 → 跟进计划 → 授权发送 | 原账号、稳定客户、内容版本、出站记录 |
+| 排一周朋友圈 | 营销目标 → 图文与素材 → 整批确认 → SCRM 排期 | 已保存、已发布、客户可见分别核对 |
+| 活动邀请与群衔接 | 筛选去重 → 分层邀约 → 客户同意 → 群邀请 | 已邀约、同意、入群、订单分别记录 |
 
-## 使用与维护
+没有工具连接时，可先用授权资料生成草稿、计划和变更建议。实际提交需要在客户环境核实入口、对象、权限与授权。
 
-从仓库根目录开启 Codex，按表中技能名称调用。新技能放在 `.agents/skills/<skill-name>/SKILL.md`。目录名与 `name` 一致，`description` 告知 Agent 何时调用。随技能版本维护的脚本、模板和参考文档放进同一目录，用相对路径引用。新增或修改后更新技能清单。
+## 技能清单
 
-仓库保存技能说明、代码、模板和合成示例。真实客户数据、聊天原文和生产凭据保存在各自获授权的业务环境中。
+### 业务判断与编排
+
+| 技能 | 用途 |
+| --- | --- |
+| [private-domain-ops](.agents/skills/private-domain-ops/SKILL.md) | 运营总控：选择技能，衔接任务与回执 |
+| [customer-intake](.agents/skills/customer-intake/SKILL.md) | 咨询接待、需求识别、答复草稿 |
+| [customer-profile](.agents/skills/customer-profile/SKILL.md) | 档案、标签、分层与变更 diff |
+| [followup-plan](.agents/skills/followup-plan/SKILL.md) | 跟进理由、计划、频次与停止条件 |
+| [moments-calendar](.agents/skills/moments-calendar/SKILL.md) | 朋友圈文案、素材需求和排期方案 |
+| [campaign-invite](.agents/skills/campaign-invite/SKILL.md) | 活动筛选、分层文案、群议程与漏斗 |
+| [sales-review](.agents/skills/sales-review/SKILL.md) | 执行复盘、规则候选、版本与回滚条件 |
+
+### 系统操作与配套核验
+
+| 技能 | 用途 |
+| --- | --- |
+| [wechat-scrm-onboarding](.agents/skills/wechat-scrm-onboarding/SKILL.md) | 首次核对企业、账号、权限和可用入口 |
+| [wechat-scrm-moments](.agents/skills/wechat-scrm-moments/SKILL.md) | 朋友圈图文排期、原地修改、结果回读 |
+| [wechat-scrm-friend-message](.agents/skills/wechat-scrm-friend-message/SKILL.md) | 指定好友或名单的消息准备、提交与核验 |
+| [wechat-scrm-group-invite](.agents/skills/wechat-scrm-group-invite/SKILL.md) | 现有客户群邀请及成员状态核对 |
+| [wechat-scrm-friend-cleanup](.agents/skills/wechat-scrm-friend-cleanup/SKILL.md) | 关系复核及按具体授权执行的清理 |
+| [wechat-activity-customer-handoff](.agents/skills/wechat-activity-customer-handoff/SKILL.md) | 活动与礼赠答疑草稿、员工交接及回执 |
+| [audit-youzan-cart-nonbuyers](.agents/skills/audit-youzan-cart-nonbuyers/SKILL.md) | 同窗口加购与已购客户去重、排除及对账 |
+
+## 使用、反馈与迭代
+
+使用 [3 组合成示例](examples/README.md)检查需求识别、排期和名单核对，再在客户环境完成一个明确授权的小范围任务。真实客户资料、凭据与回执存于客户工作区。
+
+反馈带上版本、使用场景、预期、实际结果及脱敏复现步骤。每次迭代更新 [CHANGELOG](CHANGELOG.md)、示例和[能力状态](docs/capability-status.md)，发布固定版本；安装副本按用户选择更新。
+
+后续优先验证“上岗 → 朋友圈排期 → 实际结果”，再根据客户反馈改进接待、跟进、活动与复盘。工具服务端和商品上下架适配列为后续工作。
+
+[运营方法](docs/method.md) · [授权规则](docs/boundaries.md) · [接入说明](docs/tool-contract.md) · [许可范围](NOTICE.md)

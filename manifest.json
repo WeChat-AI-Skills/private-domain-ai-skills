@@ -1,0 +1,62 @@
+{
+  "name": "wechat-ai-skills",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "name": "audit-youzan-cart-nonbuyers",
+      "path": ".agents/skills/audit-youzan-cart-nonbuyers"
+    },
+    {
+      "name": "campaign-invite",
+      "path": ".agents/skills/campaign-invite"
+    },
+    {
+      "name": "customer-intake",
+      "path": ".agents/skills/customer-intake"
+    },
+    {
+      "name": "customer-profile",
+      "path": ".agents/skills/customer-profile"
+    },
+    {
+      "name": "followup-plan",
+      "path": ".agents/skills/followup-plan"
+    },
+    {
+      "name": "moments-calendar",
+      "path": ".agents/skills/moments-calendar"
+    },
+    {
+      "name": "private-domain-ops",
+      "path": ".agents/skills/private-domain-ops"
+    },
+    {
+      "name": "sales-review",
+      "path": ".agents/skills/sales-review"
+    },
+    {
+      "name": "wechat-activity-customer-handoff",
+      "path": ".agents/skills/wechat-activity-customer-handoff"
+    },
+    {
+      "name": "wechat-scrm-friend-cleanup",
+      "path": ".agents/skills/wechat-scrm-friend-cleanup"
+    },
+    {
+      "name": "wechat-scrm-friend-message",
+      "path": ".agents/skills/wechat-scrm-friend-message"
+    },
+    {
+      "name": "wechat-scrm-group-invite",
+      "path": ".agents/skills/wechat-scrm-group-invite"
+    },
+    {
+      "name": "wechat-scrm-moments",
+      "path": ".agents/skills/wechat-scrm-moments"
+    },
+    {
+      "name": "wechat-scrm-onboarding",
+      "path": ".agents/skills/wechat-scrm-onboarding"
+    }
+  ]
+}

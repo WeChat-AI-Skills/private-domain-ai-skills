@@ -1,0 +1,15 @@
+# Local caches
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+# Customer configuration and runtime data belong outside the source checkout
+.env
+.env.*
+!.env.example
+customer-data/
+customer-config/
+runtime/
+receipts/
+.wechat-ai-skills-*
