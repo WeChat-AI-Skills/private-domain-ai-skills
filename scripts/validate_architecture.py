@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OPS = ROOT / ".agents/skills/private-domain-ops"
 DOMAIN_IDS = ["onboarding", "intent", "moments", "chat", "groups", "listing", "review"]
 ROLE_IDS = {"super-agent", "operations-agent", "content-agent", "customer-agent", "product-agent", "review-agent"}
+WORKFLOW_IDS = {"moments-delivery", "customer-followup", "group-invite"}
 
 
 def runtime(base=OPS):
@@ -62,6 +63,7 @@ def validate(data: dict, names: set[str], base: Path = OPS) -> list[str]:
     check(role_skill_map == {s["id"]: s["owner_agent"] for s in skills}, "role/skill ownership differs")
     ids = [w["id"] for w in wf["workflows"]]
     check(len(set(ids)) == len(ids), "duplicate workflow")
+    check(set(ids) == WORKFLOW_IDS, f"workflow set differs; missing={sorted(WORKFLOW_IDS - set(ids))}, extra={sorted(set(ids) - WORKFLOW_IDS)}")
     for flow in wf["workflows"]:
         steps = {s["id"]: s for s in flow["steps"]}
         check(len(steps) == len(flow["steps"]), f"duplicate step: {flow['id']}")
@@ -117,7 +119,8 @@ def main():
         task = json.loads((OPS / "references/examples/first-task.json").read_text())
         result = json.loads((OPS / "references/examples/first-result.json").read_text())
         module.check_result(result, task, data)
-        print(f"checked 7 domains, 28 nodes, 6 roles, 3 workflows: {len(problems)} error(s)")
+        print(f"checked {len(data['tree']['domains'])} domains, {len(data['tree']['nodes'])} nodes, "
+              f"{len(data['agents']['agents'])} roles, {len(data['workflows']['workflows'])} workflows: {len(problems)} error(s)")
         for p in problems:
             print(p)
         return bool(problems)

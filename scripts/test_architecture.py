@@ -42,6 +42,13 @@ class ArchitectureTests(unittest.TestCase):
         self.data["agents"]["agents"][1]["profile"] = "../agents/missing.md"
         self.assertTrue(any("role profile" in p for p in self.errors()))
 
+    def test_missing_required_workflows_rejected(self):
+        original = deepcopy(self.data["workflows"]["workflows"])
+        for removed in ({"customer-followup"}, {"group-invite"}, {"customer-followup", "group-invite"}):
+            self.data["workflows"]["workflows"] = [w for w in original if w["id"] not in removed]
+            with self.subTest(removed=removed):
+                self.assertTrue(any("workflow set differs" in p and all(i in p for i in removed) for p in self.errors()))
+
     def test_workflow_cycle_rejected(self):
         self.data["workflows"]["workflows"][0]["steps"][0]["depends_on"] = ["review"]
         self.assertTrue(any("cycle" in p for p in self.errors()))
@@ -98,6 +105,17 @@ class ArchitectureTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "needs artifacts"):
             self.module.check_result(self.result, self.task, self.data)
 
+    def test_optional_skill_and_dependency_fields(self):
+        for update in ({"skill_refs": ["product-listing"]}, {"skill_refs": "moments-calendar"},
+                       {"depends_on": [self.task["task_id"]]}, {"depends_on": 17},
+                       {"skill_refs": ["moments-calendar", "moments-calendar"]}):
+            task = {**self.task, **update}
+            with self.subTest(update=update), self.assertRaises(ValueError):
+                self.module.check_task(task, self.data)
+            with self.subTest(result_update=update), self.assertRaises(ValueError):
+                self.module.check_result(self.result, task, self.data)
+        self.module.check_task({**self.task, "skill_refs": ["moments-calendar"], "depends_on": ["synthetic-prior-task"]}, self.data)
+
     def test_generated_docs_follow_catalog(self):
         for relative, expected in build_catalog_docs.outputs().items():
             self.assertEqual((ROOT / relative).read_text(), expected, relative)
@@ -116,6 +134,13 @@ class ArchitectureTests(unittest.TestCase):
                                      cwd=tmp, capture_output=True, text=True)
             self.assertEqual(process.returncode, 0, process.stderr)
             self.assertEqual(json.loads(process.stdout)["live_status"], "not_verified")
+            for cwd in (tmp, installed):
+                process = subprocess.run([sys.executable, str(installed / "scripts/catalog.py"), "--role", "content-agent"],
+                                         cwd=cwd, capture_output=True, text=True)
+                self.assertEqual(process.returncode, 0, process.stderr)
+                role = json.loads(process.stdout)
+                self.assertEqual(Path(role["profile_path"]).read_bytes(), (installed / "references/agents/content-agent.md").read_bytes())
+                self.assertEqual((Path(role["profile_base"]) / role["profile"]).resolve(), Path(role["profile_path"]))
             # A lost resource must be caught in the installation, not hidden by the source checkout.
             (installed / "references/agents/content-agent.md").unlink()
             self.assertTrue(any("role profile" in p for p in architecture.validate(data, self.names, installed)))

@@ -2,7 +2,7 @@
 
 ## 1. 准备
 
-客户需要 Git，以及 Python 3.10 或更新版本。本仓库公开可读，下载和克隆无需 GitHub 登录。Codex 是首个核验宿主。其他 Agent 可按其技能目录配置安装目标，识别能力需在该宿主单独验证。
+客户需要 Python 3.10 或更新版本。使用克隆方式时还需要 Git；也可下载固定版本完整 ZIP 后解压。本仓库公开可读，下载和克隆无需 GitHub 登录。Codex 是首个核验宿主。其他 Agent 可按其技能目录配置安装目标，识别能力需在该宿主单独验证。
 
 技能安装完成后，使用客户自己的 SCRM 会话及业务工具配置；业务凭据通过对应受控入口提供，不需要交给 GitHub。
 
@@ -78,6 +78,6 @@ python3 scripts/catalog.py --workflow moments-delivery
 python3 scripts/catalog.py --check-task references/examples/first-task.json --result references/examples/first-result.json
 ```
 
-这些命令只读取目录或检查示例结构，不联网、不委派、不发布。没有本地命令工具的 Agent 可直接读取对应 JSON 和 Markdown。查询结果不是宿主识别证据，仍需按第 3 节检查宿主加载。
+这些命令只读取目录或检查示例结构，不联网、不委派、不发布。角色查询中的 profile_path 指向当前安装副本的可读文件，profile_base 说明原相对路径的解析基准；没有固定开发机路径。没有本地命令工具的 Agent 可直接读取对应 JSON 和 Markdown。查询结果不是宿主识别证据，仍需按第 3 节检查宿主加载。
 
 v1.1.1 → v1.2.0 保留 15 项名称及路径，增加总控资料。用完整安装包执行 --update，不能只复制 SKILL.md。未修改副本可回退到 v1.1.1；任务产物始终保存在安装目录之外。迁移细节见[架构说明](architecture.md)。

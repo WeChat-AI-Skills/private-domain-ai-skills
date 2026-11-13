@@ -29,6 +29,9 @@ def lookup(data: dict, kind: str, value: str | None = None) -> dict:
     if kind == "domain":
         result["nodes"] = [n for n in data["tree"]["nodes"] if n["domain_id"] == value]
         result["primary_skills"] = [s for s in data["tree"]["skills"] if s["primary_domain"] == value]
+    elif kind == "role":
+        result["profile_base"] = str(BASE / "references/catalog")
+        result["profile_path"] = str((BASE / "references/catalog" / entry["profile"]).resolve())
     return result
 
 
@@ -67,6 +70,14 @@ def check_task(task: dict, data: dict) -> None:
     nodes = {n["id"]: n for n in data["tree"]["nodes"]}
     if any(n not in nodes for n in task["capability_ids"]):
         raise ValueError("Unknown capability")
+    if "skill_refs" in task:
+        strings(task["skill_refs"], "skill_refs")
+        if not set(task["skill_refs"]) <= {s["id"] for s in data["tree"]["skills"]}:
+            raise ValueError("Unknown installed skill in skill_refs")
+    if "depends_on" in task:
+        strings(task["depends_on"], "depends_on")
+        if task["task_id"] in task["depends_on"]:
+            raise ValueError("Task cannot depend on itself")
     if task["execution_mode"] == "execute":
         required_text(task, ["action", "content_version", "authorization_ref", "policy_version", "capability_check_ref"])
         if any(nodes[n]["method_coverage"] == "planned" for n in task["capability_ids"]):

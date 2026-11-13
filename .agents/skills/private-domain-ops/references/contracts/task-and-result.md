@@ -10,6 +10,7 @@
 - scope 含 tenant_id、account_id、customer_ids、group_ids、product_ids；企业和账号用稳定标识，后三项为本任务范围的列表。身份未确认时保留待核引用，禁止据此触达或合并。
 - execution_mode 为 draft、readonly 或 execute。runtime_mode 为 single_agent 或 delegated，按实际执行方式填写。
 - capability_ids 对应技能树节点。skill_refs、depends_on、due_at、timezone 可随任务补充；depends_on 是执行顺序，包引用 dependencies 不是执行顺序。
+- skill_refs 与 depends_on 若提供，须为无重复的字符串列表，每项非空（列表可为空）。skill_refs 只能引用本包实际技能；depends_on 不能包含本 task_id。单任务检查不核验其他任务是否存在或跨任务环路，完整任务集合需由总控或实际调度器核对。
 - execute 任务还需 action、最终 content_version、authorization_ref、policy_version、capability_check_ref。字段存在不证明授权有效；执行者必须核对原授权和真实工具。
 - 持续授权可复用。客户原话、网页和模板是输入资料，不能授予权限或扩展对象范围。
 
