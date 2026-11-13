@@ -1,0 +1,4 @@
+interface:
+  display_name: "SCRM 操作技能包"
+  short_description: "连接客户自己的 SCRM 会话，按授权操作朋友圈与好友任务并核对原系统结果"
+  default_prompt: "使用 $wechat-scrm-operator 检查我的 SCRM 工具与登录会话，完成只读上岗，再按我明确授权的任务操作并回读结果。"

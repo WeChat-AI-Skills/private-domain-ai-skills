@@ -13,6 +13,7 @@ def main():
     commands = [
         [sys.executable, "scripts/validate_skills.py"],
         [sys.executable, "scripts/validate_architecture.py"],
+        [sys.executable, "scripts/validate_scrm.py"],
         [sys.executable, "scripts/build_catalog_docs.py", "--check"],
         [sys.executable, "-m", "unittest", "discover", "-s", "scripts", "-p", "test_*.py", "-v"],
         [sys.executable, ".agents/skills/task-reconcile/scripts/mock_scrm.py", "--demo"],

@@ -2,7 +2,7 @@
 
 # 技能树总览
 
-v1.2.2 · 七类能力 · 28 个节点 · 15 项可安装技能。
+v1.3.0 · 七类能力 · 28 个节点 · 16 项可安装技能。
 
 以客户需求、意图与体验为中心。下表描述方法覆盖，真实可用范围取决于客户环境；商品上架等待建设节点不属于当前已交付执行能力。
 
@@ -39,5 +39,6 @@ v1.2.2 · 七类能力 · 28 个节点 · 15 项可安装技能。
 | [wechat-activity-customer-handoff](../.agents/skills/wechat-activity-customer-handoff/SKILL.md) | 拉群 | 客户 Agent |
 | [task-reconcile](../.agents/skills/task-reconcile/SKILL.md) | 复盘 | 复盘 Agent |
 | [sales-review](../.agents/skills/sales-review/SKILL.md) | 复盘 | 复盘 Agent |
+| [wechat-scrm-operator](../.agents/skills/wechat-scrm-operator/SKILL.md) | 上岗与编排 | 运营 Agent |
 
 机器入口：[技能树目录](../.agents/skills/private-domain-ops/references/catalog/skill-tree.json)。manifest.json 保留安装清单及旧六域字段；产品导航以本目录为准。

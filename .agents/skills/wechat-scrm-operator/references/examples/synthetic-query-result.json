@@ -1,0 +1,45 @@
+{
+  "schema_version": "capability-result/1.0",
+  "subject": {
+    "request_id": "request-demo",
+    "task_id": "task-demo",
+    "call_id": "synthetic-query-call",
+    "attempt_id": "synthetic-query-attempt",
+    "environment": "synthetic",
+    "binding_id": "synthetic-binding",
+    "binding_revision": 1,
+    "tenant_id": "tenant-demo",
+    "account_id": "account-demo",
+    "capability_id": "task.query",
+    "capability_version": "1.0",
+    "operation": "task_query",
+    "provider_id": "synthetic-scrm",
+    "adapter_id": "supplied-scrm-web",
+    "adapter_version": "1.0",
+    "input_digest": "sha256:ea7d78b1bd40b7b036889c9a911eafb6a4350af57e722960e2c7708986fd5926",
+    "object_version": "synthetic-final-v1",
+    "authorization_ref": null,
+    "transport": "host_ui",
+    "binding_digest": "sha256:ea4c084bf45c0e4c280325edb309153b36f9430bd0b9beb2d3fddaf3b647710d"
+  },
+  "observed_at": "2026-11-13T09:03:00Z",
+  "status": "succeeded",
+  "stage": "queried",
+  "platform_ref": "synthetic-platform-task-1",
+  "evidence_refs": [
+    "synthetic-query-observation"
+  ],
+  "artifact_refs": [],
+  "observation": {
+    "origin_call_id": "call-demo",
+    "origin_attempt_id": "attempt-demo-1",
+    "origin_operation": "moments_schedule",
+    "platform_ref": "synthetic-platform-task-1",
+    "status": "accepted",
+    "stage": "scheduled"
+  },
+  "usage": null,
+  "error": null,
+  "retry_allowed": false,
+  "next_action": "none"
+}

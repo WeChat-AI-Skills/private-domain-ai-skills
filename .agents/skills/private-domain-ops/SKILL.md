@@ -10,12 +10,12 @@ license: MIT
 
 本场景停止条件：专业角色自报、模型赞同与脚本字段校验不证明真实执行；总控核对原任务证据再汇总。缺必要条件时停止受影响的后续外部动作，同时保留历史 `action_refs`、部分完成和未知记录。参照[角色结论与原始证据](references/failure-cases.md#case-10)；L3 或涉及独立审查、恢复时读取[恢复与审查记录](references/recovery-and-review.md)。
 
-让客户自己的 Agent 把经营目标落实为可核对的任务。当前包 v1.2.2 保留 15 项技能；七类能力的 28 个节点包含待建设项。单个明确任务可直接进入对应技能，不必调用全部角色。
+让客户自己的 Agent 把经营目标落实为可核对的任务。当前包 v1.3.0 保留原 15 项技能，新增 [SCRM 操作包](../wechat-scrm-operator/SKILL.md)，共 16 项；七类能力的 28 个节点包含待建设项。单个明确任务可直接进入对应技能，不必调用全部角色。
 
 首次安装且无业务连接时，可先完成[随包演练](references/examples/first-task.md)。按需读取[七类目录](references/catalog/skill-tree.json)定位节点和当前缺口。可在本技能目录运行 `python3 scripts/catalog.py --domain moments`，也支持 `--node MOM-03`、`--role content-agent`、`--workflow moments-delivery`；查询工具不联网、不执行业务。
 
 1. 从当前请求与已授权业务资料获取目标、企业、账号、对象、规则版本和期限。已知信息直接复用，只补会影响执行的缺口。
-2. 首次接入、更换企业或工具时，先使用 [SCRM 上岗检查](../wechat-scrm-onboarding/SKILL.md)。没有业务连接时，仍可完成资料梳理、草稿与计划，写明缺少的具体入口。
+2. 客户要操作本套 SCRM 时，先用 [SCRM 操作包](../wechat-scrm-operator/SKILL.md)检查宿主真实工具、正确会话和当前页面，复用 [SCRM 上岗检查](../wechat-scrm-onboarding/SKILL.md)完成只读核对。没有业务连接时，仍可完成资料梳理、草稿与计划，写明缺少的具体入口。只写文案等本地任务不要求配置 SCRM。
 3. 按[任务路由](references/routing.md)选择技能。复杂任务按[角色登记](references/catalog/agent-registry.json)读相关角色卡，使用[任务与结果约定](references/contracts/task-and-result.md)交接；运营、内容、客户、商品、复盘均直接返回 Super Agent。按需采用[三条工作流](references/catalog/workflow-registry.json)，仅需草稿时到 draft_stop_after 停止。商品上架未交付，不调用候选技能。
 4. 外部动作和业务系统写入按[授权与执行规则](references/authorization.md)核对已有授权。授权齐全就在范围内推进，缺少关键字段时先形成可审阅结果。
 5. 执行时保留任务 ID、内容版本、对象、时间及时区。结果不明先回查原任务；未确认前不重复发送。按 [SCRM 提交与回执](../wechat-scrm-onboarding/references/operation-receipts.md)报告状态。

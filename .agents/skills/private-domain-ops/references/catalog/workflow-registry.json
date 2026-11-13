@@ -14,7 +14,8 @@
             "ONB-01"
           ],
           "skill_refs": [
-            "wechat-scrm-onboarding"
+            "wechat-scrm-onboarding",
+            "wechat-scrm-operator"
           ],
           "depends_on": [],
           "kind": "readonly",
@@ -43,7 +44,8 @@
             "MOM-03"
           ],
           "skill_refs": [
-            "wechat-scrm-moments"
+            "wechat-scrm-moments",
+            "wechat-scrm-operator"
           ],
           "depends_on": [
             "prepare"
@@ -58,7 +60,8 @@
             "REV-01"
           ],
           "skill_refs": [
-            "task-reconcile"
+            "task-reconcile",
+            "wechat-scrm-operator"
           ],
           "depends_on": [
             "submit"
@@ -140,7 +143,8 @@
             "CHAT-04"
           ],
           "skill_refs": [
-            "wechat-scrm-friend-message"
+            "wechat-scrm-friend-message",
+            "wechat-scrm-operator"
           ],
           "depends_on": [
             "plan"
@@ -155,7 +159,8 @@
             "REV-01"
           ],
           "skill_refs": [
-            "task-reconcile"
+            "task-reconcile",
+            "wechat-scrm-operator"
           ],
           "depends_on": [
             "send"

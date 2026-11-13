@@ -14,7 +14,7 @@
 
 | 节点 | 能力 | 主责角色 | 当前方法覆盖 | 可复用技能 | 结果要求与缺口 |
 | --- | --- | --- | --- | --- | --- |
-| REV-01 | 核对任务结果 | 复盘 Agent | 已有方法/脚本 | [task-reconcile](../../.agents/skills/task-reconcile/SKILL.md) | 逐对象状态之和等于原名单数量，缺失为未知；脚本只核验结构，原系统证据仍需查询 |
+| REV-01 | 核对任务结果 | 复盘 Agent | 已有方法/脚本 | [task-reconcile](../../.agents/skills/task-reconcile/SKILL.md)、[wechat-scrm-operator](../../.agents/skills/wechat-scrm-operator/SKILL.md) | 逐对象状态之和等于原名单数量，缺失为未知；脚本只核验结构，原系统证据仍需查询 |
 | REV-02 | 分析客户反馈 | 复盘 Agent | 部分覆盖 | [sales-review](../../.agents/skills/sales-review/SKILL.md) | 事实、原因假设和证据缺口分开；反馈归类案例待扩展 |
 | REV-03 | 复盘成交与流失 | 复盘 Agent | 部分覆盖 | [sales-review](../../.agents/skills/sales-review/SKILL.md) | 缺成交数据不填零，不把沉默当流失；真实订单与关联链路按环境接入 |
 | REV-04 | 更新话术与策略 | 复盘 Agent | 已有方法/脚本 | [sales-review](../../.agents/skills/sales-review/SKILL.md) | 候选、验证、生效范围、负责人和回退分别记录；自动生效与持续调度未交付 |

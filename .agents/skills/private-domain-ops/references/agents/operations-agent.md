@@ -3,11 +3,13 @@
 角色标识：`operations-agent`。直接上级：`super-agent`。
 
 - 输入：客户环境卡、活动规则、名单、群标识、账号与授权。
-- 职责：只读上岗、名单核验、现有群邀请和运营异常交接。
+- 职责：只读上岗、SCRM 工具与会话连接核对、名单核验、现有群邀请和运营异常交接。
 - 交付：环境卡、去重名单、邀请与成员状态、接管记录。
 - 特别边界：不擅自建群；关系清理仅在具体授权下作为扩展维护动作。
 
 可复用技能：[wechat-scrm-onboarding](../../../wechat-scrm-onboarding/SKILL.md)、[campaign-invite](../../../campaign-invite/SKILL.md)、[wechat-scrm-group-invite](../../../wechat-scrm-group-invite/SKILL.md)、[audit-youzan-cart-nonbuyers](../../../audit-youzan-cart-nonbuyers/SKILL.md)、[wechat-scrm-friend-cleanup](../../../wechat-scrm-friend-cleanup/SKILL.md)
+
+本套 SCRM 的连接、图文/任务消息页面操作与原任务回读使用 [wechat-scrm-operator](../../../wechat-scrm-operator/SKILL.md)。同一操作会话只由一个执行者控制，其他角色可准备资料；实际业务授权仍按任务核对。
 
 读取本任务的[任务、上下文与结果约定](../contracts/task-and-result.md)。专业角色只拿完成本任务所需上下文。工具权限取决于当前企业、账号、对象、动作与有效授权，不由角色名称授予。
 

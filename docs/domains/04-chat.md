@@ -17,7 +17,7 @@
 | CHAT-01 | 接待与追问 | 客户 Agent | 已有方法/脚本 | [customer-intake](../../.agents/skills/customer-intake/SKILL.md) | 先答已有信息，仅追问影响服务的缺口；真实对话入口按客户环境接入 |
 | CHAT-02 | 推荐合适商品 | 客户 Agent | 部分覆盖 | [customer-intake](../../.agents/skills/customer-intake/SKILL.md) | 仅推荐有当前事实依据的商品；真实商品查询与匹配需适配 |
 | CHAT-03 | 解答疑问与顾虑 | 客户 Agent | 部分覆盖 | [customer-intake](../../.agents/skills/customer-intake/SKILL.md)、[wechat-activity-customer-handoff](../../.agents/skills/wechat-activity-customer-handoff/SKILL.md) | 不编造政策或承诺，超范围转人工；更多行业与服务规则案例待补 |
-| CHAT-04 | 跟进购买与售后 | 客户 Agent | 部分覆盖 | [followup-plan](../../.agents/skills/followup-plan/SKILL.md)、[wechat-scrm-friend-message](../../.agents/skills/wechat-scrm-friend-message/SKILL.md)、[wechat-activity-customer-handoff](../../.agents/skills/wechat-activity-customer-handoff/SKILL.md) | 营销拒绝与必要售后服务分别处理；订单和售后工单连接待适配 |
+| CHAT-04 | 跟进购买与售后 | 客户 Agent | 部分覆盖 | [followup-plan](../../.agents/skills/followup-plan/SKILL.md)、[wechat-scrm-friend-message](../../.agents/skills/wechat-scrm-friend-message/SKILL.md)、[wechat-activity-customer-handoff](../../.agents/skills/wechat-activity-customer-handoff/SKILL.md)、[wechat-scrm-operator](../../.agents/skills/wechat-scrm-operator/SKILL.md) | 营销拒绝与必要售后服务分别处理；订单和售后工单连接待适配 |
 
 上表的方法覆盖状态不等于客户现场已接入。外部工具能力按企业、工作号与动作单独验证，当前目录所有节点现场状态均为未验证。
 

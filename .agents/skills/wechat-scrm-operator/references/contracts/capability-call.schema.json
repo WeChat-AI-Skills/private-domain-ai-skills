@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "capability-call.schema.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "capability-call/1.0"
+    },
+    "subject": {
+      "type": "object",
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "call_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attempt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "environment": {
+          "type": "string",
+          "enum": [
+            "synthetic",
+            "customer"
+          ]
+        },
+        "binding_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binding_revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "tenant_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "account_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capability_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capability_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "operation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provider_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "adapter_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "adapter_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_digest": {
+          "type": "string",
+          "pattern": "sha256:[a-f0-9]{64}"
+        },
+        "object_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authorization_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "transport": {
+          "type": "string",
+          "enum": [
+            "host_ui",
+            "api",
+            "mcp",
+            "cli",
+            "synthetic"
+          ]
+        },
+        "binding_digest": {
+          "type": "string",
+          "pattern": "sha256:[a-f0-9]{64}"
+        }
+      },
+      "required": [
+        "request_id",
+        "task_id",
+        "call_id",
+        "attempt_id",
+        "environment",
+        "binding_id",
+        "binding_revision",
+        "tenant_id",
+        "account_id",
+        "capability_id",
+        "capability_version",
+        "operation",
+        "provider_id",
+        "adapter_id",
+        "adapter_version",
+        "input_digest",
+        "object_version",
+        "authorization_ref",
+        "transport",
+        "binding_digest"
+      ],
+      "additionalProperties": false
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "input": {
+      "type": "object"
+    },
+    "idempotency_key": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "budget_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "subject",
+    "created_at",
+    "input",
+    "idempotency_key",
+    "budget_ref"
+  ],
+  "additionalProperties": false
+}

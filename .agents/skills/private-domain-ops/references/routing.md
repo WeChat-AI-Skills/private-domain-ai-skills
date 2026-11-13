@@ -11,6 +11,7 @@
 | 目标 | 业务判断 | 执行与结果 |
 | --- | --- | --- |
 | 首次接入、环境变化 | [wechat-scrm-onboarding](../../wechat-scrm-onboarding/SKILL.md) | 只读核对能力与缺口 |
+| 本套 SCRM 连接、图文排期或任务消息 | [wechat-scrm-operator](../../wechat-scrm-operator/SKILL.md) | 检查真实工具与会话，按页面操作并回读；原有业务技能负责相应业务规则 |
 | 咨询与需求识别 | [customer-intake](../../customer-intake/SKILL.md) | 要发送时进入 [wechat-scrm-friend-message](../../wechat-scrm-friend-message/SKILL.md) |
 | 档案、标签、分层 | [customer-profile](../../customer-profile/SKILL.md) | 已适配的档案入口；无入口交付 diff |
 | 跟进计划 | [followup-plan](../../followup-plan/SKILL.md) | [wechat-scrm-friend-message](../../wechat-scrm-friend-message/SKILL.md) |

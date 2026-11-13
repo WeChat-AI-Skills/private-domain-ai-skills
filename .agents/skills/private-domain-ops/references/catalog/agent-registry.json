@@ -22,7 +22,8 @@
         "campaign-invite",
         "wechat-scrm-group-invite",
         "audit-youzan-cart-nonbuyers",
-        "wechat-scrm-friend-cleanup"
+        "wechat-scrm-friend-cleanup",
+        "wechat-scrm-operator"
       ]
     },
     {

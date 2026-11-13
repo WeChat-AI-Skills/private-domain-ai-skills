@@ -1,0 +1,40 @@
+{
+  "schema_version": "scrm-binding/1.0",
+  "binding_id": "synthetic-binding",
+  "binding_revision": 1,
+  "environment": "synthetic",
+  "entry_url": "https://scrm.example.invalid/",
+  "allow_http": false,
+  "tenant_id": "tenant-demo",
+  "account_id": "account-demo",
+  "time_zone": "Asia/Taipei",
+  "adapter": {
+    "provider_id": "synthetic-scrm",
+    "adapter_id": "supplied-scrm-web",
+    "adapter_version": "1.0",
+    "transport": "host_ui"
+  },
+  "host": {
+    "name": "Codex",
+    "version": "synthetic-host-version",
+    "tool_ref": "synthetic-control-tool",
+    "session_ref": "synthetic-session"
+  },
+  "operations": {
+    "moments_schedule": {
+      "availability": "supported",
+      "checked_at": "2026-11-13T09:00:00Z",
+      "evidence_ref": "synthetic-observation/moments_schedule"
+    },
+    "message_send": {
+      "availability": "supported",
+      "checked_at": "2026-11-13T09:00:00Z",
+      "evidence_ref": "synthetic-observation/message_send"
+    },
+    "task_query": {
+      "availability": "supported",
+      "checked_at": "2026-11-13T09:00:00Z",
+      "evidence_ref": "synthetic-observation/task_query"
+    }
+  }
+}

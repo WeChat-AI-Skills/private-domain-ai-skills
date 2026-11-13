@@ -1,0 +1,326 @@
+{
+  "schema_version": "scrm-capabilities/1.0",
+  "live_status": "not_verified",
+  "description": "Project operation contracts, not vendor API endpoints. Declared bindings and schema checks do not establish authority or live capability.",
+  "adapters": [
+    {
+      "adapter_id": "supplied-scrm-web",
+      "adapter_version": "1.0",
+      "transport": "host_ui",
+      "operation_ids": [
+        "moments_schedule",
+        "message_send",
+        "task_query"
+      ],
+      "execution_kind": "host_guided",
+      "live_status": "not_verified"
+    }
+  ],
+  "operations": {
+    "moments_schedule": {
+      "capability_id": "moments.submit",
+      "capability_version": "1.0",
+      "effect": "business_write",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "time_zone": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scheduled_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "media_refs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ref": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "[a-f0-9]{64}"
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "ref",
+                "sha256",
+                "version"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "visibility": {
+            "type": "object",
+            "properties": {
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "public",
+                  "private",
+                  "include",
+                  "exclude"
+                ]
+              },
+              "target_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "mode",
+              "target_ids"
+            ],
+            "additionalProperties": false
+          },
+          "options_ref": {
+            "type": "object",
+            "properties": {
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[a-f0-9]{64}"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "ref",
+              "sha256",
+              "version"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "time_zone",
+          "scheduled_at",
+          "text",
+          "media_refs",
+          "visibility",
+          "options_ref"
+        ],
+        "additionalProperties": false
+      },
+      "status_stages": {
+        "accepted": [
+          "submitted",
+          "scheduled"
+        ],
+        "running": [
+          "scheduled"
+        ],
+        "succeeded": [
+          "published"
+        ],
+        "failed": [
+          "failed"
+        ],
+        "unknown": [
+          "unknown"
+        ],
+        "cancelled": [
+          "cancelled"
+        ]
+      }
+    },
+    "message_send": {
+      "capability_id": "messages.send",
+      "capability_version": "1.0",
+      "effect": "business_write",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "time_zone": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scheduled_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "target_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "selected_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "message_blocks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "text",
+                    "image",
+                    "mini_program"
+                  ]
+                },
+                "content_ref": {
+                  "type": "object",
+                  "properties": {
+                    "ref": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "pattern": "[a-f0-9]{64}"
+                    },
+                    "version": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "ref",
+                    "sha256",
+                    "version"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "type",
+                "content_ref"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "policy_ref": {
+            "type": "object",
+            "properties": {
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "[a-f0-9]{64}"
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "ref",
+              "sha256",
+              "version"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "time_zone",
+          "scheduled_at",
+          "target_ids",
+          "selected_count",
+          "message_blocks",
+          "policy_ref"
+        ],
+        "additionalProperties": false
+      },
+      "status_stages": {
+        "accepted": [
+          "submitted",
+          "scheduled"
+        ],
+        "running": [
+          "scheduled"
+        ],
+        "succeeded": [
+          "sent"
+        ],
+        "failed": [
+          "failed"
+        ],
+        "unknown": [
+          "unknown"
+        ],
+        "cancelled": [
+          "cancelled"
+        ]
+      }
+    },
+    "task_query": {
+      "capability_id": "task.query",
+      "capability_version": "1.0",
+      "effect": "read",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "origin_call_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "origin_attempt_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "origin_operation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "platform_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "origin_call_id",
+          "origin_attempt_id",
+          "origin_operation",
+          "platform_ref"
+        ],
+        "additionalProperties": false
+      },
+      "status_stages": {
+        "succeeded": [
+          "queried"
+        ],
+        "failed": [
+          "failed"
+        ],
+        "unknown": [
+          "unknown"
+        ]
+      }
+    }
+  }
+}

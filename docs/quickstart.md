@@ -8,17 +8,17 @@
 
 ## 2. 取得固定版本
 
-可从 [v1.2.2 发布页](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/tag/v1.2.2)下载完整 ZIP 与 SHA256SUMS.txt。ZIP 解压后同样运行下列检查和安装命令；使用 Git 时，在客户选定的本地目录执行：
+可从 [v1.3.0 发布页](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/tag/v1.3.0)下载完整 ZIP 与 SHA256SUMS.txt。ZIP 解压后同样运行下列检查和安装命令；使用 Git 时，在客户选定的本地目录执行：
 
 ```bash
-git clone --branch v1.2.2 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
+git clone --branch v1.3.0 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
 cd private-domain-ai-skills
 python3 scripts/check_all.py
 ./install.sh --dry-run
 ./install.sh
 ```
 
-默认复制全部 15 项技能到用户主目录下的 `.agents/skills`。也可指定工作区或其他宿主的技能目录；本版本验证了 Codex 对工作区安装副本的原生识别：
+默认复制全部 16 项技能到用户主目录下的 `.agents/skills`。也可指定工作区或其他宿主的技能目录；本版本验证了 Codex 对工作区安装副本的原生识别：
 
 ```bash
 ./install.sh --target /path/to/customer-workspace/.agents/skills
@@ -32,11 +32,13 @@ python3 scripts/check_all.py
 
 ## 3. 核对宿主识别
 
-下一轮对话或重载宿主后，要求 Agent 列出已识别技能及实际路径，检查是否与 [manifest.json](../manifest.json) 的 15 项一致。能读取文件不等于宿主已加载。
+下一轮对话或重载宿主后，要求 Agent 列出已识别技能及实际路径，检查是否与 [manifest.json](../manifest.json) 的 16 项一致。能读取文件不等于宿主已加载。
 
 首条上岗指令：
 
-> 使用 $wechat-scrm-onboarding，复用我已提供的企业入口与业务资料，只读核对当前企业、工作号、权限和可用功能。列出可推进任务与缺口，并生成一份客户环境卡。暂不发送、排期、邀请或修改业务数据。
+> 使用 $wechat-scrm-operator，复用我已提供的企业入口与业务资料，检查实际可用控制工具及已登录会话，只读核对当前企业、工作号、权限和可用功能。列出可推进任务与缺口。仅本次安装/上岗请求不发送、排期、邀请或修改业务数据。
+
+完整的连接步骤和两条首个任务见 [SCRM 首次使用](scrm-quickstart.md)。新包不自动安装控制工具或登录客户系统。
 
 ## 4. 客户环境与首个任务
 
@@ -92,4 +94,14 @@ v1.2.0 → v1.2.1 仍是相同 15 项技能；A卷、方法许可及任务卡 1.
 
 未修改副本可以用 v1.2.1 或 v1.1.1 的完整包对同一目标执行 `--update` 回退，再用 v1.2.2 包重新升级。任务、客户配置和运行证据应一直保存在安装目录以外；回退只换技能文件，不转换或删除工作区卡片。v1.2.1 检查器会拒绝 1.2 卡片，v1.1.1 不提供该任务卡检查器；需要读取新卡时使用 v1.2.2 检查器。
 
-[本版本验证](verification-v1.2.2.md)分别记录新装、直升、客户修改保护、回退、再升级和宿主识别。真实工具适配与业务现场验收安排在后续 v1.3。
+[本版本验证](verification-v1.2.2.md)分别记录新装、直升、客户修改保护、回退、再升级和宿主识别。该历史版本未包含本套 SCRM 操作包；v1.3.0 增量与现场边界见下节。
+
+## v1.3.0 升级与回退
+
+完整包新增 wechat-scrm-operator，总数 16；原 15 项的名称和安装路径保持不变。先保留旧安装目录及安装回执的完整副本，在副本之外保存客户配置/任务，再用本版 --dry-run --update 与 --update。客户修改仍阻止覆盖。
+
+任务/结果卡仍为 1.2，继续读取 1.0/1.1；原逐对象回执仍为 1.0。新增 SCRM 绑定及调用/结果契约独立核验，不改写旧卡，不授予权限，也不替代 A卷的风险与证据检查。
+
+**不能直接用 15 项旧包覆盖降级 16 项安装。** 旧安装器会安全拒绝，保持原文件。需要回退时，在另一个目录恢复升级前的完整副本（含安装回执），或用旧固定版本重新安装到独立目录；核对宿主后切换到该目录，避免同时加载同名技能。保留 v1.3.0 副本与客户新记录供核对，不手工删除新增技能来绕过保护。
+
+[本版验证](verification-v1.3.0.md)记录安装、旧版本升级、拒绝覆盖降级、隔离恢复与再升级、原生识别及合成行为。真实客户 SCRM 仍需按部署/宿主/动作逐项验收；本版无默认启用的业务自动化。

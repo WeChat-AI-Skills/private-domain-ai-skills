@@ -16,7 +16,7 @@
 | --- | --- | --- | --- | --- | --- |
 | MOM-01 | 选题与排期 | 内容 Agent | 已有方法/脚本 | [moments-calendar](../../.agents/skills/moments-calendar/SKILL.md) | 主题、账号、时间、正文及素材版本明确；使用客户事实与业务时区 |
 | MOM-02 | 生成图文素材 | 内容 Agent | 部分覆盖 | [moments-calendar](../../.agents/skills/moments-calendar/SKILL.md) | 成品、素材需求和占位内容分别标明；图片生成与素材获取按环境接入 |
-| MOM-03 | 发布朋友圈 | 内容 Agent | 已有方法/脚本 | [wechat-scrm-moments](../../.agents/skills/wechat-scrm-moments/SKILL.md) | 逐账号查实际发布，排期不计发布成功；客户现场提交与发布尚未验收 |
+| MOM-03 | 发布朋友圈 | 内容 Agent | 已有方法/脚本 | [wechat-scrm-moments](../../.agents/skills/wechat-scrm-moments/SKILL.md)、[wechat-scrm-operator](../../.agents/skills/wechat-scrm-operator/SKILL.md) | 逐账号查实际发布，排期不计发布成功；提供本套SCRM图文页面操作档案；实际提交与到期发布仍需客户环境验证 |
 | MOM-04 | 跟进评论与私信 | 内容 Agent | 部分覆盖 | [wechat-scrm-friend-message](../../.agents/skills/wechat-scrm-friend-message/SKILL.md)、[customer-intake](../../.agents/skills/customer-intake/SKILL.md) | 核对对象、授权与回复结果；评论读取与身份衔接待适配 |
 
 上表的方法覆盖状态不等于客户现场已接入。外部工具能力按企业、工作号与动作单独验证，当前目录所有节点现场状态均为未验证。

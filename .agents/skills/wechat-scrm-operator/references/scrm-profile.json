@@ -1,0 +1,138 @@
+{
+  "schema_version": "scrm-profile/1.0",
+  "profile_id": "supplied-scrm-web",
+  "profile_version": "1.0",
+  "transport": "host_ui",
+  "live_status": "not_verified",
+  "method_status": "guided",
+  "supported_deployment_versions": [],
+  "scope_note": "提供宿主工具驱动的页面操作方法；客户部署、账号、字段与结果入口须现场核验。此档案不包含厂商API或控制服务。",
+  "tool_requirements": [
+    "select_customer_session",
+    "read_current_page_or_window",
+    "operate_observed_controls",
+    "upload_approved_assets_when_needed",
+    "read_original_task_and_object_results"
+  ],
+  "tool_requirements_note": "描述所需能力，不是可直接调用的工具名。使用宿主真实暴露且已获授权的工具。",
+  "onboarding_guide": "tool-and-session-check.md",
+  "recovery_guide": "readback-and-recovery.md",
+  "record_guide": "record-checks.md",
+  "operations": [
+    {
+      "operation_id": "moments_schedule",
+      "capability_id": "moments.submit",
+      "capability_version": "1.0",
+      "effect": "business_write",
+      "method_status": "guided",
+      "live_status": "not_verified",
+      "guide": "moments-operation.md",
+      "menu_aliases": [
+        ["朋友圈管理", "朋友圈任务", "发表朋友圈"],
+        ["朋友圈管理", "发圈管理", "发表朋友圈"]
+      ],
+      "required_fields": [
+        "租户与稳定工作号",
+        "最终正文",
+        "图片原件与顺序",
+        "绝对发布时间与业务时区",
+        "可见类型与对象",
+        "适用开关及附加评论",
+        "本次范围与最终版本授权"
+      ],
+      "readback": [
+        "原任务唯一标识",
+        "重开原任务核对保存字段",
+        "到期逐工作号发布结果及时间",
+        "附加评论单独核对",
+        "获授权观察账号另查客户侧可见性"
+      ],
+      "limitations": [
+        "图文为基础操作路径，其他媒体类型分别核验",
+        "定位与菜单不能采用固定坐标套用所有客户",
+        "排期保存不等于实际发布",
+        "修改与取消按当前任务状态及实际能力处理",
+        "本地检查不提供跨平台一次且仅一次保证"
+      ]
+    },
+    {
+      "operation_id": "message_send",
+      "capability_id": "messages.send",
+      "capability_version": "1.0",
+      "effect": "business_write",
+      "method_status": "guided",
+      "live_status": "not_verified",
+      "guide": "message-operation.md",
+      "menu_aliases": [
+        ["定时消息", "好友消息"],
+        ["微信管理", "群发配置", "好友消息"]
+      ],
+      "required_fields": [
+        "租户与稳定工作号",
+        "稳定好友对象与实际勾选数",
+        "最终消息内容、类型与顺序",
+        "绝对开始时间与业务时区",
+        "执行时间区间",
+        "已批准频控、额度与排除条件",
+        "本次范围与最终版本授权"
+      ],
+      "readback": [
+        "原任务唯一标识",
+        "原任务账号、对象、时间、内容与进度",
+        "原工作号逐对象出站内容及时间",
+        "缺失对象保留未知",
+        "客户阅读或回复另查证据"
+      ],
+      "limitations": [
+        "本路径是好友任务消息，不包含聚合聊天即时回复适配",
+        "文字和图片优先，原生卡片需现场类型验证",
+        "复制任务配置用于核对时不得再次提交",
+        "不默认启用长期欢迎、回访或加好友规则"
+      ]
+    },
+    {
+      "operation_id": "task_query",
+      "capability_id": "task.query",
+      "capability_version": "1.0",
+      "effect": "read",
+      "method_status": "guided",
+      "live_status": "not_verified",
+      "guide": "readback-and-recovery.md",
+      "menu_aliases": [
+        ["原业务任务列表", "原任务详情"],
+        ["原工作号", "本次对象出站记录"]
+      ],
+      "required_fields": [
+        "原租户与工作号",
+        "原业务操作类型",
+        "原任务ID或同等强度唯一定位依据",
+        "原对象范围、时间与最终内容版本"
+      ],
+      "readback": [
+        "原记录与当前查询的精确关联",
+        "原始状态文字与观察时间",
+        "逐账号或对象结果",
+        "仍未核实的范围"
+      ],
+      "limitations": [
+        "任务列表总状态不能代替逐对象业务结果",
+        "高敏读取仍按实际风险核对权限与证据",
+        "无唯一记录时保留未知，不据此重新提交"
+      ]
+    }
+  ],
+  "not_adapted": [
+    "聚合聊天即时回复",
+    "全部媒体和原生卡片类型",
+    "好友朋友圈点赞评论",
+    "持续自动化规则",
+    "自动加好友",
+    "远程协助",
+    "风控与财务记录全量查询",
+    "商品上架"
+  ],
+  "existing_skills_requiring_separate_site_checks": [
+    "wechat-scrm-group-invite",
+    "wechat-scrm-friend-cleanup"
+  ]
+}
