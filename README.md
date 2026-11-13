@@ -2,6 +2,8 @@
 
 **悦榕私域智能系统 · 客户 Agent 的上岗与运营技能库**
 
+本仓库是 WeChat-AI-Skills 的唯一正式维护与发布入口，后续由 Codex 统一迭代。客户安装请使用[正式版本发布页](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/latest)中的固定版本。
+
 让客户自己的 Agent 理解业务、学会运营方法，并在客户授权的系统中执行任务、核对结果。负责人定目标和规则，Agent 完成准备、执行与交接，复盘再改进下一轮工作。
 
 ![悦榕私域智能系统](assets/cover-v2.jpg)
