@@ -14,5 +14,6 @@
 | 加购未购核验 | [audit-youzan-cart-nonbuyers](../../audit-youzan-cart-nonbuyers/SKILL.md) | 已授权且可对账的两份输入 |
 | 关系核对或指定名单清理 | [wechat-scrm-friend-cleanup](../../wechat-scrm-friend-cleanup/SKILL.md) | 只核查或按具体删除授权执行 |
 | 复盘与规则候选 | [sales-review](../../sales-review/SKILL.md) | 有写回权限和入口才更新系统 |
+| 提交超时、部分完成、执行后核对 | [task-reconcile](../../task-reconcile/SKILL.md) | 只读查原任务，逐对象归类，未知不重发 |
 
 例如“排一周朋友圈并提交”：先生成有事实依据的最终图文与带时区排期，核对整批授权，再提交，最后查原任务。单纯“写文案”只交付草稿。

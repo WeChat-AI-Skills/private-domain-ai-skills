@@ -1,62 +1,367 @@
 {
   "name": "wechat-ai-skills",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "registry_version": "1.0",
+  "receipt_contract_version": "1.0",
   "skills": [
     {
       "name": "audit-youzan-cart-nonbuyers",
-      "path": ".agents/skills/audit-youzan-cart-nonbuyers"
+      "path": ".agents/skills/audit-youzan-cart-nonbuyers",
+      "domain": "activity",
+      "inputs": [
+        "同口径加购与订单记录"
+      ],
+      "outputs": [
+        "去重排除与口径核验报告"
+      ],
+      "execution_kind": "local_script",
+      "dependencies": [],
+      "resources": [
+        "agents/openai.yaml",
+        "references/youzan-data-contract.md",
+        "scripts/audit_youzan_cart_nonbuyers.py"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "campaign-invite",
-      "path": ".agents/skills/campaign-invite"
+      "path": ".agents/skills/campaign-invite",
+      "domain": "activity",
+      "inputs": [
+        "活动规则、对象与联系偏好"
+      ],
+      "outputs": [
+        "筛选方案、分层邀约与漏斗口径"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "private-domain-ops",
+        "wechat-scrm-friend-message",
+        "wechat-scrm-group-invite"
+      ],
+      "resources": [
+        "LICENSE.txt",
+        "references/run-of-show.md",
+        "references/segmentation.md"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "customer-intake",
-      "path": ".agents/skills/customer-intake"
+      "path": ".agents/skills/customer-intake",
+      "domain": "customer",
+      "inputs": [
+        "咨询与获授权的商品服务资料"
+      ],
+      "outputs": [
+        "需求事实、缺口与回复草稿"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "customer-profile",
+        "private-domain-ops",
+        "wechat-scrm-friend-message"
+      ],
+      "resources": [
+        "LICENSE.txt",
+        "references/question-bank.md",
+        "references/reply-patterns.md"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "customer-profile",
-      "path": ".agents/skills/customer-profile"
+      "path": ".agents/skills/customer-profile",
+      "domain": "customer",
+      "inputs": [
+        "稳定身份、历史和当前需求证据"
+      ],
+      "outputs": [
+        "五维状态、字段 diff 与冲突"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "private-domain-ops"
+      ],
+      "resources": [
+        "LICENSE.txt",
+        "references/profile-schema.md",
+        "references/tag-system.md"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "followup-plan",
-      "path": ".agents/skills/followup-plan"
+      "path": ".agents/skills/followup-plan",
+      "domain": "followup",
+      "inputs": [
+        "需求、联系偏好和已批准频控"
+      ],
+      "outputs": [
+        "跟进计划、停止条件与执行交接"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "private-domain-ops",
+        "wechat-scrm-friend-message"
+      ],
+      "resources": [
+        "LICENSE.txt",
+        "references/frequency-rules.md",
+        "references/stage-playbook.md"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "moments-calendar",
-      "path": ".agents/skills/moments-calendar"
+      "path": ".agents/skills/moments-calendar",
+      "domain": "content",
+      "inputs": [
+        "目标、素材和批准的内容规则"
+      ],
+      "outputs": [
+        "图文方案与带时区排期"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "private-domain-ops",
+        "wechat-scrm-moments"
+      ],
+      "resources": [
+        "LICENSE.txt",
+        "references/content-pillars.md",
+        "references/publish-checklist.md"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "private-domain-ops",
-      "path": ".agents/skills/private-domain-ops"
+      "path": ".agents/skills/private-domain-ops",
+      "domain": "onboarding",
+      "inputs": [
+        "业务目标、环境与授权"
+      ],
+      "outputs": [
+        "任务路由、执行交接与汇总"
+      ],
+      "execution_kind": "orchestration",
+      "dependencies": [
+        "audit-youzan-cart-nonbuyers",
+        "campaign-invite",
+        "customer-intake",
+        "customer-profile",
+        "followup-plan",
+        "moments-calendar",
+        "sales-review",
+        "task-reconcile",
+        "wechat-activity-customer-handoff",
+        "wechat-scrm-friend-cleanup",
+        "wechat-scrm-friend-message",
+        "wechat-scrm-group-invite",
+        "wechat-scrm-moments",
+        "wechat-scrm-onboarding"
+      ],
+      "resources": [
+        "LICENSE.txt",
+        "references/authorization.md",
+        "references/handoff.md",
+        "references/routing.md"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "sales-review",
-      "path": ".agents/skills/sales-review"
+      "path": ".agents/skills/sales-review",
+      "domain": "results",
+      "inputs": [
+        "同口径任务、结果及业务数据"
+      ],
+      "outputs": [
+        "复盘、候选规则与验证计划"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "private-domain-ops"
+      ],
+      "resources": [
+        "LICENSE.txt",
+        "references/evidence.md",
+        "references/rule-card.md"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
+    },
+    {
+      "name": "task-reconcile",
+      "path": ".agents/skills/task-reconcile",
+      "domain": "results",
+      "inputs": [
+        "原任务、原名单和逐对象查询证据"
+      ],
+      "outputs": [
+        "六类互斥状态、计数与待办"
+      ],
+      "execution_kind": "local_script_and_guided",
+      "dependencies": [
+        "private-domain-ops",
+        "sales-review"
+      ],
+      "resources": [
+        "references/receipt-contract.md",
+        "scripts/mock_scrm.py",
+        "scripts/reconcile.py"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "wechat-activity-customer-handoff",
-      "path": ".agents/skills/wechat-activity-customer-handoff"
+      "path": ".agents/skills/wechat-activity-customer-handoff",
+      "domain": "activity",
+      "inputs": [
+        "活动礼赠规则、问题和人工服务入口"
+      ],
+      "outputs": [
+        "答疑草稿、员工交接与处理回执"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [],
+      "resources": [
+        "references/synthetic-cases.md",
+        "references/work-card.md"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "wechat-scrm-friend-cleanup",
-      "path": ".agents/skills/wechat-scrm-friend-cleanup"
+      "path": ".agents/skills/wechat-scrm-friend-cleanup",
+      "domain": "followup",
+      "inputs": [
+        "稳定好友名单、关系证据与清理授权"
+      ],
+      "outputs": [
+        "关系核验、清理任务与逐人回读"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "wechat-scrm-onboarding"
+      ],
+      "resources": [],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "wechat-scrm-friend-message",
-      "path": ".agents/skills/wechat-scrm-friend-message"
+      "path": ".agents/skills/wechat-scrm-friend-message",
+      "domain": "followup",
+      "inputs": [
+        "工作号、对象、最终内容及授权"
+      ],
+      "outputs": [
+        "消息提交与出站核验"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "wechat-scrm-onboarding"
+      ],
+      "resources": [],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "wechat-scrm-group-invite",
-      "path": ".agents/skills/wechat-scrm-group-invite"
+      "path": ".agents/skills/wechat-scrm-group-invite",
+      "domain": "activity",
+      "inputs": [
+        "群资格、同意、对象与邀请授权"
+      ],
+      "outputs": [
+        "邀请任务和成员状态核验"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "wechat-scrm-onboarding"
+      ],
+      "resources": [],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "wechat-scrm-moments",
-      "path": ".agents/skills/wechat-scrm-moments"
+      "path": ".agents/skills/wechat-scrm-moments",
+      "domain": "content",
+      "inputs": [
+        "图文、账号、时区排期与授权"
+      ],
+      "outputs": [
+        "排期或修改记录、逐账号发布核验"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "wechat-scrm-onboarding"
+      ],
+      "resources": [],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     },
     {
       "name": "wechat-scrm-onboarding",
-      "path": ".agents/skills/wechat-scrm-onboarding"
+      "path": ".agents/skills/wechat-scrm-onboarding",
+      "domain": "onboarding",
+      "inputs": [
+        "企业入口、工作号、业务资料与读取授权"
+      ],
+      "outputs": [
+        "环境卡、可用入口、权限与缺口"
+      ],
+      "execution_kind": "guided",
+      "dependencies": [
+        "private-domain-ops"
+      ],
+      "resources": [
+        "references/customer-setup.md",
+        "references/operation-receipts.md"
+      ],
+      "validation_evidence": [
+        "docs/verification-v1.1.0.md"
+      ],
+      "live_status": "not_verified"
     }
   ]
 }

@@ -171,6 +171,53 @@ def main() -> int:
     actual_paths = {p.relative_to(ROOT).as_posix() for p in skill_dirs}
     if manifest_paths != actual_paths or len(manifest["skills"]) != len(skill_dirs):
         err("manifest.json: skill list differs from actual directories")
+    if manifest.get("registry_version") != "1.0":
+        err("manifest.json: unsupported registry version")
+    for row in manifest["skills"]:
+        name = row["name"]
+        if row["path"] != f".agents/skills/{name}":
+            err(f"manifest.json: path/name mismatch for {name}")
+        if row.get("domain") not in {"onboarding", "customer", "followup", "content", "activity", "results"}:
+            err(f"manifest.json: unknown domain for {name}")
+        for field in ("inputs", "outputs", "validation_evidence"):
+            values = row.get(field)
+            if not isinstance(values, list) or not values or not all(isinstance(v, str) and v.strip() for v in values):
+                err(f"manifest.json: invalid {field} for {name}")
+        if row.get("execution_kind") not in {"guided", "orchestration", "local_script", "local_script_and_guided"}:
+            err(f"manifest.json: invalid execution_kind for {name}")
+        if row.get("live_status") != "not_verified":
+            err(f"manifest.json: live_status requires a new evidence-aware registry version for {name}")
+        dependencies = row.get("dependencies", [])
+        if not isinstance(dependencies, list) or any(d not in names or d == name for d in dependencies):
+            err(f"manifest.json: invalid dependency for {name}")
+        referenced = set()
+        for md in (SKILLS / name).rglob("*.md"):
+            for target in LINK_RE.findall(md.read_text(encoding="utf-8")):
+                if target.startswith(("http://", "https://", "mailto:", "#")):
+                    continue
+                resolved = (md.parent / target.split("#", 1)[0]).resolve()
+                if resolved.is_relative_to(SKILLS.resolve()):
+                    dependency = resolved.relative_to(SKILLS.resolve()).parts[0]
+                    if dependency != name:
+                        referenced.add(dependency)
+        if isinstance(dependencies, list) and not referenced.issubset(set(dependencies)):
+            err(f"manifest.json: undeclared cross-skill references for {name}")
+        resources = row.get("resources", [])
+        if not isinstance(resources, list) or len(resources) != len(set(resources)):
+            err(f"manifest.json: invalid resources for {name}")
+        else:
+            actual_resources = {p.relative_to(SKILLS / name).as_posix() for p in (SKILLS / name).rglob("*")
+                                if p.is_file() and p.name != "SKILL.md" and "__pycache__" not in p.parts}
+            if set(resources) != actual_resources:
+                err(f"manifest.json: resources differ from installed files for {name}")
+            for resource in resources:
+                resolved = (SKILLS / name / resource).resolve()
+                if not resolved.is_relative_to((SKILLS / name).resolve()) or not resolved.is_file():
+                    err(f"manifest.json: missing/escaping resource for {name}: {resource}")
+        for evidence in row.get("validation_evidence", []):
+            resolved = (ROOT / evidence).resolve()
+            if not resolved.is_relative_to(ROOT) or not resolved.is_file():
+                err(f"manifest.json: missing/escaping validation evidence for {name}")
     for md in ROOT.rglob("*.md"):
         if ".git" not in md.parts:
             check_links(md)

@@ -23,3 +23,9 @@
 | metrics.query | 口径、时间窗口、去重、缺失与归因范围 |
 
 具体字段和响应以实际接口文档为准。服务端负责真实权限校验；技能文本不替代系统控制。对未知结果先查原任务，不按固定重试次数重复提交。
+
+## v1.1.0 可运行的模拟契约
+
+[结果契约 1.0](../.agents/skills/task-reconcile/references/receipt-contract.md)和本地 SQLite 模拟器覆盖明确单次/批次命令绑定、必需授权/证据字段、持久幂等键、超时查询、逐对象结果及阶段校验。运行 `python3 .agents/skills/task-reconcile/scripts/mock_scrm.py --demo` 可复现。
+
+模拟器不联网，不能发送消息；它不是上述候选 API 的生产实现，也未验证持续授权、真实用户鉴权或客户联系意愿。真实平台适配仍需核实接口能力和客户环境授权。

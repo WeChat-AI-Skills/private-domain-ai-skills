@@ -6,13 +6,13 @@
 
 ![悦榕私域智能系统](assets/cover-v2.jpg)
 
-**第一版：v1.0.0 · 2026-11-13**。包含 14 项技能、安装程序、客户上岗模板和合成示例。首个适配宿主为 Codex；安装与识别、客户系统接入、业务执行分别验收，详见[能力状态](docs/capability-status.md)。
+**当前版本：v1.1.0 · 2026-11-13**。包含 15 项技能、安装程序、客户上岗模板和合成示例。首个适配宿主为 Codex；安装与识别、客户系统接入、业务执行分别验收，详见[能力状态](docs/capability-status.md)。
 
 ## 给客户的开始方式
 
 把本仓库交给客户自己的 Codex，并附上这段话：
 
-> 请阅读 README 和 docs/quickstart.md，安装 v1.0.0 的完整技能包。保留我已有的技能和配置，核对 14 项技能能否被识别。然后用 wechat-scrm-onboarding 检查我提供的 SCRM 入口、账号、业务资料和权限。本次先做只读上岗检查，告诉我能做什么、还缺什么，以及如何完成第一个任务。
+> 请阅读 README 和 docs/quickstart.md，安装 v1.1.0 的完整技能包。保留我已有的技能和配置，核对 15 项技能能否被识别。然后用 wechat-scrm-onboarding 检查我提供的 SCRM 入口、账号、业务资料和权限。本次先做只读上岗检查，告诉我能做什么、还缺什么，以及如何完成第一个任务。
 
 [安装与首次上岗](docs/quickstart.md) · [客户环境卡](.agents/skills/wechat-scrm-onboarding/references/customer-setup.md) · [版本记录](CHANGELOG.md)
 
@@ -46,6 +46,7 @@
 
 | 技能 | 用途 |
 | --- | --- |
+| [task-reconcile](.agents/skills/task-reconcile/SKILL.md) | 原任务查询、逐对象状态与部分完成核对 |
 | [wechat-scrm-onboarding](.agents/skills/wechat-scrm-onboarding/SKILL.md) | 首次核对企业、账号、权限和可用入口 |
 | [wechat-scrm-moments](.agents/skills/wechat-scrm-moments/SKILL.md) | 朋友圈图文排期、原地修改、结果回读 |
 | [wechat-scrm-friend-message](.agents/skills/wechat-scrm-friend-message/SKILL.md) | 指定好友或名单的消息准备、提交与核验 |
@@ -56,10 +57,10 @@
 
 ## 使用、反馈与迭代
 
-使用 [3 组合成示例](examples/README.md)检查需求识别、排期和名单核对，再在客户环境完成一个明确授权的小范围任务。真实客户资料、凭据与回执存于客户工作区。
+使用 [合成示例](examples/README.md)检查需求识别、排期和名单核对，再在客户环境完成一个明确授权的小范围任务。真实客户资料、凭据与回执存于客户工作区。
 
 反馈带上版本、使用场景、预期、实际结果及脱敏复现步骤。每次迭代更新 [CHANGELOG](CHANGELOG.md)、示例和[能力状态](docs/capability-status.md)，发布固定版本；安装副本按用户选择更新。
 
 后续优先验证“上岗 → 朋友圈排期 → 实际结果”，再根据客户反馈改进接待、跟进、活动与复盘。工具服务端和商品上下架适配列为后续工作。
 
-[运营方法](docs/method.md) · [授权规则](docs/boundaries.md) · [接入说明](docs/tool-contract.md) · [许可范围](NOTICE.md)
+[能力目录与迭代路线](docs/iteration-roadmap.md) · [技能登记](manifest.json) · [运营方法](docs/method.md) · [授权规则](docs/boundaries.md) · [接入说明](docs/tool-contract.md) · [许可范围](NOTICE.md)

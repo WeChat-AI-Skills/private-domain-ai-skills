@@ -11,14 +11,14 @@
 在客户选定的本地目录执行：
 
 ```bash
-git clone --branch v1.0.0 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
+git clone --branch v1.1.0 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
 cd private-domain-ai-skills
 python3 scripts/validate_skills.py
 ./install.sh --dry-run
 ./install.sh
 ```
 
-默认复制全部 14 项技能到用户主目录下的 `.agents/skills`，这是本次 Codex 原生枚举实际读取的用户技能位置。也可指定工作区或其他宿主的技能目录：
+默认复制全部 15 项技能到用户主目录下的 `.agents/skills`，这是本次 Codex 原生枚举实际读取的用户技能位置。也可指定工作区或其他宿主的技能目录：
 
 ```bash
 ./install.sh --target /path/to/customer-workspace/.agents/skills
@@ -32,7 +32,7 @@ python3 scripts/validate_skills.py
 
 ## 3. 核对宿主识别
 
-下一轮对话或重载宿主后，要求 Agent 列出已识别技能及实际路径，检查是否与 [manifest.json](../manifest.json) 的 14 项一致。能读取文件不等于宿主已加载。
+下一轮对话或重载宿主后，要求 Agent 列出已识别技能及实际路径，检查是否与 [manifest.json](../manifest.json) 的 15 项一致。能读取文件不等于宿主已加载。
 
 首条上岗指令：
 
@@ -54,6 +54,8 @@ python3 scripts/validate_skills.py
 ```
 
 自定义目标时两条命令都加上同一个 `--target`。更新只接受有本包安装回执且未被本地修改的技能；其他同名技能不会被覆盖。旧版本检出后也可用同样方式回退，但先检查版本迁移说明。
+
+v1.0.0 → v1.1.0 会新增 task-reconcile。反向回退时旧版清单缺少这项技能，安装器会阻止覆盖；请先在另一个目录安装并验证 v1.0.0，再切换宿主的技能目录，保留原副本供恢复，避免同时加载两个版本。
 
 更新后重新核对宿主识别、相关合成案例与客户环境变化。客户业务配置和执行回执独立保存，升级不改动这些资料。
 

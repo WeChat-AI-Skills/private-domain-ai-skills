@@ -1,12 +1,14 @@
 # 示例
 
-三个合成场景，用来演示输出格式，也可以当作评测用例：
+五个合成场景，用来演示输出格式，也可以当作评测用例：
 
 | 示例 | 对应技能 | 看什么 |
 | --- | --- | --- |
 | [night-inquiry](night-inquiry/input.md) | `customer-intake` | 一句话拆需求、只问一个关键问题、不承诺时效 |
 | [week-of-moments](week-of-moments/input.md) | `moments-calendar` | 把"别刷屏"变成规则、不补造商品事实、日期与时区正确 |
 | [campaign-invite](campaign-invite/input.md) | `campaign-invite` | 交集不明保留未知、计划与执行分开 |
+| [customer-state](customer-state/input.md) | `customer-profile` | 复购与当前意向并存、活动拒绝范围、拒营销与售后分开 |
+| [task-results](task-results/input.md) | `task-reconcile` | 超时回查、7/2/1 结果、排期与发布分开 |
 
 ## 怎么用
 
