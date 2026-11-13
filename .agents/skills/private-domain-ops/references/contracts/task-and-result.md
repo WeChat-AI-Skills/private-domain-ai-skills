@@ -57,6 +57,6 @@ context_refs 指向客户受控工作区的资料；只传完成任务需要的�
 
 1.1 另外必填 principles_applied、unverified、falsifiers，均为不重复的字符串列表，可空。principles_applied 只能用 facts、first_principles、adversarial_review；仅记录确实应用的方法。完成 L0 任务至少 facts；完成 L1–L3 或声明新动作需三关。受阻任务只列已经应用的部分。unverified 列仍未核实的项（解决过的未知在 evidence_refs 留消解依据）；falsifiers 列推翻当前判断的信号或停止条件，机械任务可为空。
 
-requires_human 已是原结果字段，不重复建立第二个含义。尚待人工决定或审查时 action_refs 必须为空。L3 新动作的任务卡须声明 independent 并给 human_approval_ref；这只是结构约束，执行者仍须核对真实审查与签核。完成草稿不证明高风险业务已获放行。
+requires_human 已是原结果字段，不重复建立第二个含义。尚待人工决定或审查时 action_refs 必须为空。L3 新动作，以及 readonly/execute 模式的 completed 结果，均须声明 independent、给 human_approval_ref，且任务和结果均无待人工决定。高敏读取/导出即使 action_refs 为空，也不能绕过这个完成检查。只有明确 draft 模式的完成表示内部准备，不证明高风险业务已获放行。这只是声明一致性的结构约束，执行者仍须核对真实审查与签核。
 
 目录工具可检查这些必填项、引用与一致性，不能鉴别证据真伪、执行生产权限或启动 Agent。原系统回读、授权判断和宿主委派仍需执行者实际完成。

@@ -146,12 +146,17 @@ def check_result(result: dict, task: dict, data: dict) -> None:
             required = {"facts"} if task["risk_level"] == "L0" else PRINCIPLES
             if not required <= set(result["principles_applied"]):
                 raise ValueError("Completed work needs applicable principles record")
-        if result["action_refs"]:
+        # Sensitive reads/exports are not writes, so action_refs can legitimately be empty.
+        # Only explicit draft completion remains preparation rather than L3 execution.
+        l3_execution = task["risk_level"] == "L3" and (
+            bool(result["action_refs"]) or
+            (result["task_state"] == "completed" and task["execution_mode"] != "draft"))
+        if result["action_refs"] or l3_execution:
             if task["requires_human"] or result["requires_human"] or task["review_mode"] == "pending":
-                raise ValueError("Cannot claim new actions while review/human decision is pending")
-            if task["risk_level"] == "L3":
+                raise ValueError("Cannot claim execution while review/human decision is pending")
+            if l3_execution:
                 if task["review_mode"] != "independent":
-                    raise ValueError("L3 action requires independent review")
+                    raise ValueError("L3 execution requires independent review")
                 required_text(task, ["human_approval_ref"])
 
 

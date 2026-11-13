@@ -63,6 +63,24 @@ class PrinciplesTests(unittest.TestCase):
         self.result.update(task_state='waiting_authorization', requires_human=True, principles_applied=['facts'])
         self.check()  # Risk is not mechanically derived from readonly.
 
+    def test_l3_readonly_completion_needs_review_and_signoff(self):
+        self.task.update(risk_level='L3', execution_mode='readonly')
+        for update in ({'review_mode': 'self_review'}, {'review_mode': 'pending'},
+                       {'review_mode': 'independent'},
+                       {'review_mode': 'independent', 'human_approval_ref': 'synthetic-signoff', 'requires_human': True}):
+            with self.subTest(update=update), self.assertRaises(ValueError):
+                self.m.check_result(self.result, {**self.task, **update}, self.data)
+        self.task.update(review_mode='independent', human_approval_ref='synthetic-signoff')
+        self.check()
+
+    def test_l3_execute_cannot_evade_completion_gate_with_empty_actions(self):
+        self.execute();self.result['action_refs'] = []
+        with self.assertRaises(ValueError):
+            self.check()
+        self.task.update(execution_mode='draft', review_mode='pending', requires_human=True)
+        self.result['requires_human'] = True
+        self.check()  # A completed local draft is not permission to perform the L3 action.
+
     def test_cannot_label_execute_as_low_risk(self):
         for risk in ('L0', 'L1'):
             self.execute(risk)
