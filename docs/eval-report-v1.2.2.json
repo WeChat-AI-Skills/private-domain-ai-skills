@@ -1,0 +1,93 @@
+{
+  "schema_version": "release-evaluation/1.0",
+  "package_version": "1.2.2",
+  "tested_commit": "ee7bc1a89bf237cde4511062e7788be97b7e2b34",
+  "tested_commit_scope": "implementation commit; release finalization adds only public documentation and synthetic evidence",
+  "install_payload_sha256": "3b5a13bd637ac07d27e78adca6422d2666c466aee75e313578b373ef3ba9ee24",
+  "date": "2026-11-13",
+  "python_version": "3.12.15",
+  "automated_tests": {
+    "test_methods": 77,
+    "passed": 77,
+    "failed": 0,
+    "evidence_tests": 21,
+    "legacy_principles_tests": 14,
+    "architecture_tests": 17,
+    "installer_tests": 8,
+    "reconciliation_tests": 17,
+    "command": "python3 scripts/check_all.py"
+  },
+  "static_validation": {
+    "skills": 15,
+    "errors": 0,
+    "warnings": 0,
+    "domains": 7,
+    "nodes": 28,
+    "roles": 6,
+    "workflows": 3,
+    "generated_docs_current": true,
+    "skill_creator_checks_passed": 15
+  },
+  "installation": {
+    "fresh_install_skills": 15,
+    "fresh_install_files": 69,
+    "hashes_match": true,
+    "direct_upgrades": [
+      "1.1.1 -> 1.2.2",
+      "1.2.1 -> 1.2.2"
+    ],
+    "downgrade_and_reupgrade": [
+      "1.2.2 -> 1.1.1 -> 1.2.2",
+      "1.2.2 -> 1.2.1 -> 1.2.2"
+    ],
+    "customer_modifications_preserved": true,
+    "task_files_preserved": true,
+    "unrelated_skills_preserved": true,
+    "legacy_contracts_read": [
+      "task-card/1.0 + agent-result/1.0",
+      "task-card/1.1 + agent-result/1.1"
+    ],
+    "downgrade_1_2_1_rejects_contract_1_2": true,
+    "downgrade_1_1_1_contract_checker": "not_available"
+  },
+  "native_host": {
+    "version": "codex-cli 0.167.0-alpha.4.1",
+    "method": "skills/list",
+    "skills": 15,
+    "enabled": 15,
+    "errors": 0,
+    "scope": "isolated workspace installation and native discovery"
+  },
+  "independent_code_review": {
+    "probe_cases": 28,
+    "passed": 28,
+    "failed": 0,
+    "open_blocking_findings": 0,
+    "context": "separate reviewer process, inherited project history; not blind review"
+  },
+  "independent_behavior": {
+    "cases": 12,
+    "passed": 12,
+    "failed": 0,
+    "executor_context": "fresh; installed skills and raw variant inputs only",
+    "reviewer_context": "separate fresh context with inputs, actual answers and criteria",
+    "evidence": [
+      "examples/v1.2.2-behavior/input.md",
+      "examples/v1.2.2-behavior/answers.md",
+      "examples/v1.2.2-behavior/rubric.json",
+      "examples/v1.2.2-behavior/review.json"
+    ]
+  },
+  "public_distribution": {
+    "status_at_source_freeze": "post_publication_check_pending",
+    "evidence_url": "https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/download/v1.2.2/release-acceptance.json"
+  },
+  "unknowns": [
+    "customer systems and real adapters",
+    "other Agent hosts",
+    "actual identities, source authenticity and authorization",
+    "customer business acceptance and customer score"
+  ],
+  "live_status": "not_verified",
+  "customer_score": null
+}

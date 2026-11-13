@@ -10,3 +10,5 @@
 
 - [验证口径](evaluation.md)：工程验证、客户现场验收和客户评分分别记录。
 - [随包失败案例](../.agents/skills/private-domain-ops/references/failure-cases.md)、[恢复与审查记录](../.agents/skills/private-domain-ops/references/recovery-and-review.md)。
+
+- [v1.2.2 机器验证报告](eval-report-v1.2.2.json)。
