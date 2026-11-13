@@ -143,7 +143,7 @@ def check_readme() -> None:
     for skill in sorted(p.name for p in SKILLS.iterdir() if p.is_dir()):
         if skill not in text:
             warn(f"README.md: skill {skill!r} not mentioned")
-    for asset in ("cover.jpg", "scene-intake.jpg", "scene-moments.jpg", "scene-campaign.jpg"):
+    for asset in ("cover-v2.jpg", "architecture.jpg", "scene-intake.jpg", "scene-moments.jpg", "scene-campaign.jpg"):
         if not (ROOT / "assets" / asset).is_file():
             err(f"assets/{asset}: missing")
 
