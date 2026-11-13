@@ -4,15 +4,17 @@
 
 围绕客户的需求、意图与体验，把业务判断、内容准备、系统操作和结果核对整理成客户自己的 Agent 可以安装使用的技能。
 
-**当前版本：v1.3.0 · 2026-11-13。** 保留原有 15 项技能，新增 **SCRM 操作包 `wechat-scrm-operator`**，共 16 项。客户 Codex 可按随包指引检查实际工具与 SCRM 会话，开展图文朋友圈、任务式好友消息及结果查询。现场执行依赖客户可用的控制工具、登录和业务授权；本版先交付安装包、操作指引与离线核验，真实客户 SCRM 尚未验收。
+**当前版本：v1.3.1 · 2026-11-13。** 保留原有 15 项技能，新增 **SCRM 操作包 `wechat-scrm-operator`**，共 16 项。客户 Codex 可按随包指引检查实际工具与 SCRM 会话，开展图文朋友圈、任务式好友消息及结果查询。现场执行依赖客户可用的控制工具、登录和业务授权；本版先交付安装包、操作指引与离线核验，真实客户 SCRM 尚未验收。
 
 七类目录、28 个节点和六个角色保持不变，旧任务卡继续可读。详见[技能树总览](docs/skill-tree-overview.md)和[能力状态](docs/capability-status.md)。
 
 [开始安装](docs/quickstart.md) · [连接 SCRM](docs/scrm-quickstart.md) · [正式版本](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/latest) · [第一次演练](.agents/skills/private-domain-ops/references/examples/first-task.md) · [文档目录](docs/README.md)
 
+本次修订统一[已排期任务修改规则](.agents/skills/wechat-scrm-onboarding/references/operation-receipts.md#scheduled-task-changes)：内容修改原地保存，异常停在原任务；整批更换名单/账号且原任务无法修改时由企业指定负责人决定。见[变更与三场景验收](docs/verification-v1.3.1.md)。
+
 ## 给客户 Agent 的安装指令
 
-> 请阅读 https://github.com/WeChat-AI-Skills/private-domain-ai-skills 的 README 和 docs/quickstart.md，安装或升级到固定版本 v1.3.0 的完整 16 项技能，保留我已有技能和修改，核对 Codex 是否识别。然后使用 wechat-scrm-operator，复用我提供的 SCRM 入口和已登录会话，检查可用控制工具并完成只读上岗。告诉我可以推进的操作、缺口和现场未验证项。仅有安装请求时，不发送、不发布、不邀请，也不启用自动化。
+> 请阅读 https://github.com/WeChat-AI-Skills/private-domain-ai-skills 的 README 和 docs/quickstart.md，安装或升级到固定版本 v1.3.1 的完整 16 项技能，保留我已有技能和修改，核对 Codex 是否识别。然后使用 wechat-scrm-operator，复用我提供的 SCRM 入口和已登录会话，检查可用控制工具并完成只读上岗。告诉我可以推进的操作、缺口和现场未验证项。仅有安装请求时，不发送、不发布、不邀请，也不启用自动化。
 
 公开浏览和下载无需 GitHub 登录。首个适配宿主是 Codex；其他 Agent/Cortex 等宿主需单独核对技能目录、识别和使用结果。安装包不包含业务账号或私有运行服务依赖；实际执行使用客户自己的工具、资料与授权。
 

@@ -10,7 +10,7 @@ license: MIT
 
 本场景停止条件：专业角色自报、模型赞同与脚本字段校验不证明真实执行；总控核对原任务证据再汇总。缺必要条件时停止受影响的后续外部动作，同时保留历史 `action_refs`、部分完成和未知记录。参照[角色结论与原始证据](references/failure-cases.md#case-10)；L3 或涉及独立审查、恢复时读取[恢复与审查记录](references/recovery-and-review.md)。
 
-让客户自己的 Agent 把经营目标落实为可核对的任务。当前包 v1.3.0 保留原 15 项技能，新增 [SCRM 操作包](../wechat-scrm-operator/SKILL.md)，共 16 项；七类能力的 28 个节点包含待建设项。单个明确任务可直接进入对应技能，不必调用全部角色。
+让客户自己的 Agent 把经营目标落实为可核对的任务。当前包 v1.3.1 保留原 15 项技能，新增 [SCRM 操作包](../wechat-scrm-operator/SKILL.md)，共 16 项；七类能力的 28 个节点包含待建设项。单个明确任务可直接进入对应技能，不必调用全部角色。
 
 首次安装且无业务连接时，可先完成[随包演练](references/examples/first-task.md)。按需读取[七类目录](references/catalog/skill-tree.json)定位节点和当前缺口。可在本技能目录运行 `python3 scripts/catalog.py --domain moments`，也支持 `--node MOM-03`、`--role content-agent`、`--workflow moments-delivery`；查询工具不联网、不执行业务。
 

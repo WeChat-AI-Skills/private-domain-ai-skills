@@ -8,10 +8,10 @@
 
 ## 2. 取得固定版本
 
-可从 [v1.3.0 发布页](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/tag/v1.3.0)下载完整 ZIP 与 SHA256SUMS.txt。ZIP 解压后同样运行下列检查和安装命令；使用 Git 时，在客户选定的本地目录执行：
+可从 [v1.3.1 发布页](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/tag/v1.3.1)下载完整 ZIP 与 SHA256SUMS.txt。ZIP 解压后同样运行下列检查和安装命令；使用 Git 时，在客户选定的本地目录执行：
 
 ```bash
-git clone --branch v1.3.0 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
+git clone --branch v1.3.1 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
 cd private-domain-ai-skills
 python3 scripts/check_all.py
 ./install.sh --dry-run
@@ -105,3 +105,9 @@ v1.2.0 → v1.2.1 仍是相同 15 项技能；A卷、方法许可及任务卡 1.
 **不能直接用 15 项旧包覆盖降级 16 项安装。** 旧安装器会安全拒绝，保持原文件。需要回退时，在另一个目录恢复升级前的完整副本（含安装回执），或用旧固定版本重新安装到独立目录；核对宿主后切换到该目录，避免同时加载同名技能。保留 v1.3.0 副本与客户新记录供核对，不手工删除新增技能来绕过保护。
 
 [本版验证](verification-v1.3.0.md)记录安装、旧版本升级、拒绝覆盖降级、隔离恢复与再升级、原生识别及合成行为。真实客户 SCRM 仍需按部署/宿主/动作逐项验收；本版无默认启用的业务自动化。
+
+## v1.3.1 规则修订
+
+v1.3.0 可用本版完整包执行 --dry-run --update、--update 升级，仍为16项；被客户修改的副本继续阻止覆盖。任务卡和运行代码未改变。本次更新已排期任务的内容修改、原任务回读、失败停报与负责人取消决策规则，朋友圈、好友消息及SCRM操作包共用提交回执第5条。不要只复制一个SKILL.md而漏掉随包参考。
+
+[修订与三场景验证](verification-v1.3.1.md)明确区分合成规则验收和真实现场操作。升级不会修改客户正在排期的任务。
