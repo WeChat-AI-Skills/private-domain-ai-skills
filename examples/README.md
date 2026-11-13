@@ -42,3 +42,8 @@
 - [批量邀请风险](a-volume-adversarial/input.md)：去重、拒联范围、独立审查与未知回读。
 
 每组 expected.md 是验收标准，执行行为检查时仅给 input.md 和安装副本。
+
+## v1.3.1 已排期任务修改
+
+- [三个合成场景及逐轮轨迹](v1.3.1-scheduled-edits/input.md)：同 ID 换图、失败停报、整批更换时等待负责人决定与取消确认。
+- [独立验收](v1.3.1-scheduled-edits/review.md)：仅覆盖合成动作选择，未操作真实 SCRM。

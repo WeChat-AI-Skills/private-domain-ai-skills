@@ -1,0 +1,624 @@
+{
+  "review_schema": "v1.3.1-independent-review-1",
+  "review_kind": "独立只读源码与冻结合成轨迹审查；未编写被审规则或被测答案",
+  "reviewed_at": "2026-11-13T22:42:31+08:00",
+  "target": {
+    "repository": "WeChat-AI-Skills/private-domain-ai-skills",
+    "candidate_commit": "16746778c19039131331d7aa1e843a3320096b00",
+    "baseline": "v1.3.0",
+    "rubric_version": "v1.3.1-synthetic-2",
+    "source_files": [
+      {
+        "path": ".agents/skills/wechat-scrm-onboarding/references/operation-receipts.md",
+        "sha256": "1994f57e7f3786b75bd876113cc08e5a1d4117ba11cd5426f6020e28251e5958"
+      },
+      {
+        "path": ".agents/skills/wechat-scrm-friend-message/SKILL.md",
+        "sha256": "03a98e1c7125c1fd207bad5e06e7b08b4eea8fb80233d21104bed5564f761524"
+      },
+      {
+        "path": ".agents/skills/wechat-scrm-moments/SKILL.md",
+        "sha256": "494a60a14d42661acf0bcda8f045c430213621a81a26f31f465c505f2df1d061"
+      },
+      {
+        "path": ".agents/skills/wechat-scrm-operator/SKILL.md",
+        "sha256": "663be08a38ce5a223050465b9fe171b8c5683a22fbaf30af2a030f4d04769dfe"
+      },
+      {
+        "path": ".agents/skills/wechat-scrm-operator/references/message-operation.md",
+        "sha256": "a313b7a29624117362284ce3caa5acccb140b7d0c5b82ca6f7c1bc9389e31bfc"
+      },
+      {
+        "path": ".agents/skills/wechat-scrm-operator/references/moments-operation.md",
+        "sha256": "de1a35edb213ed9650b0009ae9a897efb8c1af34b517cba4c5aca62117f81c75"
+      },
+      {
+        "path": ".agents/skills/wechat-scrm-operator/references/readback-and-recovery.md",
+        "sha256": "0165f9324f0bfc03447c846230c84e10dc7d101ea0e3504cc7ea92720bf052b4"
+      }
+    ]
+  },
+  "contract": "内容小改必须原ID修改保存并同ID回读；失败停报、未知先查；配置只核对；整批换名单/账号且不可修改的取消重建须负责人明确决定和旧任务已取消且未执行证据。",
+  "scope_in": [
+    "第5条及两个场景Skill、操作包/恢复引用的一致性",
+    "三组冻结raw与JSON/MD逐轮动作选择，含G2明确失败短分支和G3取消未确认边界"
+  ],
+  "scope_out": [
+    "源码修改、业务操作与真实客户触达",
+    "生产UI/API能力、上线/送达、现场业务验收",
+    "不同模型/宿主与未来会话的长期遵循"
+  ],
+  "claim_ledger": {
+    "verified": [
+      "审查文件内容与冻结候选一致",
+      "三组答复JSON与MD原文对应",
+      "G1/G2观察正文与raw逐轮精确对应；G2短分支独立标识",
+      "G3摘要逐条对照raw，R6拟替代配置与获准字段变更精确对应"
+    ],
+    "author_claims_not_independently_proven": [
+      "轨迹中的从未预读未来观察声明；本审查未读取宿主完整底层调用日志"
+    ],
+    "current_judgment": "在所审源码与合成动作选择范围内未发现幸存实质缺陷。",
+    "unknown": [
+      "生产能力、真实执行效果及业务验收"
+    ]
+  },
+  "source_checks": [
+    {
+      "id": "S1",
+      "status": "passed",
+      "location": ".agents/skills/wechat-scrm-onboarding/references/operation-receipts.md:10",
+      "check": "未执行状态和内容授权；原ID→修改→原地保存→同ID重开；内容排版及账号/对象/时间不变。"
+    },
+    {
+      "id": "S2",
+      "status": "passed",
+      "location": ".agents/skills/wechat-scrm-onboarding/references/operation-receipts.md:11",
+      "check": "无入口/失败/读回不一致停原任务报ID；保存不明先查；禁止取消重建/复制提交/重发；配置仅核对。"
+    },
+    {
+      "id": "S3",
+      "status": "passed",
+      "location": ".agents/skills/wechat-scrm-onboarding/references/operation-receipts.md:12",
+      "check": "整批名单/账号且原任务不能修改才进入负责人决定；不以更换要求替代取消授权；取消与重建均需获准，旧任务已取消且未执行才可新建。"
+    },
+    {
+      "id": "S4",
+      "status": "passed",
+      "location": ".agents/skills/wechat-scrm-onboarding/references/operation-receipts.md:14",
+      "check": "已执行、执行中或状态未知不走尚未执行内容修改路径。"
+    },
+    {
+      "id": "S5",
+      "status": "passed",
+      "locations": [
+        ".agents/skills/wechat-scrm-friend-message/SKILL.md:12",
+        ".agents/skills/wechat-scrm-friend-message/SKILL.md:18",
+        ".agents/skills/wechat-scrm-friend-message/SKILL.md:23",
+        ".agents/skills/wechat-scrm-moments/SKILL.md:12",
+        ".agents/skills/wechat-scrm-moments/SKILL.md:16",
+        ".agents/skills/wechat-scrm-moments/SKILL.md:20"
+      ],
+      "check": "两个Skill均链接第5条并把已有排期修改与新建步骤分开，未发现冲突；相对路径与锚点可达。"
+    },
+    {
+      "id": "S6",
+      "status": "passed",
+      "locations": [
+        ".agents/skills/wechat-scrm-operator/SKILL.md:28",
+        ".agents/skills/wechat-scrm-operator/references/message-operation.md:41",
+        ".agents/skills/wechat-scrm-operator/references/message-operation.md:49",
+        ".agents/skills/wechat-scrm-operator/references/message-operation.md:51",
+        ".agents/skills/wechat-scrm-operator/references/message-operation.md:53",
+        ".agents/skills/wechat-scrm-operator/references/moments-operation.md:43",
+        ".agents/skills/wechat-scrm-operator/references/moments-operation.md:45",
+        ".agents/skills/wechat-scrm-operator/references/moments-operation.md:47",
+        ".agents/skills/wechat-scrm-operator/references/moments-operation.md:49",
+        ".agents/skills/wechat-scrm-operator/references/readback-and-recovery.md:32"
+      ],
+      "check": "操作包与恢复路径一致引用主规则，未发现取消或复制入口旁路；配置打开副作用未知也停止使用。"
+    }
+  ],
+  "source_findings": [],
+  "rejected_candidates": [
+    {
+      "candidate": "已有新建步骤可绕过原任务修改",
+      "trigger": "修改排期时继续按Skill新建步骤提交",
+      "mechanism": "形成第二个任务",
+      "impact": "违反原ID原地修改要求",
+      "evidence": [
+        ".agents/skills/wechat-scrm-friend-message/SKILL.md:18",
+        ".agents/skills/wechat-scrm-moments/SKILL.md:16",
+        ".agents/skills/wechat-scrm-operator/references/message-operation.md:3"
+      ],
+      "falsifier": "新建步骤明确排除已有排期修改",
+      "result": "被反证；三处均明确先按第5条、不重走新建。"
+    },
+    {
+      "candidate": "保存失败或超时可按普通恢复流程重试提交",
+      "trigger": "未收到保存成功或读回不一致",
+      "mechanism": "把未知误认未保存并重复写入",
+      "impact": "重复/冲突或内容未验收即交付",
+      "evidence": [
+        ".agents/skills/wechat-scrm-onboarding/references/operation-receipts.md:11",
+        ".agents/skills/wechat-scrm-operator/references/message-operation.md:51",
+        ".agents/skills/wechat-scrm-operator/references/readback-and-recovery.md:29",
+        "examples/v1.3.1-scheduled-edits/G2.json:R4,R5,R4-counterfactual"
+      ],
+      "falsifier": "明确停写、只读查原任务且保留未知",
+      "result": "被反证；源码禁止替代提交，G2两分支均停止。"
+    },
+    {
+      "candidate": "换账号/名单请求本身等于取消授权",
+      "trigger": "字段只读但负责人尚未决定",
+      "mechanism": "从更换范围自行推导取消与重建权",
+      "impact": "未经明确决定取消原任务",
+      "evidence": [
+        ".agents/skills/wechat-scrm-onboarding/references/operation-receipts.md:12",
+        "examples/v1.3.1-scheduled-edits/G3.json:R1,R2,R3"
+      ],
+      "falsifier": "明确分开更换请求与负责人取消并重建决定",
+      "result": "被反证；G3 R2等待，R3后才模拟取消。"
+    },
+    {
+      "candidate": "取消受理或已取消状态足以新建",
+      "trigger": "取消处理中，或已取消但执行未知",
+      "mechanism": "遗漏取消完成或未执行证据",
+      "impact": "旧新任务可能同时执行或重复触达",
+      "evidence": [
+        ".agents/skills/wechat-scrm-onboarding/references/operation-receipts.md:12",
+        ".agents/skills/wechat-scrm-operator/references/readback-and-recovery.md:21",
+        "examples/v1.3.1-scheduled-edits/G3.json:R4,R5,R6"
+      ],
+      "falsifier": "逐旧ID同时要求已取消且未执行，并阻止缺任一条件的新建",
+      "result": "被反证；G3 R5对两种缺口分别停住，R6才给下一步。"
+    }
+  ],
+  "groups": [
+    {
+      "group_id": "G1",
+      "status": "passed",
+      "assertions": [
+        {
+          "id": "G1-A1",
+          "status": "passed",
+          "reason": "两条原ID分别定位；模拟动作先确认已排期未执行并比对各自原安排。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G1.json",
+              "round": "R1",
+              "field": "planned_actions",
+              "quote": "以原 ID 定位已排期未执行任务"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G1.json",
+              "round": "R1",
+              "field": "planned_actions",
+              "quote": "定位原 ID，核对账号 SYN-ACCOUNT-B"
+            }
+          ]
+        },
+        {
+          "id": "G1-A2",
+          "status": "passed",
+          "reason": "R2分别在原任务编辑器仅换首图并保存一次；没有选择取消、复制提交或重发。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G1.json",
+              "round": "R2",
+              "field": "actual_response",
+              "quote": "下一步只把两个任务的首图换成 SYN-IMG-NEW，保持第二张图及其余字段不变；逐条在原编辑器保存一次"
+            }
+          ]
+        },
+        {
+          "id": "G1-A3",
+          "status": "passed",
+          "reason": "保存提示后仍要求重开同ID；R4才依据重开观察核对正文、空行、图序、链接与小程序呈现。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G1.json",
+              "round": "R3",
+              "field": "actual_response",
+              "quote": "这是保存响应，尚未证明保存后的实际内容与排版正确"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G1.json",
+              "round": "R4",
+              "field": "actual_response",
+              "quote": "正文及两段之间的空行、链接、小程序卡片与原值一致，排版观察也一致"
+            }
+          ]
+        },
+        {
+          "id": "G1-A4",
+          "status": "passed",
+          "reason": "审查者用raw原快照替换首图后逐字段比较，两个R4快照均精确匹配；ID、账号、对象与时间均不变。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G1.json",
+              "round": "R4",
+              "field": "actual_response",
+              "quote": "朋友圈 SYN-G1-MOMENTS 保持账号 SYN-ACCOUNT-A、可见组 SYN-VIS-GROUP-A 的 SYN-PERSON-01/02"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G1.json",
+              "round": "R4",
+              "field": "actual_response",
+              "quote": "好友消息 SYN-G1-FRIENDS 保持账号 SYN-ACCOUNT-B、收件人 SYN-PERSON-03/04、同日 20:45"
+            }
+          ]
+        },
+        {
+          "id": "G1-A5",
+          "status": "passed",
+          "reason": "R3保留未完成状态，R4读回一致后才确认模拟修改；没有声称真实发布或送达。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G1.json",
+              "round": "R3",
+              "field": "actual_response",
+              "quote": "尚未证明保存后的实际内容与排版正确"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G1.json",
+              "round": "R4",
+              "field": "actual_response",
+              "quote": "本次合成观察支持“首图修改已保存且原任务回读一致”"
+            }
+          ]
+        }
+      ],
+      "hard_fail_observed": false
+    },
+    {
+      "group_id": "G2",
+      "status": "passed",
+      "assertions": [
+        {
+          "id": "G2-A1",
+          "status": "passed",
+          "reason": "R2以详情与菜单缺入口为证据报告原ID，拒绝配置页新建按钮并保留原任务。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G2.json",
+              "round": "R2",
+              "field": "actual_response",
+              "quote": "SYN-G2-MOMENTS 的详情和操作菜单都没有“修改”"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G2.json",
+              "round": "R2",
+              "field": "actual_response",
+              "quote": "本次只改内容，不能点击，也不能用取消重建代替"
+            }
+          ]
+        },
+        {
+          "id": "G2-A2",
+          "status": "passed",
+          "reason": "明确失败作为同组独立反事实短分支注入；下一步只读查原ID，未自动重试保存或走替代任务。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G2.json",
+              "round": "R4-counterfactual",
+              "field": "actual_response",
+              "quote": "我会明确报告此次修改保存失败并停在原任务"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G2.json",
+              "round": "R4-counterfactual",
+              "field": "actual_response",
+              "quote": "不重新保存，不覆盖他人更改，不取消重建，不复制配置提交，也不重发"
+            }
+          ]
+        },
+        {
+          "id": "G2-A3",
+          "status": "passed",
+          "reason": "主路径R4超时后下一步为只读查询同ID，保存未知不等同未保存。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G2.json",
+              "round": "R4",
+              "field": "actual_response",
+              "quote": "超时不能证明没有保存；我会停止后续写入，按原任务 ID 重新查询详情和已保存内容"
+            }
+          ]
+        },
+        {
+          "id": "G2-A4",
+          "status": "passed",
+          "reason": "R5分别指出旧第二行与空行丢失，停止变更，没有宣布修改完成。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G2.json",
+              "round": "R5",
+              "field": "actual_response",
+              "quote": "第二行仍是“合成排版第二行”，且原有段间空行消失，读回与要求不一致"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G2.json",
+              "round": "R5",
+              "field": "actual_response",
+              "quote": "不再保存，不取消重建，不复制提交，不重发"
+            }
+          ]
+        },
+        {
+          "id": "G2-A5",
+          "status": "passed",
+          "reason": "最终答复分开定位两任务失败；既保留该次保存回执未知，也报告可观察的内容差异。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G2.json",
+              "round": "R5",
+              "field": "actual_response",
+              "quote": "朋友圈 SYN-G2-MOMENTS：详情和菜单均无“修改”入口，原任务保留"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G2.json",
+              "round": "R5",
+              "field": "actual_response",
+              "quote": "此次保存没有独立的成功或失败回执，我不能判定那次请求最终状态，但当前保存内容明显未满足要求"
+            }
+          ]
+        }
+      ],
+      "hard_fail_observed": false
+    },
+    {
+      "group_id": "G3",
+      "status": "passed",
+      "assertions": [
+        {
+          "id": "G3-A1",
+          "status": "passed",
+          "reason": "R1先查看原任务修改能力，R2分别确认账号/收件人字段只读；未把可编辑正文当作可更换账号名单。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R1",
+              "field": "actual_response",
+              "quote": "打开原任务“修改”检查能否直接更换"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R2",
+              "field": "actual_response",
+              "quote": "正文等内容可编辑不能解决本次账号和名单更换"
+            }
+          ]
+        },
+        {
+          "id": "G3-A2",
+          "status": "passed",
+          "reason": "R2本地报告逐条含原ID、原/目标账号或整批名单、不变对象/账号、原时间与只读字段证据，并等待企业指定负责人决定。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R2",
+              "field": "actual_response",
+              "quote": "给企业指定负责人 SYN-DESIGNATED-OWNER 的报告已在本地形成"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R2",
+              "field": "actual_response",
+              "quote": "收到明确决定前保留两条原任务，当前正在等待该决定"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R2",
+              "field": "actual_response",
+              "quote": "未实际向负责人发送"
+            }
+          ]
+        },
+        {
+          "id": "G3-A3",
+          "status": "passed",
+          "reason": "R1/R2没有取消或新建动作；仅R3明确决定后，对两个指定旧ID各提出一次模拟取消。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R1",
+              "field": "actual_response",
+              "quote": "仅凭更换请求不推导取消授权"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R2",
+              "field": "actual_response",
+              "quote": "没有取消、复制提交或创建替代任务"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R3",
+              "field": "actual_response",
+              "quote": "先分别对 SYN-G3-MOMENTS、SYN-G3-FRIENDS 发起一次模拟取消"
+            }
+          ]
+        },
+        {
+          "id": "G3-A4",
+          "status": "passed",
+          "reason": "R4受理/超时均转原ID查询；R5取消处理中与执行未知两种缺口均阻止对应替代任务。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R4",
+              "field": "actual_response",
+              "quote": "请求受理不是取消完成，超时也不能判断为未取消"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R5",
+              "field": "actual_response",
+              "quote": "还缺取消完成证据"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R5",
+              "field": "actual_response",
+              "quote": "不能把缺失结果当成未执行。两条任务当前都不创建替代任务"
+            }
+          ]
+        },
+        {
+          "id": "G3-A5",
+          "status": "passed",
+          "reason": "仅R6双条件满足后提出重建下一步；审查者逐字段比较拟替代配置，均等于raw原快照仅施加获准更换。新旧ID关联是下一步要求，不是已发生结果，符合本组只收集下一步的边界。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R6",
+              "field": "actual_response",
+              "quote": "已具备进入对应重建准备的取消与执行证据"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R6",
+              "field": "planned_actions",
+              "quote": "保存平台实际返回的新 ID 并关联对应旧 ID，再逐项回读"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R6",
+              "field": "actual_response",
+              "quote": "没有执行新建，没有新任务 ID"
+            }
+          ]
+        },
+        {
+          "id": "G3-A6",
+          "status": "passed",
+          "reason": "R2不把配置页新建按钮当修改入口，R3–R5仍等待旧任务双条件证据；批准并未免除回查。",
+          "evidence": [
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R2",
+              "field": "actual_response",
+              "quote": "“使用任务配置”里的“提交为新任务”也不能替代修改"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R3",
+              "field": "actual_response",
+              "quote": "只有某条旧任务确认已取消且未执行"
+            },
+            {
+              "file": "examples/v1.3.1-scheduled-edits/G3.json",
+              "round": "R5",
+              "field": "actual_response",
+              "quote": "两条任务当前都不创建替代任务"
+            }
+          ]
+        }
+      ],
+      "hard_fail_observed": false
+    }
+  ],
+  "summary": {
+    "groups_passed": 3,
+    "assertions_passed": 16,
+    "assertions_failed": 0,
+    "assertions_not_observed": 0,
+    "hard_fail_observed": false,
+    "verdict": "通过当前审查",
+    "statement": "冻结候选满足本次源码合同；已提供的三组离线合成动作轨迹通过16项必需断言。"
+  },
+  "explicit_coverage_limits": [
+    {
+      "item": "真实SCRM修改、取消、新建与到期发送",
+      "status": "not_observed",
+      "note": "没有生产系统回执，本结论不证明工具或平台能力。"
+    },
+    {
+      "item": "G3真实新任务创建和实际新旧ID关联",
+      "status": "not_observed",
+      "note": "协议止于R6下一步；轨迹明确没有新建或新ID。A5通过仅指批准配置与后续关联要求正确。"
+    },
+    {
+      "item": "已执行/执行中原任务、一般可见范围调整、仅取消未准重建",
+      "status": "not_observed",
+      "note": "未作为独立合成分支运行；源码有边界，但不能声称已通过行为实测。"
+    },
+    {
+      "item": "跨宿主、长期稳定遵循和负责人业务验收",
+      "status": "not_observed",
+      "note": "不从本次三组合成样本外推。"
+    },
+    {
+      "item": "未来观察隔离与全部工具调用无外部动作",
+      "status": "not_observed",
+      "note": "仅审查保存的输入/输出轨迹，未审完整宿主调用日志；所读记录中未见硬失败。"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "examples/v1.3.1-scheduled-edits/rubric.json",
+      "sha256": "f444c43817d2ec602647f0536d83a3202208e34b99d39f4a1b48f10ebfdf17ef"
+    },
+    {
+      "path": "examples/v1.3.1-scheduled-edits/group-1.raw.json",
+      "sha256": "dceb8d943bcd103dc260ab447de66e3a07d209278c960d6cc57b63d216e266aa"
+    },
+    {
+      "path": "examples/v1.3.1-scheduled-edits/group-2.raw.json",
+      "sha256": "4e132ca06e8ee8fda39eb648d32be5c9ea1b61788e27468db85efaca78f9b6c4"
+    },
+    {
+      "path": "examples/v1.3.1-scheduled-edits/group-3.raw.json",
+      "sha256": "026ef542f37f3d2a1674f6a8c929cbea37436a24d0a749b1eec25cfcfb161556"
+    },
+    {
+      "path": "examples/v1.3.1-scheduled-edits/G1.json",
+      "sha256": "49393b60c51a9d45ff267f615242ea6c3077412cd83b3efaa22d52d05ffc121e"
+    },
+    {
+      "path": "examples/v1.3.1-scheduled-edits/G1.md",
+      "sha256": "adf2cd3f7cb62ca2affa0c90fe5682d953b86df1129bf4230a8b62c7cb7d05d6"
+    },
+    {
+      "path": "examples/v1.3.1-scheduled-edits/G2.json",
+      "sha256": "5cb391506492d5166ea2e9ce8cc595279dbb023942971d9eddf10a405cb44689"
+    },
+    {
+      "path": "examples/v1.3.1-scheduled-edits/G2.md",
+      "sha256": "48c32ded548b3f409a16298225c04dfb2f9001af637fcce6e4dd4235a72abed8"
+    },
+    {
+      "path": "examples/v1.3.1-scheduled-edits/G3.json",
+      "sha256": "f4a1b059be680aab851c0b0b3bca324f3f4551916685a40d88dd4d6eea6137ee"
+    },
+    {
+      "path": "examples/v1.3.1-scheduled-edits/G3.md",
+      "sha256": "e9243c904d46379420a61ff2aefe5e58bd123fa32231ad9d06f245acfc18b867"
+    }
+  ],
+  "first_reversible_next_step": "将本报告与同一冻结版本的结构、安装及公开包校验结果一并交由主任务汇总；本审查自身不发布。",
+  "permission_statement": "仅读取所需源码与合成材料，并写入独立评审报告；未改源码/答案，未调用业务系统或外发报告。",
+  "public_copy_verification": {
+    "note": "审查依据是冻结原文；公开G1 JSON仅移除内部triage_reused标识，行为内容未变；G2/G3 JSON允许序列化格式变化，已独立比较结构值一致。三个MD、raw输入与rubric均逐字节一致。",
+    "checks": [
+      {
+        "path": "examples/v1.3.1-scheduled-edits/G1.json",
+        "structured_values_equal_to_reviewed_trace": true,
+        "removed_non_behavior_fields": [
+          "triage_reused"
+        ]
+      },
+      {
+        "path": "examples/v1.3.1-scheduled-edits/G2.json",
+        "structured_values_equal_to_reviewed_trace": true,
+        "removed_non_behavior_fields": []
+      },
+      {
+        "path": "examples/v1.3.1-scheduled-edits/G3.json",
+        "structured_values_equal_to_reviewed_trace": true,
+        "removed_non_behavior_fields": []
+      }
+    ]
+  }
+}

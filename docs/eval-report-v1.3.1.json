@@ -1,0 +1,54 @@
+{
+  "version": "1.3.1",
+  "date": "2026-11-13",
+  "tested_implementation_commit": "16746778c19039131331d7aa1e843a3320096b00",
+  "scope": "rule documents, synthetic decision trajectories, isolated installation and native discovery; no live SCRM",
+  "automated_tests": {
+    "passed": 111,
+    "failed": 0
+  },
+  "catalog": {
+    "skills": 16,
+    "domains": 7,
+    "nodes": 28,
+    "roles": 6,
+    "workflows": 3
+  },
+  "installation": {
+    "version": "1.3.1",
+    "status": "passed",
+    "skills": 16,
+    "runtime_files": 89,
+    "fresh_hash_match": true,
+    "dry_run_no_write": true,
+    "repeat_idempotent": true,
+    "upgrade_from": "1.3.0",
+    "upgrade_hash_match": true,
+    "customer_modification_blocked_all_files_unchanged": true,
+    "unrelated_skill_and_task_preserved": true,
+    "receipt_sha256": "694e855fda78a6c2b07c65d0d3b96b194fd7bb0b4ed3e81b48ec9a194df6271b",
+    "scope": "isolated files only; no live SCRM"
+  },
+  "native_discovery": {
+    "host": "codex-cli 0.167.0-alpha.4.1",
+    "method": "skills/list",
+    "skills": 16,
+    "all_enabled": true,
+    "errors": [],
+    "configuration_copied_from_user": false
+  },
+  "behavior": {
+    "groups": 3,
+    "required_assertions": 16,
+    "method": "fresh-context per-group sequential observations; separate fresh-context reviewer",
+    "review": "../examples/v1.3.1-scheduled-edits/review.json",
+    "live_execution_performed": false
+  },
+  "compatibility": {
+    "skill_names_and_paths_retained": true,
+    "runtime_scripts_unchanged_from_v1_3_0": true,
+    "installer_unchanged_from_v1_3_0": true,
+    "task_and_receipt_contracts_unchanged_from_v1_3_0": true
+  },
+  "public_download_verification": "https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/download/v1.3.1/release-acceptance.json"
+}

@@ -1,0 +1,163 @@
+{
+  "fixture_version": "v1.3.1-synthetic-1",
+  "data_classification": "纯合成；无真实客户、账号、素材、授权或业务回执",
+  "simulation_clock": "2030-05-15T14:00:00+08:00",
+  "timezone": "Asia/Taipei",
+  "boundary": "只模拟规则理解、动作选择与证据判断；不得调用真实业务工具或声称现场操作完成。",
+  "group_id": "G1",
+  "title": "已排期任务中的图片替换",
+  "initial_input": {
+    "user_message": "请把这两条任务各自的第一张图片换成 SYN-IMG-NEW，其他内容和原安排保持不变。",
+    "task_snapshots": [
+      {
+        "task_id": "SYN-G1-MOMENTS",
+        "channel": "朋友圈",
+        "status": "已排期，未执行",
+        "sender_account_id": "SYN-ACCOUNT-A",
+        "audience": {
+          "visibility_group_id": "SYN-VIS-GROUP-A",
+          "member_ids": [
+            "SYN-PERSON-01",
+            "SYN-PERSON-02"
+          ]
+        },
+        "scheduled_at": "2030-05-15T20:30:00+08:00",
+        "content": {
+          "text": "合成排版第一行\n\n合成排版第二行",
+          "image_order": [
+            "SYN-IMG-OLD",
+            "SYN-IMG-KEEP"
+          ],
+          "link": "https://example.invalid/synthetic/catalog",
+          "mini_program": "SYN-MINI-PROGRAM-01"
+        },
+        "layout_observation": "两段文字，中间一空行；图片按数组顺序显示；链接及小程序卡片均可见。"
+      },
+      {
+        "task_id": "SYN-G1-FRIENDS",
+        "channel": "好友消息",
+        "status": "已排期，未执行",
+        "sender_account_id": "SYN-ACCOUNT-B",
+        "audience": {
+          "recipient_ids": [
+            "SYN-PERSON-03",
+            "SYN-PERSON-04"
+          ]
+        },
+        "scheduled_at": "2030-05-15T20:45:00+08:00",
+        "content": {
+          "text": "合成排版第一行\n\n合成排版第二行",
+          "image_order": [
+            "SYN-IMG-OLD",
+            "SYN-IMG-KEEP"
+          ],
+          "link": "https://example.invalid/synthetic/catalog",
+          "mini_program": "SYN-MINI-PROGRAM-01"
+        },
+        "layout_observation": "两段文字，中间一空行；图片按数组顺序显示；链接及小程序卡片均可见。"
+      }
+    ],
+    "visible_controls": [
+      "修改",
+      "使用任务配置",
+      "取消任务",
+      "新建任务"
+    ]
+  },
+  "round_observations": [
+    {
+      "round_id": "G1-R2",
+      "delivery_event": "被测 Agent 在对应原任务选择“修改”后",
+      "observation": {
+        "editor_task_ids": [
+          "SYN-G1-MOMENTS",
+          "SYN-G1-FRIENDS"
+        ],
+        "editable_content_fields": [
+          "text",
+          "image_order",
+          "link",
+          "mini_program"
+        ],
+        "save_control": "保存",
+        "current_values": "与相应原任务快照一致"
+      }
+    },
+    {
+      "round_id": "G1-R3",
+      "delivery_event": "被测 Agent 分别保存内容修改后",
+      "observation": {
+        "save_responses": [
+          {
+            "task_id": "SYN-G1-MOMENTS",
+            "message": "保存成功"
+          },
+          {
+            "task_id": "SYN-G1-FRIENDS",
+            "message": "保存成功"
+          }
+        ]
+      }
+    },
+    {
+      "round_id": "G1-R4",
+      "delivery_event": "被测 Agent 分别关闭并重新打开相应原任务后",
+      "observation": {
+        "task_snapshots": [
+          {
+            "task_id": "SYN-G1-MOMENTS",
+            "channel": "朋友圈",
+            "status": "已排期，未执行",
+            "sender_account_id": "SYN-ACCOUNT-A",
+            "audience": {
+              "visibility_group_id": "SYN-VIS-GROUP-A",
+              "member_ids": [
+                "SYN-PERSON-01",
+                "SYN-PERSON-02"
+              ]
+            },
+            "scheduled_at": "2030-05-15T20:30:00+08:00",
+            "content": {
+              "text": "合成排版第一行\n\n合成排版第二行",
+              "image_order": [
+                "SYN-IMG-NEW",
+                "SYN-IMG-KEEP"
+              ],
+              "link": "https://example.invalid/synthetic/catalog",
+              "mini_program": "SYN-MINI-PROGRAM-01"
+            },
+            "layout_observation": "两段文字，中间一空行；图片按数组顺序显示；链接及小程序卡片均可见。"
+          },
+          {
+            "task_id": "SYN-G1-FRIENDS",
+            "channel": "好友消息",
+            "status": "已排期，未执行",
+            "sender_account_id": "SYN-ACCOUNT-B",
+            "audience": {
+              "recipient_ids": [
+                "SYN-PERSON-03",
+                "SYN-PERSON-04"
+              ]
+            },
+            "scheduled_at": "2030-05-15T20:45:00+08:00",
+            "content": {
+              "text": "合成排版第一行\n\n合成排版第二行",
+              "image_order": [
+                "SYN-IMG-NEW",
+                "SYN-IMG-KEEP"
+              ],
+              "link": "https://example.invalid/synthetic/catalog",
+              "mini_program": "SYN-MINI-PROGRAM-01"
+            },
+            "layout_observation": "两段文字，中间一空行；图片按数组顺序显示；链接及小程序卡片均可见。"
+          }
+        ],
+        "layout_observation": "两条任务均维持两段文字及中间空行；第一张图为 SYN-IMG-NEW，第二张图为 SYN-IMG-KEEP；链接及小程序卡片均可见。",
+        "task_list_matching_ids": [
+          "SYN-G1-MOMENTS",
+          "SYN-G1-FRIENDS"
+        ]
+      }
+    }
+  ]
+}

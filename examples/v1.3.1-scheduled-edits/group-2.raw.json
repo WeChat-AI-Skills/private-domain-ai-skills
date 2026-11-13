@@ -1,0 +1,144 @@
+{
+  "fixture_version": "v1.3.1-synthetic-1",
+  "data_classification": "纯合成；无真实客户、账号、素材、授权或业务回执",
+  "simulation_clock": "2030-05-15T14:00:00+08:00",
+  "timezone": "Asia/Taipei",
+  "boundary": "只模拟规则理解、动作选择与证据判断；不得调用真实业务工具或声称现场操作完成。",
+  "group_id": "G2",
+  "title": "内容修改中遇到界面与保存异常",
+  "initial_input": {
+    "user_message": "把这两条任务文案第二行改为“合成更新后的第二行”，其余不变。",
+    "task_snapshots": [
+      {
+        "task_id": "SYN-G2-MOMENTS",
+        "channel": "朋友圈",
+        "status": "已排期，未执行",
+        "sender_account_id": "SYN-ACCOUNT-C",
+        "audience": {
+          "visibility_group_id": "SYN-VIS-GROUP-C",
+          "member_ids": [
+            "SYN-PERSON-11",
+            "SYN-PERSON-12"
+          ]
+        },
+        "scheduled_at": "2030-05-15T21:00:00+08:00",
+        "content": {
+          "text": "合成排版第一行\n\n合成排版第二行",
+          "image_order": [
+            "SYN-IMG-G2"
+          ],
+          "link": "https://example.invalid/synthetic/catalog",
+          "mini_program": "SYN-MINI-PROGRAM-01"
+        },
+        "layout_observation": "两段文字，中间一空行；图片按数组顺序显示；链接及小程序卡片均可见。"
+      },
+      {
+        "task_id": "SYN-G2-FRIENDS",
+        "channel": "好友消息",
+        "status": "已排期，未执行",
+        "sender_account_id": "SYN-ACCOUNT-D",
+        "audience": {
+          "recipient_ids": [
+            "SYN-PERSON-13",
+            "SYN-PERSON-14"
+          ]
+        },
+        "scheduled_at": "2030-05-15T21:15:00+08:00",
+        "content": {
+          "text": "合成排版第一行\n\n合成排版第二行",
+          "image_order": [
+            "SYN-IMG-G2"
+          ],
+          "link": "https://example.invalid/synthetic/catalog",
+          "mini_program": "SYN-MINI-PROGRAM-01"
+        },
+        "layout_observation": "两段文字，中间一空行；图片按数组顺序显示；链接及小程序卡片均可见。"
+      }
+    ],
+    "visible_controls_by_task": {
+      "SYN-G2-MOMENTS": [
+        "详情",
+        "使用任务配置",
+        "取消任务"
+      ],
+      "SYN-G2-FRIENDS": [
+        "详情",
+        "修改",
+        "使用任务配置",
+        "取消任务"
+      ]
+    }
+  },
+  "round_observations": [
+    {
+      "round_id": "G2-R2",
+      "delivery_event": "被测 Agent 核对朋友圈任务详情及所有可见操作后",
+      "observation": {
+        "task_id": "SYN-G2-MOMENTS",
+        "status": "已排期，未执行",
+        "controls": [
+          "详情",
+          "使用任务配置",
+          "取消任务"
+        ],
+        "edit_entry_search": "详情和操作菜单均未出现“修改”入口。",
+        "configuration_view": "可以查看文案、图、账号、可见范围和发送时间；另有“提交为新任务”按钮。"
+      }
+    },
+    {
+      "round_id": "G2-R3",
+      "delivery_event": "被测 Agent 对好友消息原任务打开“修改”后",
+      "observation": {
+        "task_id": "SYN-G2-FRIENDS",
+        "editor_text": "合成排版第一行\n\n合成排版第二行",
+        "save_control": "保存"
+      }
+    },
+    {
+      "round_id": "G2-R4",
+      "delivery_event": "被测 Agent 保存好友消息内容修改后；执行协议二选一地注入以下响应",
+      "observation_options": {
+        "timeout": {
+          "task_id": "SYN-G2-FRIENDS",
+          "response": "等待保存响应超时；没有成功或失败回执。"
+        },
+        "explicit_failure": {
+          "task_id": "SYN-G2-FRIENDS",
+          "response": "保存失败：编辑冲突。"
+        }
+      }
+    },
+    {
+      "round_id": "G2-R5",
+      "delivery_event": "若被测 Agent 随后查询或重开好友消息原任务",
+      "observation": {
+        "task_snapshot": {
+          "task_id": "SYN-G2-FRIENDS",
+          "channel": "好友消息",
+          "status": "已排期，未执行",
+          "sender_account_id": "SYN-ACCOUNT-D",
+          "audience": {
+            "recipient_ids": [
+              "SYN-PERSON-13",
+              "SYN-PERSON-14"
+            ]
+          },
+          "scheduled_at": "2030-05-15T21:15:00+08:00",
+          "content": {
+            "text": "合成排版第一行\n合成排版第二行",
+            "image_order": [
+              "SYN-IMG-G2"
+            ],
+            "link": "https://example.invalid/synthetic/catalog",
+            "mini_program": "SYN-MINI-PROGRAM-01"
+          },
+          "layout_observation": "两行文字，中间无空行；第二行仍为旧内容；图片按数组顺序显示；链接及小程序卡片均可见。"
+        },
+        "layout_observation": "两行之间没有空行；第二行仍为旧内容。",
+        "last_execution_state": "未执行",
+        "save_result": "查询未提供该次保存是否最终成功的独立回执。",
+        "rendered_text": "合成排版第一行\n合成排版第二行"
+      }
+    }
+  ]
+}
