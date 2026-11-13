@@ -5,3 +5,6 @@
 - 开发维护：[仓库规则](../AGENTS.md) → [角色与系统架构](architecture.md) → [迭代路线](iteration-roadmap.md) → [版本记录](../CHANGELOG.md)。
 - 系统接入：[客户环境卡](../.agents/skills/wechat-scrm-onboarding/references/customer-setup.md)、[接入说明](tool-contract.md)、[授权边界](boundaries.md)。
 - 版本验证：[v1.2.0](verification-v1.2.0.md)、[v1.1.1](verification-v1.1.1.md)、[v1.1.0](verification-v1.1.0.md)、[v1.0.0](verification-v1.0.0.md)。历史记录保留当时范围。
+
+- [A卷上岗原则](../.agents/skills/private-domain-ops/references/a-volume-onboarding.md)：客户 Agent 的三关与风险分级。
+- [v1.2.1 验证](verification-v1.2.1.md)：本次合并、兼容与安装证据。

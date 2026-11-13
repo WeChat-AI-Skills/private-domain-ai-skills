@@ -104,6 +104,11 @@ def check_skill(skill_dir: Path) -> None:
 
 
     check_links(entry)
+    principle = SKILLS / "private-domain-ops/references/a-volume-onboarding.md"
+    linked = {(entry.parent / link.split("#", 1)[0]).resolve() for link in LINK_RE.findall(text)
+              if not link.startswith(("http://", "https://", "mailto:", "#"))}
+    if not principle.is_file() or principle.resolve() not in linked:
+        err(f"{rel}: missing installed onboarding principles entry")
 
     for ref in (skill_dir / "references").glob("*.md"):
         check_links(ref)

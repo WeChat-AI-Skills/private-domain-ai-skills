@@ -1,5 +1,5 @@
 {
-  "contract_version": "agent-result/1.0",
+  "contract_version": "agent-result/1.1",
   "request_id": "synthetic-request-001",
   "task_id": "synthetic-task-001",
   "agent_id": "content-agent",
@@ -25,5 +25,16 @@
   ],
   "dependency_requests": [],
   "recommended_next_step": "客户审阅草稿，准备图片；另有执行要求再核对连接与授权",
-  "requires_human": false
+  "requires_human": false,
+  "principles_applied": [
+    "facts",
+    "first_principles",
+    "adversarial_review"
+  ],
+  "unverified": [
+    "图片尚未准备；不影响本次仅文案草稿交付"
+  ],
+  "falsifiers": [
+    "商品事实或目标发生变化时重查草稿"
+  ]
 }

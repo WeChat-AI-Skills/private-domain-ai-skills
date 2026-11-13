@@ -5,6 +5,8 @@ description: 在微信私域 SCRM 中准备、排期或核验向已确认好友�
 
 # SCRM 好友消息
 
+接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
+
 执行前阅读[提交与回执](../wechat-scrm-onboarding/references/operation-receipts.md)。核对原工作号、当前好友关系、拒联、已有触达、待发任务及人工接手状态。
 
 1. 从「微信管理 → 群发配置 → 好友消息」进入「通讯录」。单人任务回读选中数为 1。名单或标签任务核对实际列表、勾选数和去重数，处理差异后推进。

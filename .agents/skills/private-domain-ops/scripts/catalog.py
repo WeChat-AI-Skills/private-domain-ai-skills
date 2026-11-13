@@ -50,9 +50,37 @@ def required_text(obj, fields):
             raise ValueError(f"Missing text: {field}")
 
 
+PRINCIPLE_FIELDS = {"principles_ref", "risk_level", "fact_ledger_ref", "constraint_ledger_ref",
+                    "adversarial_review_ref", "unknowns", "requires_human", "review_mode", "human_approval_ref"}
+PRINCIPLES = {"facts", "first_principles", "adversarial_review"}
+
+
+def check_principles(task: dict) -> None:
+    # Legacy cards may omit these fields. Partial adoption is not silently ignored.
+    if task["contract_version"] == "task-card/1.0" and not (PRINCIPLE_FIELDS & task.keys()):
+        return
+    required_text(task, ["principles_ref", "risk_level", "fact_ledger_ref", "review_mode"])
+    if task["principles_ref"] != "a-volume/1.0" or task["risk_level"] not in {"L0", "L1", "L2", "L3"}:
+        raise ValueError("Unsupported principles or risk_level")
+    strings(task.get("unknowns"), "unknowns")
+    if not isinstance(task.get("requires_human"), bool):
+        raise ValueError("Task requires_human must be a boolean")
+    if task["review_mode"] not in {"not_required", "self_review", "independent", "pending"}:
+        raise ValueError("Invalid review_mode")
+    for field in ("constraint_ledger_ref", "adversarial_review_ref", "human_approval_ref"):
+        if field in task:
+            required_text(task, [field])
+    if task["risk_level"] != "L0":
+        required_text(task, ["constraint_ledger_ref", "adversarial_review_ref"])
+        if task["review_mode"] == "not_required":
+            raise ValueError("L1+ requires a review record or pending review")
+    if task["execution_mode"] == "execute" and task["risk_level"] in {"L0", "L1"}:
+        raise ValueError("External execution requires at least L2 risk assessment")
+
+
 def check_task(task: dict, data: dict) -> None:
     required_text(task, ["contract_version", "request_id", "task_id", "assigned_by", "assigned_to", "goal"])
-    if task["contract_version"] != "task-card/1.0" or task["assigned_by"] != "super-agent":
+    if task["contract_version"] not in {"task-card/1.0", "task-card/1.1"} or task["assigned_by"] != "super-agent":
         raise ValueError("Unsupported task contract or assigner")
     if task["assigned_to"] not in {a["id"] for a in data["agents"]["agents"]}:
         raise ValueError("Unknown assigned role")
@@ -82,12 +110,14 @@ def check_task(task: dict, data: dict) -> None:
         required_text(task, ["action", "content_version", "authorization_ref", "policy_version", "capability_check_ref"])
         if any(nodes[n]["method_coverage"] == "planned" for n in task["capability_ids"]):
             raise ValueError("Planned capability has no executable skill in this package")
+    check_principles(task)
 
 
 def check_result(result: dict, task: dict, data: dict) -> None:
     check_task(task, data)
     required_text(result, ["contract_version", "request_id", "task_id", "agent_id", "recommended_next_step"])
-    if result["contract_version"] != "agent-result/1.0":
+    expected_version = "agent-result/" + task["contract_version"].split("/")[1]
+    if result["contract_version"] != expected_version:
         raise ValueError("Unsupported result contract")
     for key, expected in (("request_id", task["request_id"]), ("task_id", task["task_id"]),
                           ("agent_id", task["assigned_to"]), ("scope", task["scope"])):
@@ -103,6 +133,26 @@ def check_result(result: dict, task: dict, data: dict) -> None:
         raise ValueError("Draft/readonly task cannot claim new external actions")
     if result["task_state"] == "completed" and not (result["artifacts"] or result["evidence_refs"]):
         raise ValueError("Completed task needs artifacts or evidence references")
+    extra = {"principles_applied", "unverified", "falsifiers"}
+    if task["contract_version"] == "task-card/1.1" or extra & result.keys() or "principles_ref" in task:
+        for field in extra:
+            strings(result.get(field), field)
+        if not set(result["principles_applied"]) <= PRINCIPLES:
+            raise ValueError("Unknown principles_applied")
+        if "principles_ref" not in task:
+            raise ValueError("Principles result requires task assessment")
+        # Unknown items may be resolved or rephrased; do not infer that an empty list proves resolution.
+        if result["task_state"] == "completed" or result["action_refs"]:
+            required = {"facts"} if task["risk_level"] == "L0" else PRINCIPLES
+            if not required <= set(result["principles_applied"]):
+                raise ValueError("Completed work needs applicable principles record")
+        if result["action_refs"]:
+            if task["requires_human"] or result["requires_human"] or task["review_mode"] == "pending":
+                raise ValueError("Cannot claim new actions while review/human decision is pending")
+            if task["risk_level"] == "L3":
+                if task["review_mode"] != "independent":
+                    raise ValueError("L3 action requires independent review")
+                required_text(task, ["human_approval_ref"])
 
 
 def main() -> int:
@@ -123,6 +173,8 @@ def main() -> int:
             if args.result:
                 check_result(json.loads(args.result.read_text()), task, data)
             answer = {"contract_valid": True, "scope": "structure and original-task consistency only; not authorization or live execution"}
+            if task["contract_version"] == "task-card/1.0":
+                answer["legacy_notice"] = "Legacy 1.0 card: no inference that current onboarding principles were applied"
         else:
             kind = next((k for k in ("domain", "node", "role", "workflow") if getattr(args, k)), "overview")
             answer = lookup(data, kind, getattr(args, kind, None))

@@ -6,7 +6,9 @@ license: MIT
 
 # 私域运营总控
 
-让客户自己的 Agent 把经营目标落实为可核对的任务。当前包 v1.2.0 保留 15 项技能；七类能力的 28 个节点包含待建设项。单个明确任务可直接进入对应技能，不必调用全部角色。
+接令时按[A卷上岗原则](references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
+
+让客户自己的 Agent 把经营目标落实为可核对的任务。当前包 v1.2.1 保留 15 项技能；七类能力的 28 个节点包含待建设项。单个明确任务可直接进入对应技能，不必调用全部角色。
 
 首次安装且无业务连接时，可先完成[随包演练](references/examples/first-task.md)。按需读取[七类目录](references/catalog/skill-tree.json)定位节点和当前缺口。可在本技能目录运行 `python3 scripts/catalog.py --domain moments`，也支持 `--node MOM-03`、`--role content-agent`、`--workflow moments-delivery`；查询工具不联网、不执行业务。
 

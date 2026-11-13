@@ -92,7 +92,7 @@ class ArchitectureTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Missing text"):
             self.module.check_task(self.task, self.data)
         self.task.update(action="moments.submit", content_version="synthetic-v1", authorization_ref="synthetic-grant",
-                         policy_version="synthetic-policy", capability_check_ref="synthetic-environment")
+                         policy_version="synthetic-policy", capability_check_ref="synthetic-environment", risk_level="L2")
         self.module.check_task(self.task, self.data)
         # Presence of fields passes structure only, not real authorization.
         self.task["capability_ids"] = ["SKU-04"]

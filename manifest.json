@@ -1,6 +1,6 @@
 {
   "name": "wechat-ai-skills",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "registry_version": "1.0",
   "receipt_contract_version": "1.0",
   "skills": [
@@ -15,7 +15,9 @@
         "去重排除与口径核验报告"
       ],
       "execution_kind": "local_script",
-      "dependencies": [],
+      "dependencies": [
+        "private-domain-ops"
+      ],
       "resources": [
         "agents/openai.yaml",
         "references/youzan-data-contract.md",
@@ -181,6 +183,7 @@
       ],
       "resources": [
         "LICENSE.txt",
+        "references/a-volume-onboarding.md",
         "references/agents/content-agent.md",
         "references/agents/customer-agent.md",
         "references/agents/operations-agent.md",
@@ -197,12 +200,16 @@
         "references/examples/first-task.json",
         "references/examples/first-task.md",
         "references/handoff.md",
+        "references/principles-sources.txt",
         "references/routing.md",
         "scripts/catalog.py"
       ],
       "validation_evidence": [
         "docs/verification-v1.1.0.md",
-        "docs/verification-v1.2.0.md"
+        "docs/verification-v1.2.0.md",
+        "examples/a-volume-facts/expected.md",
+        "examples/a-volume-problem/expected.md",
+        "examples/a-volume-adversarial/expected.md"
       ],
       "live_status": "not_verified"
     },
@@ -266,7 +273,9 @@
         "答疑草稿、员工交接与处理回执"
       ],
       "execution_kind": "guided",
-      "dependencies": [],
+      "dependencies": [
+        "private-domain-ops"
+      ],
       "resources": [
         "references/synthetic-cases.md",
         "references/work-card.md"
@@ -288,7 +297,8 @@
       ],
       "execution_kind": "guided",
       "dependencies": [
-        "wechat-scrm-onboarding"
+        "wechat-scrm-onboarding",
+        "private-domain-ops"
       ],
       "resources": [],
       "validation_evidence": [
@@ -308,7 +318,8 @@
       ],
       "execution_kind": "guided",
       "dependencies": [
-        "wechat-scrm-onboarding"
+        "wechat-scrm-onboarding",
+        "private-domain-ops"
       ],
       "resources": [],
       "validation_evidence": [
@@ -328,7 +339,8 @@
       ],
       "execution_kind": "guided",
       "dependencies": [
-        "wechat-scrm-onboarding"
+        "wechat-scrm-onboarding",
+        "private-domain-ops"
       ],
       "resources": [],
       "validation_evidence": [
@@ -348,7 +360,8 @@
       ],
       "execution_kind": "guided",
       "dependencies": [
-        "wechat-scrm-onboarding"
+        "wechat-scrm-onboarding",
+        "private-domain-ops"
       ],
       "resources": [],
       "validation_evidence": [

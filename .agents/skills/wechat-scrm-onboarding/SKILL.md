@@ -5,6 +5,8 @@ description: 首次接入或更换微信私域 SCRM 环境时，核对企业、�
 
 # SCRM 上岗检查
 
+接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
+
 开始前读取[客户环境卡](references/customer-setup.md)，复用已提供的信息。安装技能后仍需核实客户自己的 SCRM 入口、账号和工具。多业务任务可交给[私域运营总控](../private-domain-ops/SKILL.md)。
 
 1. 使用企业正式入口和已授权会话，核对企业名称、当前角色及业务时区。需要登录时由操作者在官方界面完成。

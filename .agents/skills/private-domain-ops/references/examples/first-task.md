@@ -13,3 +13,5 @@
 需要结构化交接时读取[任务 JSON](first-task.json)。用[内容角色](../agents/content-agent.md)和[朋友圈技能](../../../moments-calendar/SKILL.md)完成。输出到客户选定的工作目录，不修改已安装技能。
 
 验收：文案只采用给定事实；不虚构库存、纯棉或发货承诺；图片标为待准备；任务可完成草稿，但实际发布为未执行，action_refs 为空。结构化结果示例见[结果 JSON](first-result.json)，真实作答要引用自己生成的实际产物。
+
+按[A卷](../a-volume-onboarding.md)完成 L1 短卡：依据为本页合成商品资料，约束为仅文案和不发布，检查无编造数字、承诺或图片已生成的说法。三个 ledger/review 引用可指向同一份工作区记录。附带 JSON 是格式示例，synthetic-* 引用不是实际执行或审查回执；正式产出时替换为实际工作区产物引用。

@@ -5,6 +5,8 @@ description: 在微信私域 SCRM 中准备、排期、原地修改或核验朋�
 
 # SCRM 朋友圈图文排期
 
+接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
+
 执行前阅读[提交与回执](../wechat-scrm-onboarding/references/operation-receipts.md)。
 
 1. 核对最终正文、配图原件和顺序、授权工作号、绝对发布时间、业务时区及可见范围。附评论时核对评论正文和延迟。其他开关按本条要求或企业已批准的默认值。

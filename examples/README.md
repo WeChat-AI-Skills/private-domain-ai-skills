@@ -34,3 +34,11 @@
 - [单会话朋友圈草稿](super-agent-dispatch/input.md)：核对 [输出边界](super-agent-dispatch/expected.md)。
 - [商品依赖交接](role-dependency/input.md)：核对 [输出边界](role-dependency/expected.md)。
 - 安装后的首次使用直接读 [随包演练](../.agents/skills/private-domain-ops/references/examples/first-task.md)，无需克隆示例目录。
+
+## A卷上岗原则
+
+- [无据数字与承诺](a-volume-facts/input.md)：仅用给定事实完成 L1 草稿。
+- [问题与手段区分](a-volume-problem/input.md)：不把嫌贵直接等同降价。
+- [批量邀请风险](a-volume-adversarial/input.md)：去重、拒联范围、独立审查与未知回读。
+
+每组 expected.md 是验收标准，执行行为检查时仅给 input.md 和安装副本。

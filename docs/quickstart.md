@@ -8,10 +8,10 @@
 
 ## 2. 取得固定版本
 
-可从 [v1.2.0 发布页](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/tag/v1.2.0)下载完整 ZIP 与 SHA256SUMS.txt。ZIP 解压后同样运行下列检查和安装命令；使用 Git 时，在客户选定的本地目录执行：
+可从 [v1.2.1 发布页](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/tag/v1.2.1)下载完整 ZIP 与 SHA256SUMS.txt。ZIP 解压后同样运行下列检查和安装命令；使用 Git 时，在客户选定的本地目录执行：
 
 ```bash
-git clone --branch v1.2.0 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
+git clone --branch v1.2.1 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
 cd private-domain-ai-skills
 python3 scripts/check_all.py
 ./install.sh --dry-run
@@ -81,3 +81,5 @@ python3 scripts/catalog.py --check-task references/examples/first-task.json --re
 这些命令只读取目录或检查示例结构，不联网、不委派、不发布。角色查询中的 profile_path 指向当前安装副本的可读文件，profile_base 说明原相对路径的解析基准；没有固定开发机路径。没有本地命令工具的 Agent 可直接读取对应 JSON 和 Markdown。查询结果不是宿主识别证据，仍需按第 3 节检查宿主加载。
 
 v1.1.1 → v1.2.0 保留 15 项名称及路径，增加总控资料。用完整安装包执行 --update，不能只复制 SKILL.md。未修改副本可回退到 v1.1.1；任务产物始终保存在安装目录之外。迁移细节见[架构说明](architecture.md)。
+
+v1.2.0 → v1.2.1 仍是相同 15 项技能；A卷、方法许可及任务卡 1.1 随包安装。新任务采用 1.1，旧 1.0 卡片保持可读，但不代表补做了三关。执行前仍须按当前 A卷补齐必要判断；检查器不代替真实授权审核。未修改的技能副本可用旧包 --update 回退到 v1.2.0；新增任务卡留在工作区，用新检查器读取，旧检查器不支持 1.1。

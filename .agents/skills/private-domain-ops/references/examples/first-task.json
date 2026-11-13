@@ -1,5 +1,5 @@
 {
-  "contract_version": "task-card/1.0",
+  "contract_version": "task-card/1.1",
   "request_id": "synthetic-request-001",
   "task_id": "synthetic-task-001",
   "assigned_by": "super-agent",
@@ -27,5 +27,15 @@
     "只用已给商品事实",
     "图片未准备时列素材需求",
     "无实际发布动作"
-  ]
+  ],
+  "principles_ref": "a-volume/1.0",
+  "risk_level": "L1",
+  "fact_ledger_ref": "synthetic-onboarding-record#facts",
+  "constraint_ledger_ref": "synthetic-onboarding-record#constraints",
+  "adversarial_review_ref": "synthetic-onboarding-record#review",
+  "review_mode": "self_review",
+  "unknowns": [
+    "图片尚未准备"
+  ],
+  "requires_human": false
 }

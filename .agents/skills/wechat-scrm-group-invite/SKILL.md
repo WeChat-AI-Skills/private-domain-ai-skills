@@ -5,6 +5,8 @@ description: 在微信私域 SCRM 中核对客户资格和在群状态，准备�
 
 # SCRM 现有客户群邀请
 
+接令时按[A卷上岗原则](../private-domain-ops/references/a-volume-onboarding.md)核对事实、真实问题与失败路径；按风险调整留证，同一任务复用已完成判断与有效授权。
+
 执行前阅读[提交与回执](../wechat-scrm-onboarding/references/operation-receipts.md)。先核对「添加」的实际效果为发送原生邀请卡。直接添加、新建群或群发消息有各自的入口、权限和授权范围。
 
 1. 用群类型、稳定群标识、群全名及归属工作号定位唯一目标群。确认工作号在群内、有权限且群容量允许。在「聊天」切到原工作号，进入「群成员 → 添加」。

@@ -1,6 +1,6 @@
 {
   "schema_version": "skill-tree/1.0",
-  "package_version": "1.2.0",
+  "package_version": "1.2.1",
   "classification_note": "产品七域为本文件的 domain_id；manifest.json registry 1.0 的 domain 为旧登记分类，仅用于兼容。",
   "domains": [
     {
