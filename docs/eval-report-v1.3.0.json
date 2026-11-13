@@ -1,0 +1,118 @@
+{
+  "schema_version": "release-evaluation/1.0",
+  "package_version": "1.3.0",
+  "tested_commit": "876b69ee19755fffc05061542f3b97685c0e8a9b",
+  "tested_commit_scope": "repaired implementation; final source additions only public verification and synthetic behavior evidence",
+  "install_payload_sha256": "d529c5d044f743c5150a3ada639e58e83b568cd518d98d1a3b645ac890dac3fe",
+  "date": "2026-11-13",
+  "python_version": "3.12.15",
+  "automated_tests": {
+    "test_methods": 111,
+    "passed": 111,
+    "failed": 0,
+    "scrm_contract_tests": 34,
+    "retained_test_methods": 77,
+    "command": "python3 scripts/check_all.py"
+  },
+  "static_validation": {
+    "skills": 16,
+    "errors": 0,
+    "warnings": 0,
+    "domains": 7,
+    "nodes": 28,
+    "roles": 6,
+    "workflows": 3,
+    "generated_docs_current": true,
+    "skill_creator_checks_passed": 16
+  },
+  "installation": {
+    "fresh_install_skills": 16,
+    "fresh_install_files": 89,
+    "hashes_match": true,
+    "direct_upgrades": [
+      "1.1.1 -> 1.3.0",
+      "1.2.1 -> 1.3.0",
+      "1.2.2 -> 1.3.0"
+    ],
+    "customer_modifications_preserved": true,
+    "new_name_conflict_preserved": true,
+    "task_files_preserved": true,
+    "unrelated_skills_preserved": true,
+    "legacy_contracts_read": [
+      "task-card/1.0 + agent-result/1.0",
+      "task-card/1.1 + agent-result/1.1",
+      "task-card/1.2 + agent-result/1.2"
+    ],
+    "direct_16_to_15_downgrade": "rejected with all files preserved",
+    "rollback_method": "restore complete old installation snapshot to separate directory, then upgrade again",
+    "restored_and_reupgraded_versions": [
+      "1.1.1",
+      "1.2.1",
+      "1.2.2"
+    ],
+    "receipt_sha256": "f9e8473e30a0d0749f887ca9616c63deab239f5b7cda5d06e0f875ce8391d46e"
+  },
+  "native_host": {
+    "version": "codex-cli 0.167.0-alpha.4.1",
+    "method": "skills/list",
+    "skills": 16,
+    "enabled": 16,
+    "errors": 0,
+    "scope": "isolated workspace installation and native discovery"
+  },
+  "independent_code_review": {
+    "initial_probes": 16,
+    "initial_findings": {
+      "P2": 1,
+      "P3": 1
+    },
+    "findings_repaired": 2,
+    "recheck_cases": 18,
+    "recheck_passed": 18,
+    "open_blocking_findings": 0,
+    "evidence": "docs/scrm-code-review-v1.3.0.json"
+  },
+  "independent_behavior": {
+    "cases": 8,
+    "passed": 8,
+    "failed": 0,
+    "criteria": 29,
+    "criteria_passed": 29,
+    "hard_failure_occurrences": 0,
+    "executor_context": "one new context per case; installed skills and raw single-case input; no rubric or other answers supplied",
+    "reviewer_context": "separate new context with frozen inputs, actual answers and criteria",
+    "scope": "synthetic response and next-action assessment; no live browser/SCRM execution",
+    "candidate_01_cases": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06"
+    ],
+    "candidate_02_cases": [
+      "S07",
+      "S08"
+    ],
+    "evidence": [
+      "examples/v1.3.0-scrm-behavior/inputs.json",
+      "examples/v1.3.0-scrm-behavior/answers.md",
+      "examples/v1.3.0-scrm-behavior/rubric.json",
+      "examples/v1.3.0-scrm-behavior/review.json"
+    ]
+  },
+  "public_distribution": {
+    "status_at_source_freeze": "post_publication_check_pending",
+    "evidence_url": "https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/download/v1.3.0/release-acceptance.json"
+  },
+  "unknowns": [
+    "customer SCRM deployment, current page controls and live outcomes",
+    "other hosts or devices",
+    "source authenticity and actual authorization",
+    "cross-binding-revision query correlation",
+    "official API adapters, instant chat, other media and persistent automation",
+    "customer business acceptance and customer score"
+  ],
+  "live_status": "not_verified",
+  "customer_score": null
+}

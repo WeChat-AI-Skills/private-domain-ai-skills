@@ -1,0 +1,188 @@
+{
+  "scope": "independent offline code review; no live SCRM",
+  "initial_candidate": "441bb4144b6f6a4acf47249d1816c83b1029bd3e",
+  "repaired_candidate": "876b69ee19755fffc05061542f3b97685c0e8a9b",
+  "initial_probe_count": 16,
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "P2",
+      "issue": "A completed query of unknown original business allowed next_action none",
+      "resolution": "derive recovery action from nested original status; independently rechecked"
+    },
+    {
+      "id": "F2",
+      "severity": "P3",
+      "issue": "documented output can_execute did not match execution_performed",
+      "resolution": "documentation corrected and read back"
+    }
+  ],
+  "accepted_limitations": [
+    "cross-binding-revision recovery is not verified by this checker; preserve original snapshot and independently record actual query"
+  ],
+  "open_blocking_findings": 0,
+  "recheck": {
+    "base_candidate": "441bb4144b6f6a4acf47249d1816c83b1029bd3e",
+    "reviewed_artifact": "repaired working tree; identify by sha256, not release commit",
+    "sha256": {
+      ".agents/skills/wechat-scrm-operator/scripts/scrm.py": "67a76b598dc8d9cc47fd3ba7901c769650f3af667ee3269a041c0236f9395d3b",
+      ".agents/skills/wechat-scrm-operator/references/record-checks.md": "90f070faa80fa33ff05d9dd037f77967cb12f7938332d3361933d2fdae060255",
+      "scripts/test_scrm_contracts.py": "2fb44a98b1c39039f38fa89a4ea2cc06ff06f4d04cf29f93bde2129779657a1c"
+    },
+    "network": "socket creation forbidden",
+    "cases": [
+      {
+        "original_status": "accepted",
+        "next_action": "none",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "accepted",
+        "next_action": "query_original",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "accepted",
+        "next_action": "do_not_retry",
+        "expected_acceptance": false,
+        "observed_acceptance": false,
+        "matched": true,
+        "error": "unexpected next action"
+      },
+      {
+        "original_status": "running",
+        "next_action": "none",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "running",
+        "next_action": "query_original",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "running",
+        "next_action": "do_not_retry",
+        "expected_acceptance": false,
+        "observed_acceptance": false,
+        "matched": true,
+        "error": "unexpected next action"
+      },
+      {
+        "original_status": "succeeded",
+        "next_action": "none",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "succeeded",
+        "next_action": "query_original",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "succeeded",
+        "next_action": "do_not_retry",
+        "expected_acceptance": false,
+        "observed_acceptance": false,
+        "matched": true,
+        "error": "unexpected next action"
+      },
+      {
+        "original_status": "failed",
+        "next_action": "none",
+        "expected_acceptance": false,
+        "observed_acceptance": false,
+        "matched": true,
+        "error": "failure does not authorize resubmission"
+      },
+      {
+        "original_status": "failed",
+        "next_action": "query_original",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "failed",
+        "next_action": "do_not_retry",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "unknown",
+        "next_action": "none",
+        "expected_acceptance": false,
+        "observed_acceptance": false,
+        "matched": true,
+        "error": "unknown result must query original before any new submission"
+      },
+      {
+        "original_status": "unknown",
+        "next_action": "query_original",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "unknown",
+        "next_action": "do_not_retry",
+        "expected_acceptance": false,
+        "observed_acceptance": false,
+        "matched": true,
+        "error": "unknown result must query original before any new submission"
+      },
+      {
+        "original_status": "cancelled",
+        "next_action": "none",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "cancelled",
+        "next_action": "query_original",
+        "expected_acceptance": true,
+        "observed_acceptance": true,
+        "matched": true,
+        "error": null
+      },
+      {
+        "original_status": "cancelled",
+        "next_action": "do_not_retry",
+        "expected_acceptance": false,
+        "observed_acceptance": false,
+        "matched": true,
+        "error": "unexpected next action"
+      }
+    ],
+    "doc_checks": {
+      "can_execute_field_claim_removed": true,
+      "actual_execution_field_documented": true,
+      "cross_revision_limit_disclosed": true,
+      "do_not_rewrite_old_records": true,
+      "no_resubmit_due_to_check_failure": true
+    },
+    "all_passed": true
+  }
+}
