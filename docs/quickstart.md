@@ -8,7 +8,7 @@
 
 ## 2. 取得固定版本
 
-在客户选定的本地目录执行：
+可从 [v1.2.0 发布页](https://github.com/WeChat-AI-Skills/private-domain-ai-skills/releases/tag/v1.2.0)下载完整 ZIP 与 SHA256SUMS.txt。ZIP 解压后同样运行下列检查和安装命令；使用 Git 时，在客户选定的本地目录执行：
 
 ```bash
 git clone --branch v1.2.0 https://github.com/WeChat-AI-Skills/private-domain-ai-skills.git
@@ -18,7 +18,7 @@ python3 scripts/check_all.py
 ./install.sh
 ```
 
-默认复制全部 15 项技能到用户主目录下的 `.agents/skills`，这是本次 Codex 原生枚举实际读取的用户技能位置。也可指定工作区或其他宿主的技能目录：
+默认复制全部 15 项技能到用户主目录下的 `.agents/skills`。也可指定工作区或其他宿主的技能目录；本版本验证了 Codex 对工作区安装副本的原生识别：
 
 ```bash
 ./install.sh --target /path/to/customer-workspace/.agents/skills
