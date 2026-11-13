@@ -1,0 +1,4 @@
+interface:
+  display_name: "有赞加购未购排查"
+  short_description: "下载有赞加购与已购客户，去重排除同期已购并核验窗口口径"
+  default_prompt: "Use $audit-youzan-cart-nonbuyers to download and audit yesterday or the past 7 days of Youzan cart nonbuyers."
